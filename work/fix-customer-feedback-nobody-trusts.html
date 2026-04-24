@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Case Study — Akshat Kharbanda</title>
+  <meta name="description" id="page-desc" content="Case study by Akshat Kharbanda" />
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="../data/cases.js"></script>
+  <script src="../nav.js" defer></script>
+</head>
+<body>
+
+<main class="page">
+  <div class="container">
+    <div id="case-content"></div>
+  </div>
+</main>
+
+<script>
+function getSlug() {
+  const parts = window.location.pathname.split('/');
+  const file = parts[parts.length - 1];
+  return file.replace('.html', '');
+}
+
+function getCaseNav(currentSlug) {
+  const idx = cases.findIndex(c => c.slug === currentSlug);
+  const prev = idx > 0 ? cases[idx - 1] : null;
+  const next = idx < cases.length - 1 ? cases[idx + 1] : null;
+  return { prev, next };
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const slug = getSlug();
+  const c = cases.find(cs => cs.slug === slug);
+
+  if (!c) {
+    document.getElementById('case-content').innerHTML = `
+      <p style="color: var(--text-secondary);">Case study not found. <a href="../work.html" style="color: var(--accent);">Back to work →</a></p>
+    `;
+    return;
+  }
+
+  document.getElementById('page-title').textContent = `${c.question} — Akshat Kharbanda`;
+  document.getElementById('page-desc').content = c.subtitle;
+
+  const { prev, next } = getCaseNav(slug);
+
+  document.getElementById('case-content').innerHTML = `
+    <div class="case-hero fade-up">
+      <a href="../work.html" class="case-back">← Back to work</a>
+      <span class="tag tag-${c.category}">${c.category}</span>
+      <h1 class="case-title">${c.question}</h1>
+      <p class="case-subtitle">${c.subtitle}</p>
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <div class="case-meta-label">Client</div>
+          <div class="case-meta-val">${c.client}</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Context</div>
+          <div class="case-meta-val">${c.context}</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Category</div>
+          <div class="case-meta-val">${c.category}</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="case-section fade-up fade-up-1">
+      <p class="case-section-title">The problem</p>
+      <p class="case-body">${c.problem}</p>
+    </div>
+
+    <div class="case-section fade-up fade-up-2">
+      <p class="case-section-title">What I did</p>
+      <p class="case-body">${c.what_i_did}</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="case-section fade-up fade-up-3">
+      <p class="case-section-title">Outcomes</p>
+      <div class="outcomes-grid">
+        ${c.outcomes.map(o => `
+          <div class="outcome-card">
+            <div class="outcome-num">${o.number}</div>
+            <div class="outcome-label">${o.label}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="case-section fade-up fade-up-4">
+      <p class="case-section-title">What I learned</p>
+      ${c.learnings.map(l => `
+        <div class="learning-item">
+          <p class="learning-text">${l}</p>
+        </div>
+      `).join('')}
+    </div>
+
+    <hr class="divider" />
+
+    <div class="case-nav fade-up fade-up-5">
+      ${prev ? `<a href="${prev.slug}.html" class="case-nav-btn">← ${prev.question.substring(0, 40)}…</a>` : '<span></span>'}
+      ${next ? `<a href="${next.slug}.html" class="case-nav-btn">${next.question.substring(0, 40)}… →</a>` : '<span></span>'}
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>

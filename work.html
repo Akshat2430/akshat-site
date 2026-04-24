@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work — Akshat Kharbanda</title>
+  <meta name="description" content="Projects across strategy, brand, AI, and GTM. Filtered by type of problem." />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="data/cases.js"></script>
+  <script src="nav.js" defer></script>
+</head>
+
+<body>
+
+  <main class="page">
+    <div class="container">
+
+      <div style="margin-bottom: 2rem;" class="fade-up">
+        <h1 class="page-title">Work</h1>
+        <p class="page-sub">Projects across strategy, brand, AI, and GTM. Filtered by type of problem. More info and
+          case studies available on request!</p>
+      </div>
+
+      <!-- BUCKET MARQUEES -->
+      <div id="bucket-rows" class="fade-up fade-up-1"></div>
+
+    </div>
+  </main>
+
+  <script>
+    const bucketMeta = [
+      { key: 'Entering', title: 'Entering new markets', blurb: 'Category creation, first-mover GTM, and strategy for spaces with no precedent.' },
+      { key: 'Finding', title: 'Finding signal in noise', blurb: 'Cross-cultural research, consumer insight, and competitive intelligence.' },
+      { key: 'Building', title: "Building what didn't exist", blurb: 'Frameworks, pilots, capabilities, and systems built from scratch.' }
+    ];
+
+    const cardHtml = (c) => `
+      <a href="work/${c.slug}.html" class="case-card${c.featured ? ' case-card-highlight' : ''}">
+        ${c.featured ? '<span class="case-card-star" aria-label="Highlight" title="Highlight project">★</span>' : ''}
+        <span class="case-card-client">${c.client} · ${c.context}</span>
+        <div class="case-card-q">${c.question}</div>
+        <div class="case-card-sub">${c.subtitle}</div>
+        <span class="case-card-arrow">→</span>
+      </a>
+    `;
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const byBucket = {};
+      bucketMeta.forEach(b => byBucket[b.key] = []);
+      cases.forEach(c => { if (byBucket[c.category]) byBucket[c.category].push(c); });
+
+      const container = document.getElementById('bucket-rows');
+      container.innerHTML = bucketMeta.map(b => {
+        const items = byBucket[b.key] || [];
+        const ordered = [...items].sort((a, b) => (b.featured === true) - (a.featured === true));
+        return `
+          <section class="case-bucket">
+            <div class="case-bucket-head">
+              <h2 class="case-bucket-title">${b.title}</h2>
+            </div>
+            <p class="case-bucket-blurb">${b.blurb}</p>
+            <div class="case-grid">
+              ${ordered.map(cardHtml).join('')}
+            </div>
+          </section>
+        `;
+      }).join('');
+    });
+  </script>
+
+</body>
+
+</html>
