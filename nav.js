@@ -37,14 +37,12 @@ function injectNav() {
         <ul class="nav-links">
           ${links.map(l => `<li><a href="${l.href}" class="${current === l.key ? 'active' : ''}">${l.label}</a></li>`).join('')}
         </ul>
-        <a href="mailto:workwithakshatkharbanda@gmail.com" class="nav-cta">Get in touch</a>
         <button class="nav-mobile-toggle" aria-label="Menu" onclick="toggleMobileMenu()">
           <span></span><span></span><span></span>
         </button>
       </div>
       <div class="nav-mobile-menu" id="mobileMenu">
         ${links.map(l => `<a href="${l.href}" class="${current === l.key ? 'active' : ''}">${l.label}</a>`).join('')}
-        <a href="mailto:workwithakshatkharbanda@gmail.com" class="nav-mobile-cta">Get in touch</a>
       </div>
     </nav>
   `;

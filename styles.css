@@ -122,32 +122,6 @@ nav {
   border-bottom: 0.5px solid var(--border);
 }
 .nav-mobile-menu a.active { color: var(--accent); }
-.nav-cta {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--bg);
-  background: var(--text-primary);
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  transition: background 0.15s, color 0.15s;
-  white-space: nowrap;
-}
-.nav-cta:hover {
-  background: var(--accent);
-}
-.nav-mobile-cta {
-  display: inline-block;
-  margin-top: 1.5rem;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--bg);
-  background: var(--text-primary);
-  padding: 0.75rem 1.5rem;
-  border-radius: 999px;
-  text-align: center;
-  transition: background 0.15s;
-}
-.nav-mobile-cta:hover { background: var(--accent); }
 
 /* ---- LAYOUT ---- */
 .container {
