@@ -1,3 +1,11 @@
 {
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.akshatkharbanda.com" }],
+      "destination": "https://akshatkharbanda.com/:path*",
+      "permanent": true
+    }
+  ]
 }
