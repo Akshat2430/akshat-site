@@ -3,9 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="page-title">Case Study — Akshat Kharbanda</title>
-  <meta name="description" id="page-desc" content="Case study by Akshat Kharbanda" />
+  <title>How do you build an AI pilot that actually works? — Akshat Kharbanda</title>
+  <meta name="description" content="10% time reduction, new team formation. Case study by Akshat Kharbanda — cross-cultural strategist and AI adoption consultant." />
   <link rel="canonical" href="https://akshatkharbanda.com/work/ai-pilot-that-actually-works.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Akshat Kharbanda" />
+  <meta property="og:title" content="How do you build an AI pilot that actually works? — Akshat Kharbanda" />
+  <meta property="og:description" content="10% time reduction, new team formation. Case study by Akshat Kharbanda." />
+  <meta property="og:url" content="https://akshatkharbanda.com/work/ai-pilot-that-actually-works.html" />
+  <meta property="og:image" content="https://akshatkharbanda.com/public/images/og-image.jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <link rel="icon" type="image/jpeg" href="/public/images/akshat-avatar.jpg" />
+  <link rel="apple-touch-icon" href="/public/images/akshat-avatar.jpg" />
   <link rel="stylesheet" href="../styles.css" />
   <script src="../data/cases.js"></script>
   <script src="../nav.js" defer></script>
@@ -44,8 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
 
-  document.getElementById('page-title').textContent = `${c.question} — Akshat Kharbanda`;
-  document.getElementById('page-desc').content = c.subtitle;
+  document.title = `${c.question} — Akshat Kharbanda`;
+  document.querySelector('meta[name="description"]').content = c.subtitle;
 
   const { prev, next } = getCaseNav(slug);
 
