@@ -301,6 +301,45 @@ const cases = [
     learnings: [
       "Community in progress — full reflection coming as it grows."
     ]
+  },
+  {
+    slug: "build-a-ceo-an-ai-workforce",
+    question: "How do you build a CEO an AI workforce that actually holds?",
+    subtitle: "A hundred small extractions → one dedicated agent each",
+    category: "Building",
+    client: "Public tech company",
+    context: "USA",
+    featured: false,
+    problem: "A public company CEO's time wasn't disappearing into big decisions. It was leaking into the hundred small extractions that come before one — dig through this report, summarise that call, draft the first pass of everything. A single assistant trying to cover all of that just becomes one more thing to manage.",
+    what_i_did: "Mapped where the hours actually went, not where he assumed they went. Built one agent per job — research, synthesis, meeting prep, drafting — each wired directly into the tools he already used. The requirement: the system had to run without hand-holding through a day that changes every 20 minutes. Now expanding the same architecture company-wide.",
+    outcomes: [
+      { number: "4", label: "dedicated agents in daily use" },
+      { number: "Company-wide", label: "rollout now underway" }
+    ],
+    learnings: [
+      "Most of what ate his day was never actually his job — research, synthesis, first drafts. That's what the agents took over.",
+      "One agent per job outperformed one assistant trying to do everything — each only had to survive its own slice of the day.",
+      "The hard part was behavioural design — figuring out what he'd trust enough to stop double-checking."
+    ]
+  },
+  {
+    slug: "build-a-signal-scanner-for-a-pe-firm",
+    question: "How do you turn a thousand updates into one brief a team actually reads?",
+    subtitle: "A thousand daily updates → one standing brief for a 10-person team",
+    category: "Finding",
+    client: "Foodtech PE firm",
+    context: "USA",
+    featured: false,
+    problem: "A foodtech-focused PE firm's ten-person team had deal flow, portfolio activity, and competitor movement arriving from every direction — more volume than anyone could triage alone, with no shared way to tell which update actually mattered today.",
+    what_i_did: "Defined what counted as signal for this specific portfolio instead of generic market news. Built a scoring layer that filters noise before it reaches the team, then delivered it as one standing brief the whole team reads together, instead of a dashboard people had to remember to check.",
+    outcomes: [
+      { number: "10", label: "team members reading one shared brief" },
+      { number: "1", label: "standing brief replacing scattered updates" }
+    ],
+    learnings: [
+      "Cutting volume mattered more than speeding delivery up.",
+      "The actual work was editorial judgement: deciding what didn't need to reach anyone."
+    ]
   }
 ];
 
