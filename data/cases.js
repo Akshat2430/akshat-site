@@ -305,7 +305,7 @@ const cases = [
   {
     slug: "build-a-ceo-an-ai-workforce",
     question: "How do you build a CEO an AI workforce that actually holds?",
-    subtitle: "A hundred small extractions → one dedicated agent each",
+    subtitle: "Hundred small extractions → one dedicated agent each",
     category: "Building",
     client: "Public tech company",
     context: "USA",
@@ -318,14 +318,14 @@ const cases = [
     ],
     learnings: [
       "Most of what ate his day was never actually his job — research, synthesis, first drafts. That's what the agents took over.",
-      "One agent per job outperformed one assistant trying to do everything — each only had to survive its own slice of the day.",
-      "The hard part was behavioural design — figuring out what he'd trust enough to stop double-checking."
+      "One agent per job outperformed one assistant trying to do everything.",
+      "The hard part was behavioural design, figuring out what he'd trust enough to stop double-checking."
     ]
   },
   {
     slug: "build-a-signal-scanner-for-a-pe-firm",
     question: "How do you turn a thousand updates into one brief a team actually reads?",
-    subtitle: "A thousand daily updates → one standing brief for a 10-person team",
+    subtitle: "Thousand daily updates → one standing brief for a 10-person team",
     category: "Finding",
     client: "Foodtech PE firm",
     context: "USA",
