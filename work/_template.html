@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const { prev, next } = getCaseNav(slug);
 
   document.getElementById('case-content').innerHTML = `
-    <div class="case-hero fade-up">
+    <div class="case-hero">
       <a href="../work.html" class="case-back">← Back to work</a>
       <span class="tag tag-${c.category}">${c.category}</span>
       <h1 class="case-title">${c.question}</h1>
@@ -72,19 +72,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <hr class="divider" />
 
-    <div class="case-section fade-up fade-up-1">
+    <div class="case-section">
       <p class="case-section-title">The problem</p>
       <p class="case-body">${c.problem}</p>
     </div>
 
-    <div class="case-section fade-up fade-up-2">
+    <div class="case-section">
       <p class="case-section-title">What I did</p>
       <p class="case-body">${c.what_i_did}</p>
     </div>
 
     <hr class="divider" />
 
-    <div class="case-section fade-up fade-up-3">
+    <div class="case-section">
       <p class="case-section-title">Outcomes</p>
       <div class="outcomes-grid">
         ${c.outcomes.map(o => `
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <hr class="divider" />
 
-    <div class="case-section fade-up fade-up-4">
+    <div class="case-section">
       <p class="case-section-title">What I learned</p>
       ${c.learnings.map(l => `
         <div class="learning-item">
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <hr class="divider" />
 
-    <div class="case-nav fade-up fade-up-5">
+    <div class="case-nav">
       ${prev ? `<a href="${prev.slug}.html" class="case-nav-btn">← ${prev.question.substring(0, 40)}…</a>` : '<span></span>'}
       ${next ? `<a href="${next.slug}.html" class="case-nav-btn">${next.question.substring(0, 40)}… →</a>` : '<span></span>'}
     </div>
