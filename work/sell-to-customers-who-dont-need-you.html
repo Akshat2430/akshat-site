@@ -22,6 +22,10 @@
   <link rel="stylesheet" href="../styles.css" />
   <script src="../data/cases.js"></script>
   <script src="../nav.js" defer></script>
+  <script src="../contact-form.js" defer></script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 <body>
@@ -59,6 +63,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.title = `${c.question} — Akshat Kharbanda`;
   document.querySelector('meta[name="description"]').content = c.subtitle;
+
+  const outcomesSummary = c.outcomes.map(o => `${o.number} ${o.label}`).join(', ');
+  const faqSchema = document.createElement('script');
+  faqSchema.type = 'application/ld+json';
+  faqSchema.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": c.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `${c.what_i_did} Result: ${outcomesSummary}.`
+      }
+    }]
+  });
+  document.head.appendChild(faqSchema);
 
   const { prev, next } = getCaseNav(slug);
 
@@ -119,6 +140,15 @@ document.addEventListener('DOMContentLoaded', function() {
           <p class="learning-text">${l}</p>
         </div>
       `).join('')}
+    </div>
+
+    <hr class="divider" />
+
+    <div class="cta-block">
+      <p class="cta-title">Got a similar problem?</p>
+      <p class="cta-sub">Tell me what you're working on — I'll tell you if it's a fit.</p>
+      <div class="contact-form-mount" data-location="case_${c.slug}"></div>
+      <p class="cta-fallback">Prefer email? <a href="mailto:workwithakshatkharbanda@gmail.com" onclick="if(typeof va==='function'){va('event',{name:'mailto_click',data:{location:'case_${c.slug}'}})}">workwithakshatkharbanda@gmail.com →</a></p>
     </div>
 
     <hr class="divider" />
