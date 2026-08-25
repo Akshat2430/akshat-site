@@ -47,6 +47,10 @@
 
   <link rel="stylesheet" href="styles.css" />
   <script src="nav.js" defer></script>
+  <script src="contact-form.js" defer></script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 
@@ -566,7 +570,8 @@
       <div class="cta-block">
         <p class="cta-title">Let's work together</p>
         <p class="cta-sub">Strategy projects, speaking invitations, brand collaborations, or just a good coffee.</p>
-        <a href="mailto:workwithakshatkharbanda@gmail.com" class="cta-email">workwithakshatkharbanda@gmail.com →</a>
+        <div class="contact-form-mount" data-location="about"></div>
+        <p class="cta-fallback">Prefer email? <a href="mailto:workwithakshatkharbanda@gmail.com" onclick="if(typeof va==='function'){va('event',{name:'mailto_click',data:{location:'about'}})}">workwithakshatkharbanda@gmail.com →</a></p>
       </div>
 
     </div>

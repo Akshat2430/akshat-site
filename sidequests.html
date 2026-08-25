@@ -19,6 +19,10 @@
   <link rel="apple-touch-icon" href="/public/images/akshat-avatar.jpg" />
   <link rel="stylesheet" href="styles.css" />
   <script src="nav.js" defer></script>
+  <script src="contact-form.js" defer></script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 
@@ -36,7 +40,8 @@
       <div class="cta-block" style="margin-bottom: 2.5rem;">
         <p class="cta-title">Got a side quest for me?</p>
         <p class="cta-sub">I'm game.</p>
-        <a href="mailto:workwithakshatkharbanda@gmail.com" class="cta-email">workwithakshatkharbanda@gmail.com →</a>
+        <div class="contact-form-mount" data-location="sidequests_top"></div>
+        <p class="cta-fallback">Prefer email? <a href="mailto:workwithakshatkharbanda@gmail.com" onclick="if(typeof va==='function'){va('event',{name:'mailto_click',data:{location:'sidequests_top'}})}">workwithakshatkharbanda@gmail.com →</a></p>
       </div>
 
       <hr class="divider" />
@@ -332,7 +337,8 @@
         <p class="cta-title">Got a side quest for me?</p>
         <p class="cta-sub">I'm game.
         </p>
-        <a href="mailto:workwithakshatkharbanda@gmail.com" class="cta-email">workwithakshatkharbanda@gmail.com →</a>
+        <div class="contact-form-mount" data-location="sidequests_bottom"></div>
+        <p class="cta-fallback">Prefer email? <a href="mailto:workwithakshatkharbanda@gmail.com" onclick="if(typeof va==='function'){va('event',{name:'mailto_click',data:{location:'sidequests_bottom'}})}">workwithakshatkharbanda@gmail.com →</a></p>
       </div>
 
     </div>

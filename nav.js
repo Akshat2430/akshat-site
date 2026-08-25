@@ -55,7 +55,7 @@ function injectNav() {
           <a href="https://linkedin.com/in/akshat-kharbanda" target="_blank">LinkedIn</a>
           <a href="https://www.instagram.com/thebusinessbackpacker/" target="_blank">Instagram</a>
           <a href="https://thebusinessbackpacker.substack.com" target="_blank">Substack</a>
-          <a href="mailto:workwithakshatkharbanda@gmail.com">Email</a>
+          <a href="mailto:workwithakshatkharbanda@gmail.com" onclick="if(typeof va==='function'){va('event',{name:'mailto_click',data:{location:'footer'}})}">Email</a>
         </div>
       </div>
     </footer>

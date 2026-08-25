@@ -1013,6 +1013,66 @@ iframe.talk-embed {
   font-style: italic;
 }
 
+/* ---- CONTACT FORM ---- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 420px;
+}
+.form-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.form-label {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+.form-input,
+.form-textarea {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg);
+  border: 0.5px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+}
+.form-textarea { resize: vertical; }
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.form-submit {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+.form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.form-status {
+  font-size: 14px;
+  margin-top: 0.75rem;
+}
+.form-status-success { color: var(--accent); }
+.form-status-error { color: #B23A3A; }
+.cta-fallback {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-top: 1rem;
+}
+.cta-fallback a { color: var(--text-secondary); }
+
 /* ---- FOLLOW CARDS (content page) ---- */
 .follow-grid {
   display: grid;

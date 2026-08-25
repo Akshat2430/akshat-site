@@ -6,6 +6,11 @@
       "has": [{ "type": "host", "value": "www.akshatkharbanda.com" }],
       "destination": "https://akshatkharbanda.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
