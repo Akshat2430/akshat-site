@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "name": "akshat-site",
+  "scripts": {
+    "build": "node build.js"
+  }
+}

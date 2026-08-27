@@ -3,9 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="page-title">Case Study — Akshat Kharbanda</title>
-  <meta name="description" id="page-desc" content="Case study by Akshat Kharbanda" />
+  <!--TEMPLATE-NOTE
+    This is the generator template for every /work/<slug>.html page.
+    Do NOT edit the per-slug files by hand: change this template (or data/cases.js)
+    then run `node build.js` from the repo root. build.js fills the {{TOKENS}} and
+    the BUILD marker blocks, and strips this note from the generated output.
+  TEMPLATE-NOTE-->
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{PAGE_DESC}}" />
+  <link rel="canonical" href="{{CANONICAL_URL}}" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Akshat Kharbanda" />
+  <meta property="og:title" content="{{PAGE_TITLE}}" />
+  <meta property="og:description" content="{{PAGE_DESC}}" />
+  <meta property="og:url" content="{{CANONICAL_URL}}" />
+  <meta property="og:image" content="https://akshatkharbanda.com/public/images/og-image.jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{PAGE_TITLE}}" />
+  <meta name="twitter:description" content="{{PAGE_DESC}}" />
+  <meta name="twitter:image" content="https://akshatkharbanda.com/public/images/og-image.jpeg" />
+
+  <link rel="icon" type="image/jpeg" href="/public/images/akshat-avatar.jpg" />
+  <link rel="apple-touch-icon" href="/public/images/akshat-avatar.jpg" />
   <link rel="stylesheet" href="../styles.css" />
+  <!--BUILD:FAQ-->{{FAQ_JSONLD}}<!--/BUILD:FAQ-->
   <script src="../data/cases.js"></script>
   <script src="../nav.js" defer></script>
   <script src="../contact-form.js" defer></script>
@@ -18,37 +45,43 @@
 
 <main class="page">
   <div class="container">
-    <div id="case-content"></div>
+    <div id="case-content"><!--BUILD:START-->{{CASE_BODY}}<!--BUILD:END--></div>
   </div>
 </main>
 
 <script>
+// Progressive-enhancement fallback. Production pages ship the case body pre-rendered
+// by build.js, so this only runs when the static content is absent (e.g. viewing a
+// freshly created page over file:// before running the build).
 function getSlug() {
   const parts = window.location.pathname.split('/');
-  const file = parts[parts.length - 1];
-  return file.replace('.html', '');
+  return parts[parts.length - 1].replace('.html', '');
 }
 
 function getCaseNav(currentSlug) {
   const idx = cases.findIndex(c => c.slug === currentSlug);
-  const prev = idx > 0 ? cases[idx - 1] : null;
-  const next = idx < cases.length - 1 ? cases[idx + 1] : null;
-  return { prev, next };
+  return {
+    prev: idx > 0 ? cases[idx - 1] : null,
+    next: idx > -1 && idx < cases.length - 1 ? cases[idx + 1] : null
+  };
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+  const mount = document.getElementById('case-content');
+  if (mount.querySelector('.case-hero')) return; // already pre-rendered
+
   const slug = getSlug();
   const c = cases.find(cs => cs.slug === slug);
 
   if (!c) {
-    document.getElementById('case-content').innerHTML = `
+    mount.innerHTML = `
       <p style="color: var(--text-secondary);">Case study not found. <a href="../work.html" style="color: var(--accent);">Back to work →</a></p>
     `;
     return;
   }
 
-  document.getElementById('page-title').textContent = `${c.question} — Akshat Kharbanda`;
-  document.getElementById('page-desc').content = c.subtitle;
+  document.title = `${c.question} — Akshat Kharbanda`;
+  document.querySelector('meta[name="description"]').content = c.subtitle;
 
   const outcomesSummary = c.outcomes.map(o => `${o.number} ${o.label}`).join(', ');
   const faqSchema = document.createElement('script');
@@ -69,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const { prev, next } = getCaseNav(slug);
 
-  document.getElementById('case-content').innerHTML = `
+  mount.innerHTML = `
     <div class="case-hero">
       <a href="../work.html" class="case-back">← Back to work</a>
       <span class="tag tag-${c.category}">${c.category}</span>
