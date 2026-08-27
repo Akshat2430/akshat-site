@@ -1,3 +1,5 @@
+// featured: card shows in the homepage "Selected work" list.
+// highlight: card gets the star + emphasis treatment on the work page (one per bucket).
 const cases = [
   {
     slug: "sell-to-customers-who-dont-need-you",
@@ -88,6 +90,7 @@ const cases = [
     client: "AI startup",
     context: "Singapore",
     featured: false,
+    highlight: true,
     problem: "A Singapore-based AI startup had developed birth defect screening technology with real potential in India. What they didn't have was a strategy for entering a market of 1.4 billion people, wildly different healthcare systems, and complex regulatory landscapes. The conventional advice — target major metros, build brand awareness, scale gradually — would have burned their runway chasing the wrong customers.",
     what_i_did: "Built a market entry strategy from scratch using PCPNDT Act registration data as an unconventional TAM proxy. Developed a multi-factor scoring model across healthcare infrastructure and market readiness indicators to identify 5 priority states. Mapped 7 distinct acquisition channels and built a detailed database of the first 100 target customers — not just names, but decision-maker contacts, AI readiness scores, and warm introduction pathways.",
     outcomes: [
@@ -109,6 +112,7 @@ const cases = [
     client: "Novo Nordisk",
     context: "Denmark",
     featured: false,
+    highlight: true,
     problem: "Novo Nordisk's obesity care business was growing rapidly but had a fundamental problem: no unified understanding of who they were serving. Research was scattered across markets, built on different methodologies that made cross-market comparison impossible. Regional teams were operating on local assumptions. Without a consistent consumer view, the global brand strategy would be built on bias rather than truth.",
     what_i_did: "Designed and executed a global consumer segmentation from scratch. Facilitated cross-market stakeholder alignment to separate universal constructs from genuine local variation. Led cluster analysis that identified 4 universal segments across all markets. Built an interactive dashboard giving global and regional teams a common consumer language for the first time.",
     outcomes: [
@@ -256,6 +260,7 @@ const cases = [
     client: "Clinton Health Access Initiative",
     context: "USA",
     featured: true,
+    highlight: true,
     problem: "CHAI bought access to generative AI tools for teams in 30+ countries. That decision took an afternoon. Getting people to use them was the real problem — thousands of staff, each in a different healthcare system, each starting from a different level of technical comfort, each choosing every day whether to open the tool or fall back on the way they already knew. Some workflows touched sensitive health data, which raised the stakes for anyone trying it for the first time. The brief read like a software rollout. The work was behaviour change at organisational scale.",
     what_i_did: "Ran it in stages instead of one launch. Progressive pilots to find which use cases actually stuck. Internal resources and training so people had a low-stakes way in. Governance for the things that matter — sensitive data especially — so a first-timer could use AI without worrying they'd break something. That took the organisation from a handful of early adopters to the majority of staff. The question has since shifted from 'is anyone using this' to 'what are the best users doing' — surfacing those use cases and scaling them across teams. Part-time engagement with CHAI's US HQ, ongoing.",
     outcomes: [
