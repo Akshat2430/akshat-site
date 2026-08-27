@@ -201,8 +201,8 @@ const bucketMeta = [
 
 function caseCard(c) {
   return `
-            <a href="work/${c.slug}.html" class="case-card${c.featured ? ' case-card-highlight' : ''}">
-              ${c.featured ? '<span class="case-card-star" aria-label="Highlight" title="Highlight project">★</span>' : ''}
+            <a href="work/${c.slug}.html" class="case-card${c.highlight ? ' case-card-highlight' : ''}">
+              ${c.highlight ? '<span class="case-card-star" aria-label="Highlight" title="Highlight project">★</span>' : ''}
               <span class="case-card-client">${c.client} · ${c.context}</span>
               <div class="case-card-q">${c.question}</div>
               <div class="case-card-sub">${c.subtitle}</div>
@@ -216,7 +216,7 @@ function renderBucketRows() {
   cases.forEach(c => { if (byBucket[c.category]) byBucket[c.category].push(c); });
 
   return bucketMeta.map(b => {
-    const ordered = [...byBucket[b.key]].sort((a, z) => (z.featured === true) - (a.featured === true));
+    const ordered = [...byBucket[b.key]].sort((a, z) => (z.highlight === true) - (a.highlight === true));
     return `
         <section class="case-bucket">
           <div class="case-bucket-head">
