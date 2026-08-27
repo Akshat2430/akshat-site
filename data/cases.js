@@ -87,7 +87,7 @@ const cases = [
     category: "Entering",
     client: "AI startup",
     context: "Singapore",
-    featured: true,
+    featured: false,
     problem: "A Singapore-based AI startup had developed birth defect screening technology with real potential in India. What they didn't have was a strategy for entering a market of 1.4 billion people, wildly different healthcare systems, and complex regulatory landscapes. The conventional advice — target major metros, build brand awareness, scale gradually — would have burned their runway chasing the wrong customers.",
     what_i_did: "Built a market entry strategy from scratch using PCPNDT Act registration data as an unconventional TAM proxy. Developed a multi-factor scoring model across healthcare infrastructure and market readiness indicators to identify 5 priority states. Mapped 7 distinct acquisition channels and built a detailed database of the first 100 target customers — not just names, but decision-maker contacts, AI readiness scores, and warm introduction pathways.",
     outcomes: [
@@ -108,7 +108,7 @@ const cases = [
     category: "Finding",
     client: "Novo Nordisk",
     context: "Denmark",
-    featured: true,
+    featured: false,
     problem: "Novo Nordisk's obesity care business was growing rapidly but had a fundamental problem: no unified understanding of who they were serving. Research was scattered across markets, built on different methodologies that made cross-market comparison impossible. Regional teams were operating on local assumptions. Without a consistent consumer view, the global brand strategy would be built on bias rather than truth.",
     what_i_did: "Designed and executed a global consumer segmentation from scratch. Facilitated cross-market stakeholder alignment to separate universal constructs from genuine local variation. Led cluster analysis that identified 4 universal segments across all markets. Built an interactive dashboard giving global and regional teams a common consumer language for the first time.",
     outcomes: [
@@ -234,7 +234,7 @@ const cases = [
     category: "Building",
     client: "Novo Nordisk",
     context: "Denmark",
-    featured: false,
+    featured: true,
     problem: "Novo Nordisk needed brand positioning that worked for millions of people across 15+ countries with different healthcare systems, cultural attitudes, and regulatory environments. GLP-1 market had evolved from niche specialty to consumer-influenced phenomenon. The brand needed to succeed in both clinical credibility with healthcare providers and consumer appeal with patients...simultaneously, globally.",
     what_i_did: "Served on the core team developing global brand strategy for Novo Nordisk's leading obesity medication. Structured analysis across three lines of inquiry: market dynamics, consumer psychology, and clinical differentiation. Translated the 7000-person segmentation research into actionable positioning inputs. Developed the positioning framework balancing emotional and functional benefits, tested across stakeholder groups, built for global consistency with local flexibility.",
     outcomes: [
@@ -315,7 +315,7 @@ const cases = [
     category: "Building",
     client: "Public tech company",
     context: "USA",
-    featured: false,
+    featured: true,
     problem: "A public company CEO's time wasn't disappearing into big decisions. It was leaking into the hundred small extractions that come before one — dig through this report, summarise that call, draft the first pass of everything. A single assistant trying to cover all of that just becomes one more thing to manage.",
     what_i_did: "Mapped where the hours actually went, not where he assumed they went. Built one agent per job — research, synthesis, meeting prep, drafting — each wired directly into the tools he already used. The requirement: the system had to run without hand-holding through a day that changes every 20 minutes. Now expanding the same architecture company-wide.",
     outcomes: [
