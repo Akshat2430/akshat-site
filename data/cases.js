@@ -251,37 +251,43 @@ const cases = [
   {
     slug: "scale-ai-across-30-countries",
     question: "How do you roll out Generative AI across 30+ countries?",
-    subtitle: "AI hype → operating model, tool stack, change, and ROI framework",
+    subtitle: "A licence everyone has → a tool the majority actually use",
     category: "Building",
     client: "Clinton Health Access Initiative",
     context: "USA",
     featured: true,
-    problem: "CHAI is rolling out generative AI tools across teams in 30+ countries — every team operating in a different healthcare system, with different starting points on technical literacy, different workflows, and different stakes. Country teams need autonomy, but the global organisation needs coherence; tools need to be selected once but evaluated against use cases that vary widely; ROI has to be measurable in mission terms.",
-    what_i_did: "Designing and executing the end-to-end rollout: operating model that balances global standards with country autonomy, tool selection across the GenAI landscape against CHAI's actual use cases, change management approach for non-technical mission-driven teams, and ROI framework that captures both efficiency gains and mission impact. Part-time engagement with US HQ through Q2 2026.",
+    problem: "CHAI bought access to generative AI tools for teams in 30+ countries. That decision took an afternoon. Getting people to use them was the real problem — thousands of staff, each in a different healthcare system, each starting from a different level of technical comfort, each choosing every day whether to open the tool or fall back on the way they already knew. Some workflows touched sensitive health data, which raised the stakes for anyone trying it for the first time. The brief read like a software rollout. The work was behaviour change at organisational scale.",
+    what_i_did: "Ran it in stages instead of one launch. Progressive pilots to find which use cases actually stuck. Internal resources and training so people had a low-stakes way in. Governance for the things that matter — sensitive data especially — so a first-timer could use AI without worrying they'd break something. That took the organisation from a handful of early adopters to the majority of staff. The question has since shifted from 'is anyone using this' to 'what are the best users doing' — surfacing those use cases and scaling them across teams. Part-time engagement with CHAI's US HQ, ongoing.",
     outcomes: [
       { number: "30+", label: "countries in rollout scope" },
-      { number: "Q2 2026", label: "ongoing engagement timeline" }
+      { number: "Majority", label: "of staff now active users, up from early adopters" },
+      { number: "3", label: "phases: pilots, enablement, governance" }
     ],
     learnings: [
-      "Case study in progress — full reflection coming once the engagement wraps."
+      "AI licences are like gym memberships. Leadership buys them in an afternoon. Using them is a behaviour thousands of people have to choose every single day.",
+      "Most of this job was human change management wearing an AI systems-design hat.",
+      "Governance isn't what slows adoption down. Done right, it's what lets a nervous first-timer try AI without fear of breaking something."
     ]
   },
   {
     slug: "shape-market-maternal-ai-devices",
-    question: "How do you shape a market for AI-enabled medical devices?",
-    subtitle: "Market-shaping strategy + investment case",
+    question: "How do you shape a market for AI-assisted ultrasound?",
+    subtitle: "Niche idea → program design, donor narrative, and playbook",
     category: "Finding",
     client: "Clinton Health Access Initiative",
     context: "USA",
     featured: false,
-    problem: "AI-enabled maternal medical devices have real promise for low-income healthcare systems...but no commercial blueprint exists for how to introduce them at scale, who pays for what, or how to make the investment case work for funders, governments, and manufacturers simultaneously. The technology is ahead of the market structure that would adopt it.",
-    what_i_did: "Conducting market-shaping strategy and investment case development for AI-enabled maternal medical devices, designed for low-income country contexts. Part of an ongoing engagement with CHAI through Q2 2026.",
+    problem: "'AI-assisted ultrasound will help pregnant women in low-income countries.' Probably true. But an organisation can't fund 'probably true.' The space was new and thinly mapped: no clear read on which devices were real, no evidence on whether the clinics that needed them could actually use them, and nothing a donor could write a cheque against. The idea had to become a program someone could fund and run.",
+    what_i_did: "Started on supply: who actually makes these devices, and which of them are real. Mapped manufacturers against the things that decide whether a device survives contact with a rural clinic — commercial terms, evidence of real deployments, existing partnerships, service networks. Then demand: went through the literature on prior pilots to pull out what had worked, built a demand assessment, and took it into several countries to hear directly from the people who would have to deploy it. Fused both sides into three deliverables — a market-shaping strategy for internal use, a donor-facing narrative for fundraising, and a product annex holding the detailed breakdowns.",
     outcomes: [
-      { number: "Multi-country", label: "scope across low-income markets" },
-      { number: "In progress", label: "engagement ongoing through Q2 2026" }
+      { number: "3", label: "core deliverables: strategy, donor narrative, product annex" },
+      { number: "Multi-country", label: "demand assessment with prospective deployers" },
+      { number: "1", label: "playbook for a space that had none" }
     ],
     learnings: [
-      "Case study in progress — full reflection coming once the engagement wraps."
+      "A promising idea and a fundable program are not the same thing. The gap between them is supply detail, demand evidence, and a narrative a donor can act on.",
+      "The test for a device is whether it survives contact with a rural clinic — service network, commercial terms, someone to call when it breaks.",
+      "A demand assessment run from a desk is a guess. The useful version means sitting with the people who'd deploy the thing."
     ]
   },
   {
