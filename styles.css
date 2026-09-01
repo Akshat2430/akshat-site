@@ -1073,6 +1073,16 @@ iframe.talk-embed {
 }
 .cta-fallback a { color: var(--text-secondary); }
 
+/* ---- CAL.COM EMBED ---- */
+.cal-embed-mount {
+  width: 100%;
+  min-height: 560px;
+  overflow: auto;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+}
+
 /* ---- FOLLOW CARDS (content page) ---- */
 .follow-grid {
   display: grid;
