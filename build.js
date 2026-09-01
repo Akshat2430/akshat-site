@@ -111,7 +111,7 @@ function renderCaseBody(c, prev, next) {
 
     <div class="cta-block">
       <p class="cta-title">Got a similar problem?</p>
-      <p class="cta-sub">Tell me what you're working on — I'll tell you if it's a fit.</p>
+      <p class="cta-sub">Tell me what you're working on. I'll tell you if it's a fit.</p>
       <div class="contact-form-mount" data-location="case_${c.slug}"></div>
       <p class="cta-fallback">Prefer email? <a href="mailto:workwithakshatkharbanda@gmail.com" onclick="if(typeof va==='function'){va('event',{name:'mailto_click',data:{location:'case_${c.slug}'}})}">workwithakshatkharbanda@gmail.com →</a></p>
     </div>
@@ -147,7 +147,7 @@ function buildCasePages(template) {
     const prev = i > 0 ? cases[i - 1] : null;
     const next = i < cases.length - 1 ? cases[i + 1] : null;
 
-    const title = `${c.question} — Akshat Kharbanda`;
+    const title = `${c.question} · Akshat Kharbanda`;
     const desc = `${c.subtitle}. Case study by Akshat Kharbanda, cross-cultural strategist and AI adoption consultant.`;
     const url = `https://akshatkharbanda.com/work/${c.slug}.html`;
 

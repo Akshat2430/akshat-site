@@ -10,7 +10,7 @@ const cases = [
     context: "India",
     featured: false,
     problem: "Novo Nordisk had a GLP-1 treatment with proven benefits for a specialist segment, but those specialists didn't see it as their job. They had identity barriers, incumbent loyalty, and professional ego that made conventional sales approaches useless. The stated brief was 'get specialists to recommend our GLP-1.' The real challenge was changing entrenched professional behaviour without attacking the expertise that defined them.",
-    what_i_did: "Conducted 40-50 ethnographic interviews with specialists to map their actual decision-making psychology. Discovered the insight to position as 'and not or' — complement the incumbent rather than displace it. Designed a 6-month content calendar and sales enablement programme built around validating their current practice first, then introducing GLP-1s as an enhancement.",
+    what_i_did: "Conducted 40-50 ethnographic interviews with specialists to map their actual decision-making psychology. Discovered the insight to position as 'and not or': complement the incumbent rather than displace it. Designed a 6-month content calendar and sales enablement programme built around validating their current practice first, then introducing GLP-1s as an enhancement.",
     outcomes: [
       { number: "115%", label: "YoY growth in specialist recommendations" },
       { number: "40–50", label: "specialist interviews conducted" },
@@ -79,7 +79,7 @@ const cases = [
     learnings: [
       "First-mover advantage comes with solving the complexity others won't touch.",
       "Internal business case was as important as the external strategy.",
-      "Phased rollout — pilot, validate, scale — is the way to move fast in regulated industries without blowing up."
+      "Phased rollout (pilot, validate, scale) is the way to move fast in regulated industries without blowing up."
     ]
   },
   {
@@ -91,8 +91,8 @@ const cases = [
     context: "Singapore",
     featured: false,
     highlight: true,
-    problem: "A Singapore-based AI startup had developed birth defect screening technology with real potential in India. What they didn't have was a strategy for entering a market of 1.4 billion people, wildly different healthcare systems, and complex regulatory landscapes. The conventional advice — target major metros, build brand awareness, scale gradually — would have burned their runway chasing the wrong customers.",
-    what_i_did: "Built a market entry strategy from scratch using PCPNDT Act registration data as an unconventional TAM proxy. Developed a multi-factor scoring model across healthcare infrastructure and market readiness indicators to identify 5 priority states. Mapped 7 distinct acquisition channels and built a detailed database of the first 100 target customers — not just names, but decision-maker contacts, AI readiness scores, and warm introduction pathways.",
+    problem: "A Singapore-based AI startup had developed birth defect screening technology with real potential in India. What they didn't have was a strategy for entering a market of 1.4 billion people, wildly different healthcare systems, and complex regulatory landscapes. The conventional advice (target major metros, build brand awareness, scale gradually) would have burned their runway chasing the wrong customers.",
+    what_i_did: "Built a market entry strategy from scratch using PCPNDT Act registration data as an unconventional TAM proxy. Developed a multi-factor scoring model across healthcare infrastructure and market readiness indicators to identify 5 priority states. Mapped 7 distinct acquisition channels and built a detailed database of the first 100 target customers: not just names, but decision-maker contacts, AI readiness scores, and warm introduction pathways.",
     outcomes: [
       { number: "5", label: "priority states identified from 28+ evaluated" },
       { number: "7", label: "acquisition channels mapped" },
@@ -135,7 +135,7 @@ const cases = [
     context: "UK",
     featured: false,
     problem: "Market share was declining. The mandate was to lead the affiliate's first-ever media planning and buying initiative for the GLP-1 obesity portfolio, with £300k, 10+ unknown partners, and leadership watching closely. Everything had to be built from scratch while moving fast.",
-    what_i_did: "Evaluated 15+ potential channels across reach, relevance, brand safety, and cost-efficiency. Built a distributed partner ecosystem rather than a single agency — media planning, creative, and analytics handled separately for best-in-class execution. Developed creative briefs for each channel and audience. Built performance tracking from scratch and managed weekly cross-partner optimisation through rapid iteration on early data.",
+    what_i_did: "Evaluated 15+ potential channels across reach, relevance, brand safety, and cost-efficiency. Built a distributed partner ecosystem rather than a single agency: media planning, creative, and analytics handled separately for best-in-class execution. Developed creative briefs for each channel and audience. Built performance tracking from scratch and managed weekly cross-partner optimisation through rapid iteration on early data.",
     outcomes: [
       { number: "30M", label: "impressions in 3 months" },
       { number: "10", label: "partners vetted and coordinated" },
@@ -155,8 +155,8 @@ const cases = [
     client: "Novo Nordisk",
     context: "UK",
     featured: false,
-    problem: "Novo Nordisk UK hadn't run a LinkedIn campaign in three years. An ABPI suspension for previous social media misconduct had left the entire marketing team paralysed by compliance fear. 15+ stakeholders across legal, compliance, medical affairs, brand, and commercial — each with veto power. Competitors were dominating the digital health conversation while the team stayed silent.",
-    what_i_did: "Mapped all 15 stakeholders by risk tolerance. Decided to bring complete mockups — exact copy, visual assets, ABPI compliance checklists — to what was supposed to be a concept meeting. Used a sequential approval strategy: medical affairs first, then legal, then brand, then presented to the full group with '3 functions already approved' momentum. Presented using a Shark Tank-style pitch format with a built-in kill-switch protocol.",
+    problem: "Novo Nordisk UK hadn't run a LinkedIn campaign in three years. An ABPI suspension for previous social media misconduct had left the entire marketing team paralysed by compliance fear. 15+ stakeholders across legal, compliance, medical affairs, brand, and commercial, each with veto power. Competitors were dominating the digital health conversation while the team stayed silent.",
+    what_i_did: "Mapped all 15 stakeholders by risk tolerance. Decided to bring complete mockups (exact copy, visual assets, ABPI compliance checklists) to what was supposed to be a concept meeting. Used a sequential approval strategy: medical affairs first, then legal, then brand, then presented to the full group with '3 functions already approved' momentum. Presented using a Shark Tank-style pitch format with a built-in kill-switch protocol.",
     outcomes: [
       { number: "1st", label: "approved social campaign in 3 years" },
       { number: "Highest", label: "ever CSAT for a webinar series" },
@@ -176,7 +176,7 @@ const cases = [
     client: "Novo Nordisk",
     context: "Denmark",
     featured: false,
-    problem: "Strategic intelligence teams at Novo Nordisk were drowning in manual processes while AI hype was everywhere in the company. Most 'AI initiatives' were solutions looking for problems — proof-of-concepts that never scaled and made teams more cynical about technology-enabled change. AI was failing because teams were solving the wrong problems.",
+    problem: "Strategic intelligence teams at Novo Nordisk were drowning in manual processes while AI hype was everywhere in the company. Most 'AI initiatives' were solutions looking for problems: proof-of-concepts that never scaled and made teams more cynical about technology-enabled change. AI was failing because teams were solving the wrong problems.",
     what_i_did: "Flipped the question from 'what can AI do?' to 'what's slowing us down, and is AI the right solution?' Mapped workflows across Customer Insights, Competitive Intelligence, and Forecasting to find the highest-pain, highest-frequency process: knowledge discovery. Designed an AI-powered search tool, ran a phased pilot starting with 10 power users, iterated rapidly, and scaled to 50+ colleagues. Established AI champions and documented best practices.",
     outcomes: [
       { number: "10%", label: "reduction in turnaround time" },
@@ -197,8 +197,8 @@ const cases = [
     client: "Viacom18",
     context: "India",
     featured: false,
-    problem: "Viacom18's leadership needed instant visibility into OTT viewership performance, but data was scattered across 10+ disconnected systems. Analysts spent hours pulling from each source, manually updating Excel spreadsheets, and reconciling conflicting numbers. A question like 'how did X perform?' should take 5 minutes — it was taking hours of analyst time and multiple emails.",
-    what_i_did: "Started with the decisions executives actually needed to make, then worked backward to the data and visualisations that would enable them. Mapped all 10+ sources, built connectors for automated refresh, created a unified data model. Built a Power BI dashboard with four layers — executive, business unit, operational, competitive — each calibrated to its audience.",
+    problem: "Viacom18's leadership needed instant visibility into OTT viewership performance, but data was scattered across 10+ disconnected systems. Analysts spent hours pulling from each source, manually updating Excel spreadsheets, and reconciling conflicting numbers. A question like 'how did X perform?' should take 5 minutes. It was taking hours of analyst time and multiple emails.",
+    what_i_did: "Started with the decisions executives actually needed to make, then worked backward to the data and visualisations that would enable them. Mapped all 10+ sources, built connectors for automated refresh, created a unified data model. Built a Power BI dashboard with four layers (executive, business unit, operational, competitive), each calibrated to its audience.",
     outcomes: [
       { number: "75%", label: "faster decision-making (hours → minutes)" },
       { number: "10+", label: "data sources unified" },
@@ -218,7 +218,7 @@ const cases = [
     client: "Tata Steel",
     context: "India",
     featured: false,
-    problem: "Tata Steel's Aashiyana platform had an NPS system that technically worked — data flowed, dashboards updated — but nobody believed the numbers. The system was measuring 'did our website load properly?' when leadership needed to know 'are we delighting customers through the entire purchase-to-installation journey?' Collecting feedback before customers had experienced anything was producing noise.",
+    problem: "Tata Steel's Aashiyana platform had an NPS system that technically worked (data flowed, dashboards updated), but nobody believed the numbers. The system was measuring 'did our website load properly?' when leadership needed to know 'are we delighting customers through the entire purchase-to-installation journey?' Collecting feedback before customers had experienced anything was producing noise.",
     what_i_did: "Redesigned the NPS approach based on Reichheld's methodology. Moved capture from website popup to post-delivery completion (the first moment customers had experienced enough to form loyalty judgements). Compressed follow-up questions from 5-6 to maximum 2. Added respondent segmentation to ensure only target customers received surveys. Proposed an episode-based architecture breaking the full customer journey into measurable, actionable stages.",
     outcomes: [
       { number: "7%", label: "increase in NPS submission rate" },
@@ -261,8 +261,8 @@ const cases = [
     context: "USA",
     featured: true,
     highlight: true,
-    problem: "CHAI bought access to generative AI tools for teams in 30+ countries. That decision took an afternoon. Getting people to use them was the real problem — thousands of staff, each in a different healthcare system, each starting from a different level of technical comfort, each choosing every day whether to open the tool or fall back on the way they already knew. Some workflows touched sensitive health data, which raised the stakes for anyone trying it for the first time. The brief read like a software rollout. The work was behaviour change at organisational scale.",
-    what_i_did: "Ran it in stages instead of one launch. Progressive pilots to find which use cases actually stuck. Internal resources and training so people had a low-stakes way in. Governance for the things that matter — sensitive data especially — so a first-timer could use AI without worrying they'd break something. That took the organisation from a handful of early adopters to the majority of staff. The question has since shifted from 'is anyone using this' to 'what are the best users doing' — surfacing those use cases and scaling them across teams. Part-time engagement with CHAI's US HQ, ongoing.",
+    problem: "CHAI bought access to generative AI tools for teams in 30+ countries. That decision took an afternoon. Getting people to use them was the real problem: thousands of staff, each in a different healthcare system, each starting from a different level of technical comfort, each choosing every day whether to open the tool or fall back on the way they already knew. Some workflows touched sensitive health data, which raised the stakes for anyone trying it for the first time. The brief read like a software rollout. The work was behaviour change at organisational scale.",
+    what_i_did: "Ran it in stages instead of one launch. Progressive pilots to find which use cases actually stuck. Internal resources and training so people had a low-stakes way in. Governance for the things that matter, sensitive data especially, so a first-timer could use AI without worrying they'd break something. That took the organisation from a handful of early adopters to the majority of staff. The question has since shifted from 'is anyone using this' to 'what are the best users doing,' surfacing those use cases and scaling them across teams. Part-time engagement with CHAI's US HQ, ongoing.",
     outcomes: [
       { number: "30+", label: "countries in rollout scope" },
       { number: "Majority", label: "of staff now active users, up from early adopters" },
@@ -283,7 +283,7 @@ const cases = [
     context: "USA",
     featured: false,
     problem: "'AI-assisted ultrasound will help pregnant women in low-income countries.' Probably true. But an organisation can't fund 'probably true.' The space was new and thinly mapped: no clear read on which devices were real, no evidence on whether the clinics that needed them could actually use them, and nothing a donor could write a cheque against. The idea had to become a program someone could fund and run.",
-    what_i_did: "Started on supply: who actually makes these devices, and which of them are real. Mapped manufacturers against the things that decide whether a device survives contact with a rural clinic — commercial terms, evidence of real deployments, existing partnerships, service networks. Then demand: went through the literature on prior pilots to pull out what had worked, built a demand assessment, and took it into several countries to hear directly from the people who would have to deploy it. Fused both sides into three deliverables — a market-shaping strategy for internal use, a donor-facing narrative for fundraising, and a product annex holding the detailed breakdowns.",
+    what_i_did: "Started on supply: who actually makes these devices, and which of them are real. Mapped manufacturers against the things that decide whether a device survives contact with a rural clinic: commercial terms, evidence of real deployments, existing partnerships, service networks. Then demand: went through the literature on prior pilots to pull out what had worked, built a demand assessment, and took it into several countries to hear directly from the people who would have to deploy it. Fused both sides into three deliverables: a market-shaping strategy for internal use, a donor-facing narrative for fundraising, and a product annex holding the detailed breakdowns.",
     outcomes: [
       { number: "3", label: "core deliverables: strategy, donor narrative, product annex" },
       { number: "Multi-country", label: "demand assessment with prospective deployers" },
@@ -291,7 +291,7 @@ const cases = [
     ],
     learnings: [
       "A promising idea and a fundable program are not the same thing. The gap between them is supply detail, demand evidence, and a narrative a donor can act on.",
-      "The test for a device is whether it survives contact with a rural clinic — service network, commercial terms, someone to call when it breaks.",
+      "The test for a device is whether it survives contact with a rural clinic: service network, commercial terms, someone to call when it breaks.",
       "A demand assessment run from a desk is a guess. The useful version means sitting with the people who'd deploy the thing."
     ]
   },
@@ -304,13 +304,13 @@ const cases = [
     context: "USA",
     featured: false,
     problem: "Most conversations about AI are noise. Think vendor pitches, 'AI-everything' hype, and second-hand takes from people who haven't shipped. The real signal lives with practitioners who've deployed and hit walls. That signal needs a closed, high-trust room to exist.",
-    what_i_did: "Community Associate for Chai & AI — LevelUp Labs' invite-only community for AI practitioners from FAANG and Fortune 500 firms. Hosting monthly sessions on AI and productivity, curating conversations focused on shipped work rather than hype ('I tried deploying for X use case, hit Y walls, anyone seen Z paper?'), building use cases, and contributing to the 12K+ Substack.",
+    what_i_did: "Community Associate for Chai & AI, LevelUp Labs' invite-only community for AI practitioners from FAANG and Fortune 500 firms. Hosting monthly sessions on AI and productivity, curating conversations focused on shipped work rather than hype ('I tried deploying for X use case, hit Y walls, anyone seen Z paper?'), building use cases, and contributing to the 12K+ Substack.",
     outcomes: [
       { number: "12K+", label: "Substack subscribers" },
       { number: "Monthly", label: "sessions for FAANG + F500 AI practitioners" }
     ],
     learnings: [
-      "Community in progress — full reflection coming as it grows."
+      "Community in progress. Full reflection coming as it grows."
     ]
   },
   {
@@ -321,14 +321,14 @@ const cases = [
     client: "Public tech company",
     context: "USA",
     featured: true,
-    problem: "A public company CEO's time wasn't disappearing into big decisions. It was leaking into the hundred small extractions that come before one — dig through this report, summarise that call, draft the first pass of everything. A single assistant trying to cover all of that just becomes one more thing to manage.",
-    what_i_did: "Mapped where the hours actually went, not where he assumed they went. Built one agent per job — research, synthesis, meeting prep, drafting — each wired directly into the tools he already used. The requirement: the system had to run without hand-holding through a day that changes every 20 minutes. Now expanding the same architecture company-wide.",
+    problem: "A public company CEO's time wasn't disappearing into big decisions. It was leaking into the hundred small extractions that come before one: dig through this report, summarise that call, draft the first pass of everything. A single assistant trying to cover all of that just becomes one more thing to manage.",
+    what_i_did: "Mapped where the hours actually went, not where he assumed they went. Built one agent per job (research, synthesis, meeting prep, drafting), each wired directly into the tools he already used. The requirement: the system had to run without hand-holding through a day that changes every 20 minutes. Now expanding the same architecture company-wide.",
     outcomes: [
       { number: "4", label: "dedicated agents in daily use" },
       { number: "Company-wide", label: "rollout now underway" }
     ],
     learnings: [
-      "Most of what ate his day was never actually his job — research, synthesis, first drafts. That's what the agents took over.",
+      "Most of what ate his day was never actually his job: research, synthesis, first drafts. That's what the agents took over.",
       "One agent per job outperformed one assistant trying to do everything.",
       "The hard part was behavioural design, figuring out what he'd trust enough to stop double-checking."
     ]
@@ -341,7 +341,7 @@ const cases = [
     client: "Foodtech PE firm",
     context: "USA",
     featured: false,
-    problem: "A foodtech-focused PE firm's ten-person team had deal flow, portfolio activity, and competitor movement arriving from every direction — more volume than anyone could triage alone, with no shared way to tell which update actually mattered today.",
+    problem: "A foodtech-focused PE firm's ten-person team had deal flow, portfolio activity, and competitor movement arriving from every direction, more volume than anyone could triage alone, with no shared way to tell which update actually mattered today.",
     what_i_did: "Defined what counted as signal for this specific portfolio instead of generic market news. Built a scoring layer that filters noise before it reaches the team, then delivered it as one standing brief the whole team reads together, instead of a dashboard people had to remember to check.",
     outcomes: [
       { number: "10", label: "team members reading one shared brief" },

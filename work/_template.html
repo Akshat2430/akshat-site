@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
-  document.title = `${c.question} — Akshat Kharbanda`;
+  document.title = `${c.question} · Akshat Kharbanda`;
   document.querySelector('meta[name="description"]').content = c.subtitle;
 
   const outcomesSummary = c.outcomes.map(o => `${o.number} ${o.label}`).join(', ');
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <div class="cta-block">
       <p class="cta-title">Got a similar problem?</p>
-      <p class="cta-sub">Tell me what you're working on — I'll tell you if it's a fit.</p>
+      <p class="cta-sub">Tell me what you're working on. I'll tell you if it's a fit.</p>
       <div class="contact-form-mount" data-location="case_${c.slug}"></div>
       <p class="cta-fallback">Prefer email? <a href="mailto:workwithakshatkharbanda@gmail.com" onclick="if(typeof va==='function'){va('event',{name:'mailto_click',data:{location:'case_${c.slug}'}})}">workwithakshatkharbanda@gmail.com →</a></p>
     </div>
