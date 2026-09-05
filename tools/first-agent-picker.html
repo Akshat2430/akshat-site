@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which Agent Should You Build First? · Akshat Kharbanda</title>
+<meta name="description" content="Six questions about what's actually piling up in your week. Get one agent to build first, not five, and an honest answer if the real fix isn't an agent yet." />
+<meta name="author" content="Akshat Kharbanda" />
+<link rel="canonical" href="https://akshatkharbanda.com/tools/first-agent-picker.html" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Which Agent Should You Build First? · Akshat Kharbanda" />
+<meta property="og:description" content="Six questions about what's piling up in your week. Get one agent to build first, not five." />
+<meta property="og:url" content="https://akshatkharbanda.com/tools/first-agent-picker.html" />
+<meta property="og:image" content="https://akshatkharbanda.com/public/images/og-image.jpeg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Which Agent Should You Build First? · Akshat Kharbanda" />
+<meta name="twitter:description" content="Six questions. One agent to build first, not five." />
+<meta name="twitter:image" content="https://akshatkharbanda.com/public/images/og-image.jpeg" />
+<link rel="icon" type="image/jpeg" href="/public/images/akshat-avatar.jpg" />
+<link rel="apple-touch-icon" href="/public/images/akshat-avatar.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   STYLING LAYER
+   The Business Backpacker house system (Asset 2, Option C):
+   Newsreader + Inter, cream / clay / teal. The logic layer never
+   reads these class names, so this whole block can be swapped
+   when the picker is ported to the site.
+   ============================================================ */
+:root{
+  --cream:#F6F1E6;
+  --box:#FBF8F1;
+  --ink:#2A251D;
+  --body:#463F34;
+  --muted:#7D715C;
+  --tan:#A99A7D;
+  --clay:#B4502C;
+  --clay-dark:#9E3B22;
+  --clay-tint:#F0E4D8;
+  --teal:#3F7A6B;
+  --line:#E0D6C2;
+  --dash:#E3DAC8;
+  --radius:8px;
+  --maxw:660px;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--cream);
+  color:var(--body);
+  font-family:"Inter",system-ui,sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  padding:36px 20px 96px;
+}
+.wrap{max-width:var(--maxw);margin:0 auto}
+
+/* progress */
+.rail{display:flex;align-items:center;gap:12px;margin-bottom:42px}
+.pips{display:flex;gap:6px;flex:1}
+.pip{height:3px;flex:1;background:var(--line);border-radius:2px;transition:background .25s}
+.pip.done{background:var(--clay)}
+.pip.here{background:var(--ink)}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);white-space:nowrap;letter-spacing:.04em}
+
+/* question */
+.kicker{font-size:12px;letter-spacing:.06em;color:var(--tan);font-weight:600;margin-bottom:16px}
+.q{
+  font-family:"Newsreader",Georgia,serif;
+  font-weight:600;
+  font-size:32px;
+  line-height:1.14;
+  color:var(--ink);
+  margin:0 0 26px;
+  max-width:20ch;
+}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{
+  text-align:left;
+  background:var(--box);
+  border:1.5px solid var(--line);
+  border-radius:var(--radius);
+  padding:15px 18px;
+  font:inherit;
+  color:var(--body);
+  cursor:pointer;
+  transition:border-color .15s, background .15s, transform .05s;
+}
+.opt:hover{border-color:var(--clay);background:#fff}
+.opt:active{transform:translateY(1px)}
+.opt:focus-visible{outline:2px solid var(--clay);outline-offset:2px}
+.opt.sel{border-color:var(--clay);background:var(--clay-tint);box-shadow:inset 0 0 0 1px var(--clay)}
+
+/* nav */
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:30px}
+.back{background:none;border:none;color:var(--muted);font:inherit;cursor:pointer;padding:8px 4px;border-radius:8px}
+.back:hover{color:var(--ink)}
+.back:disabled{opacity:0;pointer-events:none}
+.next{background:var(--clay);color:var(--cream);border:none;border-radius:8px;font:inherit;font-weight:600;padding:11px 24px;cursor:pointer;transition:background .15s}
+.next:disabled{opacity:.3;pointer-events:none}
+.next:hover:not(:disabled){background:var(--clay-dark)}
+.next:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* result */
+.result{animation:rise .4s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.verdict-kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:12px}
+.verdict{
+  font-family:"Newsreader",Georgia,serif;
+  font-weight:600;font-size:34px;line-height:1.12;letter-spacing:-.005em;
+  color:var(--clay);
+  margin:0 0 22px;
+}
+.sec{margin:0 0 20px}
+.sec h3{
+  font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--teal);
+  margin:0 0 6px;
+}
+.sec p{margin:0;color:var(--body)}
+.sec .soft{color:var(--muted)}
+
+.cta{border-top:1px solid var(--line);padding-top:20px;margin-top:28px;color:var(--muted)}
+.cta a{color:var(--clay);text-decoration:none;font-weight:600}
+.cta a:hover{text-decoration:underline}
+.restart{margin-top:22px;background:none;border:1.5px solid var(--line);color:var(--muted);font:inherit;padding:9px 16px;border-radius:8px;cursor:pointer;transition:border-color .15s,color .15s}
+.restart:hover{border-color:var(--muted);color:var(--ink)}
+
+@media (max-width:520px){
+  .q{font-size:26px}
+  .verdict{font-size:28px}
+}
+@media (prefers-reduced-motion:reduce){
+  .result{animation:none}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ============================================================
+   LOGIC LAYER  (portable)
+   QUESTIONS + ARCHETYPES + scoreAnswers() carry no styling and
+   no DOM. This is the part that lifts cleanly into the site.
+   The render layer at the bottom is throwaway.
+   ============================================================ */
+
+const QUESTIONS = [
+  {
+    id:"q1",
+    prompt:"Think about the last time you felt behind. What was piling up?",
+    options:[
+      {v:"messages",  label:"Messages I hadn't gotten to"},
+      {v:"decisions", label:"Decisions from conversations that never got written down"},
+      {v:"questions", label:"Questions I needed answered before I could move"},
+      {v:"status",    label:"Not knowing where things stood"},
+      {v:"writing",   label:"Something only I could write, still unwritten"}
+    ]
+  },
+  {
+    id:"q2",
+    prompt:"If you handed this off tomorrow, what would someone need to pick it up?",
+    options:[
+      {v:"written", label:"It's written down, they'd just need pointing to it"},
+      {v:"scattered", label:"It's in our tools, a bit scattered"},
+      {v:"inhead", label:"It's in my head, I'd explain it each time"},
+      {v:"noway", label:"It's different every time, there's no set way"}
+    ]
+  },
+  {
+    id:"q3",
+    prompt:"When the person who usually handles this is away, what's the real cost?",
+    options:[
+      {v:"throughput", label:"Work stops moving until they're back"},
+      {v:"visibility", label:"Nobody can see where things stand"},
+      {v:"knowledge",  label:"Know-how walks out with them"}
+    ]
+  },
+  {
+    id:"q4",
+    prompt:"Where would you still want a human hand on it before anything goes out?",
+    options:[
+      {v:"client",   label:"Anything client-facing"},
+      {v:"decision", label:"Anything that's a real decision or commitment"},
+      {v:"numbers",  label:"Anything with numbers I'd be quoted on"},
+      {v:"nothing",  label:"Nothing much, if it works it works"}
+    ]
+  },
+  {
+    id:"q5",
+    prompt:"If this works, what does 90 days from now look like?",
+    options:[
+      {v:"modest",     label:"One recurring annoyance is reliably off my plate"},
+      {v:"moderate",   label:"A chunk of my week runs without me"},
+      {v:"broad",      label:"My team leans on it daily"},
+      {v:"doesitself", label:"The thing basically does itself"}
+    ]
+  },
+  {
+    id:"q6",
+    prompt:"How often does this come up?",
+    options:[
+      {v:"daily",      label:"Several times a day"},
+      {v:"mostdays",   label:"Most days"},
+      {v:"weekly",     label:"Weekly"},
+      {v:"nowandthen", label:"Now and then"}
+    ]
+  }
+];
+
+/* Each archetype holds its own copy. Conditional one-liners live
+   in `inserts` and are switched on by keys the scorer returns. */
+const ARCHETYPES = {
+  inbox_triage:{
+    verdict:"Triage layer for your inbox",
+    what:"It reads what comes in, sorts what needs you from what doesn't, flags the few things that need a real decision, and drafts a first reply for the rest. You still hit send. It clears the noise before you get there.",
+    why:"You said email is where the week disappears, and that it hits every day. That profile pays off fastest, because a daily task lets you watch the agent earn its place by Friday.",
+    saves:"The morning sort. You get an inbox that's already been read once by the time you look at it.",
+    holds:"The rules it follows are your rules, written down. How you sort, what you escalate, what you leave. When your priorities move, the logic is readable and you change it without me. That's the difference between an agent you own and one you rent."
+  },
+  meeting_to_action:{
+    verdict:"Meeting-to-action layer",
+    what:"It takes the transcript from a meeting and turns it into the parts that matter: who owns what, what got decided, what happens next. You get a clean list instead of a recording nobody reopens.",
+    why:"You said what piled up was decisions from conversations that never got written down. This catches them at the source, while the room still remembers.",
+    saves:"The after-meeting scramble. No more rebuilding what was agreed from three people's half-memories.",
+    holds:"It captures decisions your way, in the format your team already reads. What counts as a decision and what counts as noise are rules you set and can change. When your meetings shift shape, you adjust it without me."
+  },
+  research_brief:{
+    verdict:"Research-brief layer",
+    what:"You give it a question and the sources you trust. It comes back with a structured brief: what's known, what's contested, what's missing. You read a page instead of forty tabs.",
+    why:"You said what piled up was questions you needed answered before you could move. This clears the gathering so the deciding is still yours.",
+    saves:"The open-tab afternoon. Two hours of reading before you can even start thinking.",
+    holds:"It pulls from the sources you named, in the shape you asked for. When your questions change, the source list and the brief format are yours to edit. It won't drift toward whatever's loudest online, because you set where it looks."
+  },
+  ops_rollup:{
+    verdict:"Ops-rollup layer",
+    what:"It pulls status from where work actually lives, your boards, your sheets, your tools, and writes the update. You get the weekly picture without chasing five people for it.",
+    why:"You said the problem was not knowing where things stood. This reads the places that already hold the answer and puts them in one spot.",
+    saves:"The Friday chase. Round of pings asking everyone where their piece is.",
+    holds:"It reads the sources you point it at, in the format your team expects. When your stack changes or a new project starts, you add the source yourself. The logic stays readable, so the rollup never becomes a box only I understand."
+  },
+  first_draft:{
+    verdict:"First-draft layer",
+    what:"It writes the first version of one thing you produce over and over, in your voice, from your inputs. You edit and send. A blank page becomes a rough draft you can react to.",
+    why:"You said what was piling up was something only you could write, still unwritten. This doesn't replace your writing. It gets you past the empty page, which is the part that stalls.",
+    saves:"The cold start. Half hour spent staring before the first sentence lands.",
+    holds:"It learns from examples you chose, in the voice you approved. When your style shifts, you swap the examples yourself. It stays close to how you actually write, because you set the reference, not some averaged internet tone."
+  }
+};
+
+/* Conditional inserts, appended to the base copy when the scorer
+   flags them. Keeps each result personal to the answers given. */
+const INSERTS = {
+  q3_knowledge_redirect:{sec:"why", text:"You also said the know-how walks out when someone's away. The real problem isn't the volume of messages, it's that nothing gets kept. Written decisions stay after the person leaves the room."},
+  q4_client_draftwait:{sec:"why", text:"You said anything client-facing needs a human hand, so this one drafts and waits. Nothing reaches a client without you."},
+  q4_numbers_gather:{sec:"why", text:"You said you'd want a hand on anything with numbers you'd be quoted on, so this gathers and structures, it doesn't conclude. The call stays with you."},
+  q3_visibility:{sec:"why", text:"You also said that when someone's away, nobody can see status. This doesn't depend on any one person being in."},
+  freq_strong:{sec:"saves", text:"And because it comes up that often, you'll know inside a week whether it's pulling its weight."}
+};
+
+const FOUNDATION = {
+  verdict:"Your first move isn't an agent yet",
+  intro:"Based on what you told me, building an agent right now would set fire to money and prove nothing.",
+  reasons:{
+    ff_inhead:"You said the way this gets done lives in your head, and you'd explain it each time. An agent needs something to read. Right now there's nothing written for it to work from, so it would guess, and you'd spend more time correcting it than doing the task.",
+    ff_noway:"You said there's no set way, it's different every time. An agent needs a pattern to follow. Without one it can't be reliable, and an unreliable agent is worse than none, because you stop trusting it and still check everything by hand.",
+    ff_frequency:"You said this only comes up now and then, and that you'd be happy just getting one annoyance off your plate. A first agent has to earn its keep fast. Something occasional can't show you a win before you lose interest in it."
+  },
+  instead:"Write down how this gets done, once, the way you'd explain it to a new hire. That document is the thing an agent reads later. It's also the thing that makes the work less dependent on you, agent or not. This is the boring part, and it's the 90% of whether any agent survives. It's the work I do most."
+};
+
+/* Pure scorer. Input: answers object. Output: an outcome id and the
+   insert keys to show. No DOM here. */
+function scoreAnswers(a){
+  const domainMap={
+    messages:"inbox_triage",
+    decisions:"meeting_to_action",
+    questions:"research_brief",
+    status:"ops_rollup",
+    writing:"first_draft"
+  };
+  let outcome=domainMap[a.q1];
+  const why=[];
+
+  // feeder redirect: know-how leaving reframes a messages problem as capture
+  if(a.q1==="messages" && a.q3==="knowledge"){
+    outcome="meeting_to_action";
+    why.push("q3_knowledge_redirect");
+  }
+
+  // override 1 (fires first): readiness gate
+  if(a.q2==="inhead") return {outcome:"foundation_first", reason:"ff_inhead", why:[]};
+  if(a.q2==="noway")  return {outcome:"foundation_first", reason:"ff_noway",  why:[]};
+
+  // override 1b: nothing recurs often enough to show a win
+  if(a.q6==="nowandthen" && a.q5==="modest")
+    return {outcome:"foundation_first", reason:"ff_frequency", why:[]};
+
+  // personal inserts (override 2 lives here: the trust boundary
+  // reassures rather than kills, because every archetype above is
+  // draft-and-wait by construction)
+  if(a.q4==="client"  && outcome==="inbox_triage")  why.push("q4_client_draftwait");
+  if(a.q4==="numbers" && outcome==="research_brief") why.push("q4_numbers_gather");
+  if(a.q3==="visibility" && outcome==="ops_rollup")  why.push("q3_visibility");
+  if((a.q6==="daily"||a.q6==="mostdays") && !why.includes("q3_knowledge_redirect")) why.push("freq_strong");
+
+  return {outcome, why};
+}
+
+/* ============================================================
+   RENDER LAYER  (disposable)
+   Reads the logic above and paints it. Nothing here is depended
+   on by the scorer, so the site port can throw all of it away.
+   ============================================================ */
+
+const app=document.getElementById("app");
+const answers={};
+let step=0;
+
+function render(){
+  if(step<QUESTIONS.length) renderQuestion();
+  else renderResult();
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+function renderQuestion(){
+  const q=QUESTIONS[step];
+  const chosen=answers[q.id];
+  app.innerHTML=`
+    <div class="rail">
+      <div class="pips">${QUESTIONS.map((_,i)=>
+        `<span class="pip ${i<step?'done':''} ${i===step?'here':''}"></span>`).join("")}</div>
+      <span class="count">${step+1} of ${QUESTIONS.length}</span>
+    </div>
+    <div class="kicker">Which agent should you build first?</div>
+    <h1 class="q">${q.prompt}</h1>
+    <div class="opts">
+      ${q.options.map(o=>
+        `<button class="opt ${chosen===o.v?'sel':''}" data-v="${o.v}">${o.label}</button>`).join("")}
+    </div>
+    <div class="nav">
+      <button class="back" ${step===0?'disabled':''}>Back</button>
+      <button class="next" ${chosen?'':'disabled'}>${step===QUESTIONS.length-1?'See the answer':'Next'}</button>
+    </div>`;
+
+  app.querySelectorAll(".opt").forEach(b=>{
+    b.onclick=()=>{
+      answers[q.id]=b.dataset.v;
+      // auto-advance feels right on forced choice, but keep Next for changes of mind
+      renderQuestion();
+    };
+  });
+  app.querySelector(".back").onclick=()=>{step--;render();};
+  app.querySelector(".next").onclick=()=>{step++;render();};
+}
+
+function applyInserts(base, keys, section){
+  const extra=keys
+    .map(k=>INSERTS[k])
+    .filter(x=>x && x.sec===section)
+    .map(x=>x.text);
+  return [base, ...extra].join(" ");
+}
+
+function renderResult(){
+  const res=scoreAnswers(answers);
+
+  if(res.outcome==="foundation_first"){
+    const f=FOUNDATION;
+    app.innerHTML=`
+      <div class="result">
+        <div class="verdict-kicker">Your result</div>
+        <h1 class="verdict">${f.verdict}</h1>
+        <p class="sec">${f.intro}</p>
+        <div class="sec"><h3>Why not yet</h3><p>${f.reasons[res.reason]}</p></div>
+        <div class="sec"><h3>What to do instead</h3><p>${f.instead}</p></div>
+        <div class="cta"><p>Or, if you'd rather I built it with you: the readiness work is where I start most engagements. <a href="https://cal.com/akshatkharbanda/30min" target="_blank" rel="noopener">Let's talk</a>.</p></div>
+        <button class="restart">Start over</button>
+      </div>`;
+    app.querySelector(".restart").onclick=reset;
+    return;
+  }
+
+  const a=ARCHETYPES[res.outcome];
+  const why=applyInserts(a.why, res.why, "why");
+  const saves=applyInserts(a.saves, res.why, "saves");
+
+  app.innerHTML=`
+    <div class="result">
+      <div class="verdict-kicker">Your first agent</div>
+      <h1 class="verdict">${a.verdict}</h1>
+      <p class="sec">${a.what}</p>
+      <div class="sec"><h3>Why this one for you</h3><p>${why}</p></div>
+      <div class="sec"><h3>What it saves you in week one</h3><p>${saves}</p></div>
+      <div class="sec"><h3>What makes it hold after handoff</h3><p>${a.holds}</p></div>
+      <!-- TODO(Akshat): "Build Sprint" isn't a defined offer/page on the site yet. Linked to the booking call for now until you decide whether this needs its own page. -->
+      <div class="cta"><p>Want this built, and built to hold? That's the Build Sprint: one production agent, yours after handoff. <a href="https://cal.com/akshatkharbanda/30min" target="_blank" rel="noopener">See how it works</a>.</p></div>
+      <button class="restart">Start over</button>
+    </div>`;
+  app.querySelector(".restart").onclick=reset;
+}
+
+function reset(){
+  for(const k in answers) delete answers[k];
+  step=0;
+  render();
+}
+
+render();
+</script>
+</body>
+</html>

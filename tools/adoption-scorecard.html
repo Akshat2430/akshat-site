@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Adoption Scorecard · Akshat Kharbanda</title>
+<meta name="description" content="Ten questions, two minutes. Get a named pattern for your AI rollout, your two weakest spots, and what unused seats are quietly costing you." />
+<meta name="author" content="Akshat Kharbanda" />
+<link rel="canonical" href="https://akshatkharbanda.com/tools/adoption-scorecard.html" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="AI Adoption Scorecard · Akshat Kharbanda" />
+<meta property="og:description" content="You bought the AI seats. Will your team actually use them? Ten questions, two minutes, a named pattern for your rollout." />
+<meta property="og:url" content="https://akshatkharbanda.com/tools/adoption-scorecard.html" />
+<meta property="og:image" content="https://akshatkharbanda.com/public/images/og-image.jpeg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI Adoption Scorecard · Akshat Kharbanda" />
+<meta name="twitter:description" content="Ten questions, two minutes. Get a named pattern for your AI rollout." />
+<meta name="twitter:image" content="https://akshatkharbanda.com/public/images/og-image.jpeg" />
+<link rel="icon" type="image/jpeg" href="/public/images/akshat-avatar.jpg" />
+<link rel="apple-touch-icon" href="/public/images/akshat-avatar.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6F1E6;
+    --card:#FCFAF4;
+    --ink:#2A251D;
+    --body:#463F34;
+    --muted:#7D715C;
+    --clay:#B4502C;
+    --clay-dark:#9E3B22;
+    --teal:#3F7A6B;
+    --line:#E0D6C2;
+    --wash:#F1E7D6;
+    --teal-wash:#E9F0EC;
+    --teal-soft:#CBDED5;
+    --serif:'Newsreader',Georgia,'Times New Roman',serif;
+    --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--cream);
+    color:var(--body);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:36px 24px 80px}
+
+  .brand{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    border-bottom:1px solid var(--line);padding-bottom:14px}
+  .kick{font-family:var(--sans);text-transform:uppercase;letter-spacing:.18em;font-size:11px;font-weight:600;color:var(--teal)}
+  .by{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--muted);white-space:nowrap}
+
+  .top{display:flex;align-items:baseline;justify-content:flex-end;margin:26px 0 10px}
+  .count{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+  .bar > i{display:block;height:100%;background:var(--clay);width:0;transition:width .35s ease}
+
+  .screen{display:none;animation:fade .3s ease both}
+  .screen.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){ .screen,.bar>i{animation:none;transition:none} }
+
+  h1{font-family:var(--serif);font-weight:600;font-size:40px;line-height:1.1;margin:0 0 18px;letter-spacing:-.01em;color:var(--ink)}
+  h1 em{font-style:italic;font-weight:500}
+  .lede{font-size:18px;color:var(--body);max-width:54ch}
+  .meta{margin:24px 0 0;font-size:14px;color:var(--muted);padding-left:18px}
+  .meta li{margin:7px 0}
+
+  .q-num{font-family:var(--serif);font-style:italic;color:var(--teal);font-size:17px;margin:4px 0 10px}
+  .q{font-family:var(--serif);font-size:27px;line-height:1.24;margin:0 0 22px;font-weight:600;color:var(--ink)}
+
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{
+    text-align:left;font:inherit;color:var(--body);
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:15px 18px;cursor:pointer;transition:border-color .15s,background .15s;
+  }
+  .opt:hover{border-color:var(--clay)}
+  .opt:focus-visible{outline:2px solid var(--clay);outline-offset:2px}
+  .opt.sel{border-color:var(--clay);background:var(--wash);color:var(--ink)}
+
+  .fields{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+  .field{flex:1;min-width:140px}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+  .field input,.field select{
+    width:100%;font:inherit;color:var(--ink);background:var(--card);
+    border:1px solid var(--line);border-radius:9px;padding:11px 12px;
+  }
+  .field input:focus,.field select:focus{outline:2px solid var(--clay);outline-offset:1px;border-color:var(--clay)}
+  .hint{font-size:13px;color:var(--muted);margin-top:10px}
+
+  .nav{display:flex;justify-content:space-between;align-items:center;margin-top:26px}
+  .btn{font:inherit;font-weight:600;cursor:pointer;border-radius:9px;padding:13px 22px;border:1px solid transparent}
+  .btn-primary{background:var(--clay);color:#fff}
+  .btn-primary:hover{background:var(--clay-dark)}
+  .btn-ghost{background:transparent;color:var(--muted);padding-left:0}
+  .btn-ghost:hover{color:var(--ink)}
+  .btn-line{background:var(--card);color:var(--ink);border-color:var(--line)}
+  .btn-line:hover{border-color:var(--teal)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .btn:focus-visible{outline:2px solid var(--clay);outline-offset:2px}
+
+  .r-kicker{font-family:var(--sans);text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:600;color:var(--teal);margin:0 0 8px}
+  .r-pattern{font-family:var(--serif);font-size:42px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em;line-height:1.08;color:var(--ink)}
+  .r-band{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;margin-bottom:22px}
+  .callout{background:var(--teal-wash);border:1px solid var(--teal-soft);border-left:3px solid var(--teal);
+    border-radius:9px;padding:14px 16px;margin:0 0 22px;font-size:15px;color:var(--ink)}
+  .r-body{font-size:17px;line-height:1.62;color:var(--body);margin:0 0 30px}
+  .sec-h{font-family:var(--sans);text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--muted);margin:0 0 12px;font-weight:600}
+  .weak{display:flex;flex-direction:column;gap:12px;margin-bottom:30px}
+  .weak-card{border:1px solid var(--line);border-radius:11px;padding:16px 18px;background:var(--card)}
+  .weak-card b{display:block;font-family:var(--serif);font-size:18px;margin-bottom:5px;color:var(--ink)}
+  .weak-card span{font-size:15px;color:var(--body)}
+
+  .cost{border:1px solid var(--line);border-radius:12px;padding:22px;background:var(--card);margin-bottom:30px}
+  .cost .big{font-family:var(--serif);font-size:30px;line-height:1.22;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+  .cost .big em{font-style:normal;color:var(--clay)}
+  .cost p{margin:10px 0 0;font-size:14px;color:var(--muted)}
+
+  .next{border-top:1px solid var(--line);padding-top:26px;margin-bottom:28px}
+  .next p{margin:0 0 16px;font-size:16px;line-height:1.6;color:var(--body)}
+
+  .restart{margin-top:34px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span class="kick">AI Adoption Scorecard</span><a class="by" href="/index.html" style="text-decoration:none">The Business Backpacker</a></div>
+
+  <div id="progress" style="display:none">
+    <div class="top"><span class="count" id="count"></span></div>
+    <div class="bar"><i id="fill"></i></div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="screen on" id="intro">
+    <div style="height:26px"></div>
+    <h1>You bought the AI seats. Will your team <em>actually</em> use them?</h1>
+    <p class="lede">Ten questions, about two minutes. It scores the part that decides adoption, i.e. whether people change how they work with AI.</p>
+    <ul class="meta">
+      <li>No email needed to see your result.</li>
+      <li>You'll get a named pattern, your two weakest spots, and what a stalled rollout is costing you.</li>
+    </ul>
+    <div class="nav" style="justify-content:flex-start">
+      <button class="btn btn-primary" onclick="start()">Start the scorecard &rarr;</button>
+    </div>
+  </section>
+
+  <!-- QUESTION -->
+  <section class="screen" id="question">
+    <div class="q-num" id="qnum"></div>
+    <h2 class="q" id="qtext"></h2>
+    <div class="opts" id="opts"></div>
+    <div id="extra"></div>
+    <div class="nav">
+      <button class="btn btn-ghost" id="back" onclick="back()">Back</button>
+      <button class="btn btn-primary" id="next" onclick="next()" disabled>Next</button>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="screen" id="result"></section>
+</div>
+
+<script>
+/* ---------- content ---------- */
+const Q = [
+  { id:'leadership', driver:true, dim:'Leadership',
+    text:'When did you last see a specific senior leader show something they personally made with AI? Not talk about it. Show their own output.',
+    opts:[
+      {t:'This week', p:3},
+      {t:'This month', p:2},
+      {t:"I can't recall one", p:1},
+      {t:"They talk about it constantly, but I've never seen anything they made", p:0},
+    ]},
+  { id:'felt', driver:false,
+    text:'Which of these is closest to the truth about your team and AI right now?',
+    opts:[
+      {t:'Most have access, most never open it', p:0, pat:'shelfware'},
+      {t:'A few get enormous value, everyone else has drifted off', p:1, pat:'island'},
+      {t:'Lots of people poke at it, but nothing has changed how the work gets done', p:1, pat:'wideshallow'},
+      {t:'People would use it more, but they worry about looking replaceable or breaking some rule', p:1, pat:'fearfrozen'},
+      {t:"It's part of how we work now", p:3, pat:'holding'},
+    ]},
+  { id:'firstwin', driver:true, dim:'First win',
+    text:'Take the last person who got access. How long until they used AI to do something real in their job?',
+    opts:[
+      {t:'Same day', p:3},
+      {t:'Within two weeks', p:2},
+      {t:"No idea, we don't track that", p:1},
+      {t:"They still haven't, or we don't onboard anyone to it", p:0},
+    ]},
+  { id:'safety', driver:true, dim:'Safety',
+    text:'Someone finishes in an hour what used to take a day. What do they most likely do?',
+    opts:[
+      {t:"Tell everyone, it's a win", p:3},
+      {t:"Depends who's asking", p:2},
+      {t:'Quietly pocket the saved time', p:1},
+      {t:'Say nothing to anyone', p:0},
+    ]},
+  { id:'champions', driver:true, dim:'Champions',
+    text:'Your most capable AI users. Is helping others written into their job, with hours protected for it?',
+    opts:[
+      {t:"Yes, it's in their role and they have the time", p:3},
+      {t:'They help, but it\u2019s goodwill piled on top of their real work', p:2},
+      {t:"We don't really have standout users yet", p:1},
+      {t:'We\u2019ve named champions, but nothing changed for them', p:0},
+    ]},
+  { id:'workflow', driver:true, dim:'Workflow',
+    text:'Where does AI live for most of your team?',
+    opts:[
+      {t:'Built into the systems where the real work happens', p:3},
+      {t:'Inside a tool they already used daily', p:2},
+      {t:'A separate tab they open on purpose', p:1},
+      {t:'Mostly personal accounts on their phones', p:0},
+    ]},
+  { id:'governance', driver:true, dim:'Governance',
+    text:'If I stopped three of your people in the corridor, could they tell me what they\u2019re allowed to put into an AI tool?',
+    opts:[
+      {t:'Yes, and all three would say the same rules', p:3},
+      {t:'Roughly, but each would say something different', p:2},
+      {t:'There are no rules yet', p:1},
+      {t:"They'd say they're not sure, so they steer clear", p:0},
+    ]},
+  { id:'measurement', driver:true, dim:'Measurement',
+    text:'When did someone last look at who is and isn\u2019t using the tools you pay for, and act on it?',
+    opts:[
+      {t:'In the last month', p:3},
+      {t:'Once, at rollout', p:2},
+      {t:"We can't see the numbers", p:1},
+      {t:'We can see the numbers, but nobody acts on them', p:0},
+    ]},
+  { id:'incentive', driver:true, dim:'Incentive',
+    text:'Picture your strongest performer leaning on AI hard for a quarter. When review time comes, what has it done for them?',
+    opts:[
+      {t:'Helped them hit their targets, and it shows in how they\u2019re rated', p:3},
+      {t:"Made no difference, it isn't part of how anyone here is judged", p:1},
+      {t:"Bought them breathing room they've kept to themselves", p:1},
+      {t:'Landed them more work, because the time they freed up got refilled', p:0},
+    ]},
+  { id:'breadth', driver:false, dim:'Breadth',
+    text:'Of the people with access, how many use it in a normal week?',
+    opts:[
+      {t:'Over 70%', p:3, mid:0.80},
+      {t:'40 to 70%', p:2, mid:0.55},
+      {t:'20 to 40%', p:1, mid:0.30},
+      {t:'Under 20%', p:0, mid:0.10},
+    ],
+    extra:'cost' },
+];
+
+const FIX = {
+  Leadership:  'Get one senior leader to show something they built with AI at the next all-hands. Their own work, warts included. Talk doesn\u2019t move people. Watching their boss do it does.',
+  Safety:      'Make it safe to show AI did the heavy lifting. When someone saves a day, say so out loud instead of handing them the next thing. People hide what gets punished.',
+  Incentive:   'Tie AI-driven wins to how people are rated. If saving time only earns more work, your best people stop saving time where anyone can see.',
+  'First win': 'Build a first-win moment into onboarding. Sit each new user down with their one real use case on day one, so the tool proves itself before they lose interest.',
+  Workflow:    'Move AI out of a separate tab and into something people already do every day. Adoption follows the work. It won\u2019t wait in another window.',
+  Governance:  'Write three guardrails a person can recite from memory: what\u2019s fine, what\u2019s off-limits, who to ask. Fuzzy rules make people avoid the tool.',
+  Champions:   'Give your best users a real remit and protected hours to spread what they know. A title with no time is a dead end, and everyone can tell.',
+  Measurement: 'Look at who is and isn\u2019t using what you pay for, monthly, and act on the gap. A dashboard nobody touches is just a nicer way of not knowing.',
+};
+
+const PATTERN = {
+  shelfware:   { name:'Shelfware',
+    body:"You\u2019re paying for access nobody opens. The invoice lands every month whether or not a single person logs in. This is the expensive kind of quiet, and it rarely traces to the tools. It\u2019s two or three things about how the rollout was run, and they\u2019re fixable." },
+  compliance:  { name:'Compliance theatre',
+    body:"The mandate comes from the top, but the people issuing it don\u2019t use the thing themselves. Your team reads that instantly. Nobody adopts a tool their leaders only talk about, so the usage you do get stays performative. This turns around the day a leader shows their own work, flops included." },
+  island:      { name:'Island of excellence',
+    body:"A handful of your people get real value from AI. Everyone else watches from dry land. Good in one sense, you have proof it works. Stuck in another, because brilliance sitting in a few heads doesn\u2019t spread on its own. Time-backed champions and wins other people can copy will move it." },
+  wideshallow: { name:'Wide and shallow',
+    body:"Lots of people have tried it. Nothing has changed how the work gets done. This looks like adoption on a usage dashboard and evaporates the moment the novelty does. Leave it, and six months from now you\u2019re back where you started, wondering where the enthusiasm went. It sticks only when it lives inside the work." },
+  fearfrozen:  { name:'Fear-frozen',
+    body:"Your people are capable. They\u2019re holding back anyway, because using AI in the open feels risky: replaceable, rule-breaking, or just unrewarded. Permission and payoff are the issue. Until it\u2019s safe to say \u201cAI did half of this\u201d and that helps rather than hurts, your best users keep it hidden and the rest never start." },
+  holding:     { name:"It\u2019s holding",
+    body:"Rare, and worth saying plainly: AI is part of how your team works, and it would keep going if you stepped back tomorrow. You don\u2019t need someone to run this for you. What\u2019s below is where the next gains hide, mostly in the branches you scored a notch lower." },
+};
+
+/* ---------- state ---------- */
+const answers = {};
+let seats = null, cost = null, cur = '$';
+let i = 0;
+
+/* ---------- flow ---------- */
+function start(){ i = 0; show('question'); render(); document.getElementById('progress').style.display='block'; }
+
+function render(){
+  const q0 = Q[i];
+  document.getElementById('qnum').textContent = 'Question ' + (i+1);
+  document.getElementById('count').textContent = (i+1) + ' / ' + Q.length;
+  document.getElementById('fill').style.width = ((i)/(Q.length))*100 + '%';
+  document.getElementById('qtext').textContent = q0.text;
+
+  const wrap = document.getElementById('opts');
+  wrap.innerHTML = '';
+  q0.opts.forEach((o, idx)=>{
+    const b = document.createElement('button');
+    b.className = 'opt' + (answers[q0.id]===idx ? ' sel' : '');
+    b.textContent = o.t;
+    b.onclick = ()=>{ answers[q0.id]=idx; render(); };
+    wrap.appendChild(b);
+  });
+
+  const extra = document.getElementById('extra');
+  extra.innerHTML = '';
+  if(q0.extra==='cost'){
+    extra.innerHTML =
+      '<p class="hint">Optional, and it stays on this page. Add these two and the result shows what unused access is costing you.</p>'+
+      '<div class="fields">'+
+        '<div class="field" style="max-width:90px"><label>Currency</label>'+
+          '<select id="cur"><option>$</option><option>\u00a3</option><option>\u20ac</option><option>\u20b9</option></select></div>'+
+        '<div class="field"><label>Seats you pay for</label><input id="seats" type="number" min="0" inputmode="numeric" placeholder="e.g. 200"></div>'+
+        '<div class="field"><label>Rough cost per seat / year</label><input id="cost" type="number" min="0" inputmode="numeric" placeholder="e.g. 300"></div>'+
+      '</div>';
+    const cs=document.getElementById('cur'); cs.value=cur; cs.onchange=e=>cur=e.target.value;
+    const se=document.getElementById('seats'); if(seats!=null) se.value=seats; se.oninput=e=>seats=e.target.value?+e.target.value:null;
+    const ce=document.getElementById('cost'); if(cost!=null) ce.value=cost; ce.oninput=e=>cost=e.target.value?+e.target.value:null;
+  }
+
+  document.getElementById('back').style.visibility = i===0 ? 'hidden':'visible';
+  document.getElementById('next').innerHTML = i===Q.length-1 ? 'See my result &rarr;' : 'Next &rarr;';
+  document.getElementById('next').disabled = answers[q0.id]===undefined;
+}
+
+function next(){ if(i<Q.length-1){ i++; render(); } else { finish(); } }
+function back(){ if(i>0){ i--; render(); } }
+
+/* ---------- scoring ---------- */
+function total(){ return Q.reduce((s,x)=> s + (answers[x.id]!==undefined ? x.opts[answers[x.id]].p : 0), 0); }
+function pts(id){ return q(id).opts[answers[id]].p; }
+function q(id){ return Q.find(x=>x.id===id); }
+
+function bandLabel(t){
+  if(t<=11) return 'paying for shelfware';
+  if(t<=19) return 'pockets of use, no spread';
+  if(t<=26) return 'adopted, but fragile';
+  return "it's holding";
+}
+
+function derivePattern(t){
+  const breadth = pts('breadth');
+  if(t>=27 && breadth>=2) return 'holding';
+  if(breadth===0) return 'shelfware';
+  if(pts('leadership')===0) return 'compliance';
+  if(pts('safety')===0 || pts('incentive')===0) return 'fearfrozen';
+  if(pts('champions')<=1 && breadth<=1 && (pts('firstwin')>=2 || pts('workflow')>=2)) return 'island';
+  if(pts('workflow')<=1 && breadth>=2) return 'wideshallow';
+  const branch = {
+    compliance: pts('leadership'),
+    fearfrozen: Math.min(pts('safety'), pts('incentive'), pts('governance')),
+    wideshallow:(pts('firstwin')+pts('workflow'))/2,
+    island:     (pts('champions')+pts('measurement'))/2,
+  };
+  return Object.keys(branch).reduce((a,b)=> branch[b]<branch[a]?b:a);
+}
+
+function feltPattern(){ return q('felt').opts[answers['felt']].pat; }
+
+function weakest(){
+  const drivers = Q.filter(x=>x.driver);
+  const scored = drivers.map(x=>({dim:x.dim, p:pts(x.id)}));
+  scored.sort((a,b)=> a.p-b.p);
+  return [scored[0], scored[1]];
+}
+
+function costLine(){
+  if(!seats || !cost) return null;
+  const mid = q('breadth').opts[answers['breadth']].mid;
+  const unused = seats * cost * (1-mid);
+  const fmt = n => cur + Math.round(n).toLocaleString();
+  return { spend:fmt(seats*cost), unused:fmt(unused) };
+}
+
+/* ---------- result ---------- */
+function finish(){
+  const t = total();
+  document.getElementById('fill').style.width='100%';
+  document.getElementById('progress').style.display='none';
+  const key = derivePattern(t);
+  const p = PATTERN[key];
+  const felt = feltPattern();
+
+  let mismatch = '';
+  const feltName = { shelfware:'Shelfware', island:'Island of excellence', wideshallow:'Wide and shallow', fearfrozen:'Fear-frozen', holding:"It's holding" }[felt];
+  if(feltName && feltName !== p.name){
+    const w = weakest()[0];
+    mismatch = '<div class="callout">You said <b>'+feltName.toLowerCase()+'</b>. Your answers read more like <b>'+p.name.toLowerCase()+'</b>. The tell is '+w.dim.toLowerCase()+', your lowest-scoring area.</div>';
+  }
+
+  const [w1,w2] = weakest();
+  const c = costLine();
+  const route = routing(t, key);
+
+  let html =
+    '<p class="r-kicker">Your adoption pattern</p>'+
+    '<h2 class="r-pattern">'+p.name+'</h2>'+
+    '<p class="r-band">Score '+t+' / 30 &nbsp;\u00b7&nbsp; '+bandLabel(t)+'</p>'+
+    mismatch+
+    '<p class="r-body">'+p.body+'</p>'+
+    '<p class="sec-h">Your two weakest areas</p>'+
+    '<div class="weak">'+
+      '<div class="weak-card"><b>'+w1.dim+'</b><span>'+FIX[w1.dim]+'</span></div>'+
+      '<div class="weak-card"><b>'+w2.dim+'</b><span>'+FIX[w2.dim]+'</span></div>'+
+    '</div>';
+
+  if(c){
+    html +=
+      '<div class="cost">'+
+        '<div class="big">You\u2019re paying <em>'+c.spend+'</em> a year, and about <em>'+c.unused+'</em> of it buys access nobody opens.</div>'+
+        '<p>An estimate, based on the usage you reported. It\u2019s the number a CFO reacts to.</p>'+
+      '</div>';
+  }
+
+  html +=
+    '<div class="next">'+
+      '<p class="sec-h">Where to go from here</p>'+
+      '<p>'+route.text+'</p>'+
+      '<a class="btn btn-primary" href="'+route.href+'" target="_blank" rel="noopener">'+route.cta+'</a>'+
+    '</div>'+
+    '<div class="restart"><button class="btn btn-ghost" onclick="location.reload()">Start again</button></div>';
+
+  document.getElementById('result').innerHTML = html;
+  show('result');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function routing(t, key){
+  const cal = 'https://cal.com/akshatkharbanda/30min';
+  if(key==='holding'){
+    return { text:"You don\u2019t need me to run this. But if you want a second pair of eyes on keeping it holding, grab a slot.", cta:'Book a slot &rarr;', href:cal };
+  }
+  if(t>=20 && t<=26){
+    return { text:"You\u2019re adopted but fragile. Send me your rollout before it drifts and I\u2019ll send back a 15-minute Loom and a one-page fix list.", cta:'Get the Teardown &rarr;', href:cal };
+  }
+  return { text:"Send me your rollout and I\u2019ll send back a 15-minute Loom and a one-page fix list showing exactly where it\u2019s stuck and the first three moves.", cta:'Get the Teardown &rarr;', href:cal };
+}
+
+/* ---------- helpers ---------- */
+function show(id){
+  ['intro','question','result'].forEach(s=>{
+    document.getElementById(s).classList.toggle('on', s===id);
+  });
+}
+</script>
+</body>
+</html>

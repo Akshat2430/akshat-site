@@ -5,6 +5,7 @@ function getCurrentPage() {
   if (path === '/' || path.includes('index')) return 'work';
   if (path.includes('/method')) return 'method';
   if (path.includes('/work')) return 'work';
+  if (path.includes('/resources')) return 'resources';
   if (path.includes('/writing')) return 'writing';
   if (path.includes('/speaking')) return 'speaking';
   if (path.includes('/content')) return 'content';
@@ -24,6 +25,7 @@ function injectNav() {
   const current = getCurrentPage();
   const links = [
     { href: `${root}work.html`, label: 'Work', key: 'work' },
+    { href: `${root}resources.html`, label: 'Free Resources', key: 'resources' },
     { href: `${root}method.html`, label: 'Method', key: 'method' },
     { href: `${root}writing.html`, label: 'Writing', key: 'writing' },
     { href: `${root}speaking.html`, label: 'Speaking', key: 'speaking' },
