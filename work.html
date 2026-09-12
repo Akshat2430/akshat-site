@@ -26,16 +26,22 @@
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 
-<body>
+<body class="page-work">
 
   <main class="page">
     <div class="container">
 
-      <div style="margin-bottom: 2rem;">
+      <header class="illustrated-intro">
+        <div class="intro-copy"><div style="margin-bottom: 2rem;">
         <h1 class="page-title">Work</h1>
         <p class="page-sub">Projects across strategy, brand, AI, and GTM. Filtered by type of problem. Full case
           studies below. Click into any of them.</p>
-      </div>
+      </div></div>
+        <figure class="intro-illustration illustration-flags" aria-hidden="true">
+          <svg class="page-doodle" aria-hidden="true" focusable="false"><use href="public/images/page-doodles.svg#flags" /></svg>
+          <figcaption class="hand-note">Good ideas cross borders.</figcaption>
+        </figure>
+      </header>
 
 
 
@@ -44,6 +50,7 @@
         <section class="case-bucket">
           <div class="case-bucket-head">
             <h2 class="case-bucket-title">Entering new markets</h2>
+            <svg class="bucket-route" aria-hidden="true" focusable="false"><use href="public/images/field-marks.svg#route" /></svg>
           </div>
           <p class="case-bucket-blurb">Category creation, first-mover GTM, and strategy for spaces with no precedent.</p>
           <div class="case-grid">
@@ -87,6 +94,7 @@
         <section class="case-bucket">
           <div class="case-bucket-head">
             <h2 class="case-bucket-title">Finding signal in noise</h2>
+            <svg class="bucket-route" aria-hidden="true" focusable="false"><use href="public/images/field-marks.svg#route" /></svg>
           </div>
           <p class="case-bucket-blurb">Cross-cultural research, consumer insight, and competitive intelligence.</p>
           <div class="case-grid">
@@ -137,6 +145,7 @@
         <section class="case-bucket">
           <div class="case-bucket-head">
             <h2 class="case-bucket-title">Building what didn't exist</h2>
+            <svg class="bucket-route" aria-hidden="true" focusable="false"><use href="public/images/field-marks.svg#route" /></svg>
           </div>
           <p class="case-bucket-blurb">Frameworks, pilots, capabilities, and systems built from scratch.</p>
           <div class="case-grid">
@@ -227,6 +236,7 @@
           <section class="case-bucket">
             <div class="case-bucket-head">
               <h2 class="case-bucket-title">${b.title}</h2>
+            <svg class="bucket-route" aria-hidden="true" focusable="false"><use href="public/images/field-marks.svg#route" /></svg>
             </div>
             <p class="case-bucket-blurb">${b.blurb}</p>
             <div class="case-grid">

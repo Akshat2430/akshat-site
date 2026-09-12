@@ -30,3 +30,10 @@ Production deployment follows the Vercel integration on the GitHub `main` branch
 
 ## Follow-up refinements
 Removed the homepage geographic strip; shortened the human-gap and brand headings; restored continuous logos with pause/reduced-motion controls; positioned the speaking photo crop to retain headroom; updated all booking destinations and the shared embed to `akshatkharbanda/strategy-call`.
+
+## Illustrations across the site
+Added a shared, 9 KB SVG symbol file (`public/images/page-doodles.svg`) with seven page illustrations: country flags for Work, a 10/90 diagram for Method, a notebook and pen for Writing, a microphone for Speaking, conversation bubbles and a camera for Content, an open backpack for Side Quests, and a worksheet folder for Resources. The homepage Selected Work heading repeats the flags. Smaller quotation marks, pen strokes, route endpoints, step connectors, code brackets, sparks, and paper clips carry each visual theme into the page.
+
+Illustrated introductions share a responsive component; mobile puts illustrations below the original introduction. Decorative figures are hidden from assistive technology and do not receive focus. The Method diagram has an accessible explanation. No new animation, raster downloads, JavaScript, or production dependencies. About, existing logos, copy, bookings, and tools are preserved.
+
+Validation: all eight affected pages checked in Chromium at 1440, 1024, 768, and 390 pixels, with desktop and mobile illustrations visually reviewed. All retain a single H1 and have no page overflow or runtime errors. SVG parsed and referenced symbol IDs validated; generated Work route marks are maintained in both build output and fallback rendering.

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- Shared pen weight, warm ink, and restrained orange accents. All symbols are decorative. -->
+  <symbol id="flags" viewBox="0 0 380 260">
+    <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 224C7 177 111 205 126 167s-46-63-60-34 69 24 106 2 67-59 112-28 5 82-28 64 28-42 86-16" stroke-dasharray="3 8" stroke-width="1.5"/>
+      <g transform="translate(28 34) rotate(-12)"><path d="M0 0v85M0 3q22-10 43 0t43-1v48q-23 9-43 0T0 52" fill="#f8f3e9"/><path d="M1 4q22-10 42 0t42-1v15q-22 9-42 0T1 20" fill="#c47940" stroke="none"/><path d="M1 36q22-10 42 0t42-1v15q-22 9-42 0T1 52" fill="#648071" stroke="none"/><circle cx="43" cy="26" r="6" stroke="#536b80" stroke-width="1.5"/><path d="M43 20v12m-6-6h12" stroke="#536b80" stroke-width="1"/></g>
+      <g transform="translate(151 26) rotate(8)"><path d="M0 0v80M0 4q19-8 38-1t37 0v45q-18 8-37 0T0 49" fill="#f8f3e9"/><path d="M1 4q13-5 24-4v46q-12-2-24 3" fill="#536b80" stroke="none"/><path d="M50 6q13 3 24-3v45q-13 5-24 1" fill="#ba6751" stroke="none"/></g>
+      <g transform="translate(273 39) rotate(15)"><path d="M0 0v84M0 4q20-8 40 0t40-1v48q-20 8-40 0T0 52" fill="#a95a44"/><path d="M23 0v49M1 24q20-8 39 0t39-1" stroke="#f8f3e9" stroke-width="7"/></g>
+      <g transform="translate(166 169) rotate(-9)"><path d="M0 0v73M0 3h73v43H0" fill="#536b80"/><path d="m2 5 69 39m0-39L2 44" stroke="#f8f3e9" stroke-width="7"/><path d="M36 4v41M1 24h71" stroke="#f8f3e9" stroke-width="12"/><path d="M36 4v41M1 24h71" stroke="#a95a44" stroke-width="6"/></g>
+      <path d="m334 190 17 6-12 13M353 24l8-9m-1 27 12-1M26 163l-10-7" stroke="#a74320"/>
+      <circle cx="25" cy="224" r="4" fill="#a74320" stroke="none"/>
+    </g>
+  </symbol>
+  <symbol id="method" viewBox="0 0 380 260">
+    <g stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M184 40c52-2 91 38 91 89s-41 92-92 91-92-42-90-92 39-87 91-88Z" fill="#ead5bc"/>
+      <path d="M184 130V40a90 90 0 0 1 53 17Z" fill="#a74320"/>
+      <path d="m190 46 1 66 40-49" stroke="#f8f3e9" stroke-width="1.2"/>
+      <path d="M229 35q32-27 79-12m-8-6 10 6-10 7M92 180q-21 20-57 10m8-4-10 3 7 8" stroke="#a74320" stroke-width="1.6"/>
+      <path d="m291 166 10 4m-17 8 7 9M76 65l-12-9m8 21-16 1"/>
+      <path d="M133 194q43 14 85-2" stroke="#a74320" stroke-width="1.5"/>
+    </g>
+    <text x="138" y="151" font-family="Georgia,serif" font-size="44" fill="currentColor">90%</text>
+    <text x="280" y="51" font-family="Georgia,serif" font-size="25" fill="#a74320">10%</text>
+  </symbol>
+  <symbol id="notebook" viewBox="0 0 380 260">
+    <g stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M45 70q62-19 126 14 68-26 141-4l-13 148q-66-23-135-4-65-28-128-7Z" fill="#ead5bc"/>
+      <path d="M42 59q62-18 128 15 66-28 139-5l-14 146q-64-22-131-2-66-27-132-6Z" fill="#f8f3e9"/>
+      <path d="m170 74-6 138M58 94q44-7 89 14m-92 6q44-7 90 13m-92 5q43-7 90 14m-92 7q39-5 66 7M193 105q43-12 83-3m-85 25q44-13 83-4m-85 26q24-8 44-7" stroke-width="1.5"/>
+      <path d="M51 179q47-4 86 10" stroke="#a74320" stroke-width="3"/>
+      <path d="m179 77 15-5-10 47-6-9-9 5Z" fill="#a74320" stroke="none"/>
+      <g transform="rotate(26 280 110)"><path d="M273 19h15l-2 144-7 23-8-23Z" fill="#f8f3e9"/><path d="m273 19 1-9h13l1 9m-14 9h13m-14 122h12m-11 12h10m-5 0v16"/><path d="M277 32v106" stroke="#a74320" stroke-width="4"/></g>
+      <path d="M321 30l10-8m-4 27 15-1M23 123l-11-4" stroke="#a74320"/>
+    </g>
+  </symbol>
+  <symbol id="microphone" viewBox="0 0 380 260">
+    <g stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M167 203c-45 59-110 13-77-3s79 57 154 30 45-45 77-35" stroke-width="1.7"/>
+      <g transform="rotate(27 191 114)"><path d="M168 107h45l-6 91q-16 14-33 0Z" fill="#ead5bc"/><path d="M173 132h36m-34 58h33m-23 15v17"/>
+      <path d="M163 103V67c0-41 56-43 56 0v36q-27 13-56 0Z" fill="#f8f3e9"/>
+      <path d="M164 72h54m-54 11h54m-53 11h52m-43-46v53m11-59v61m11-61v61m11-56v54" stroke-width="1.2"/>
+      <path d="m177 146 24 1-1 18-23-1Z" fill="#a74320" stroke="none"/></g>
+      <path d="M255 40q20 11 24 31m-17-45q31 15 36 44M133 33l-11-15m-6 42-20-3" stroke="#a74320"/>
+      <path d="M52 114q-22 0-23 23h15q0-11 8-14Zm28 0q-22 0-23 23h15q0-11 8-14Z" fill="#a74320" stroke="none"/>
+    </g>
+  </symbol>
+  <symbol id="conversation" viewBox="0 0 380 260">
+    <g stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M146 55q86-14 176 7l-3 92-36 4-26 27 2-29-112-4Z" fill="#ead5bc"/>
+      <path d="M35 38q76-14 162-4l3 91-108 5-32 29 6-29-29-3Z" fill="#f8f3e9"/>
+      <path d="m58 60 111-3M58 79l93-2m-92 22 59-2" stroke-width="1.7"/>
+      <path d="m222 85 74 2m-72 18 60 1m-61 18 42 1" stroke="#a74320" stroke-width="1.7"/>
+      <g transform="translate(113 160) rotate(-8)"><path d="M0 13h24l9-13h43l9 13h23v69H0Z" fill="#f8f3e9"/><circle cx="57" cy="47" r="23"/><circle cx="57" cy="47" r="15" stroke="#a74320"/><path d="M87 25h10m-84 0h12M6 77h95" stroke-width="1.6"/></g>
+      <path d="m328 26 10-12m5 35 17-2M33 183l-14 7m17 8-7 12" stroke="#a74320"/>
+    </g>
+  </symbol>
+  <symbol id="backpack" viewBox="0 0 380 260">
+    <g stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M113 124c-26-19-53 50-37 105m171-100c29-14 52 44 38 95" stroke-width="6"/>
+      <path d="M104 112q72-36 146 1l15 123q-78 20-169-1Z" fill="#ead5bc"/>
+      <g transform="rotate(-19 138 73)"><path d="M105 31h60v90h-60Z" fill="#f8f3e9"/><path d="M117 32v89m14-66h23m-23 12h23"/><path d="m143 32 12 0v25l-6-5-6 5Z" fill="#a74320" stroke="none"/></g>
+      <path d="M199 83c-32-30-2-69 27-53 23 14 12 37-2 54l-2 23h-24Z" fill="#f8f3e9"/><path d="m199 86 24 1m-24 8h23m-17-10-5-26 11 9 10-10-5 27m-14 23 15 1"/>
+      <path d="m248 39 10-9m-41-16 1-12m-28 26-11-8" stroke="#a74320"/>
+      <path d="M102 120q76-42 151 0l-8 44q-70 17-136-1Z" fill="#f8f3e9"/>
+      <path d="M126 185q55-10 103 0l3 46q-50 9-105-1Z"/><path d="m136 195 85-1m-17 0v9" stroke="#a74320"/>
+      <path d="M173 148h17v28h-17Z" fill="#a74320"/><path d="m178 156 7 0" stroke="#f8f3e9"/>
+      <path d="m59 75-17 13 17 14m29-27 17 13-17 14m-9-34-9 42" stroke="#a74320"/>
+      <path d="M282 74q47 26 19 75" stroke-width="1.5" stroke-dasharray="3 7"/>
+    </g>
+  </symbol>
+  <symbol id="folder" viewBox="0 0 380 260">
+    <g stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M43 73h97l17 18h165l-12 143H40Z" fill="#ead5bc"/>
+      <g transform="rotate(-11 160 119)"><path d="M81 25h166v161H81Z" fill="#f8f3e9"/><path d="M104 53h111m-111 16h91m-91 29h12v12h-12m26-6h73m-99 28h12v12h-12m26-6h73" stroke-width="1.6"/><path d="m106 99 4 6 12-15m-16 43 4 6 12-15" stroke="#a74320"/></g>
+      <g transform="rotate(9 240 128)"><path d="M177 49h115v148H177Z" fill="#f8f3e9"/><path d="M198 76h72m-72 18h55m-54 57v-21h14v21m13 0v-39h14v39m13 0v-55h14v55" stroke-width="1.6"/></g>
+      <path d="M40 126h103l15-17h174l-22 127H40Z" fill="#ead5bc"/><path d="m159 171 49 1m-49 9h33" stroke="#a74320" stroke-width="2.5"/>
+      <path d="M315 33l12-14m1 34 20-4M20 99l-10-7" stroke="#a74320"/>
+      <path d="M44 240q140 10 266 0" stroke-width="1.3"/>
+    </g>
+  </symbol>
+  <symbol id="quote" viewBox="0 0 100 65"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M39 12C13 12 8 33 14 52h22V31H24q1-11 15-12Zm43 0C56 12 51 33 57 52h22V31H67q1-11 15-12Z"/><path d="m89 42 6 9M4 16l-3-5" stroke="#a74320"/></g></symbol>
+  <symbol id="pen" viewBox="0 0 100 65"><g stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m25 44 43-36 9 11-43 36-18 6Z" fill="#f8f3e9"/><path d="m25 44 9 11m31-43 9 11m-46 28 44-37M17 60l8-8"/><path d="M4 54q5-13 13-14m25 20q24-10 46-5" stroke="#a74320"/></g></symbol>
+  <symbol id="spark" viewBox="0 0 100 65"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m48 7 5 18 19 5-19 5-5 20-5-20-19-5 19-5Z"/><path d="m77 5 2 7 8 3-8 2-2 8-2-8-8-2 8-3ZM12 45l5 2m64 1 7 7" stroke="#a74320"/></g></symbol>
+  <symbol id="brackets" viewBox="0 0 100 65"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M31 13 9 32l22 20m36-39 23 19-23 20"/><path d="m58 7-17 51" stroke="#a74320"/></g></symbol>
+  <symbol id="clip" viewBox="0 0 100 65"><path d="m58 15-24 28c-10 12 7 22 16 12l28-32C90 7 68-7 55 7L28 38c-4 5 3 12 8 7l23-27" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+</svg>

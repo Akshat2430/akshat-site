@@ -222,6 +222,7 @@ function renderBucketRows() {
         <section class="case-bucket">
           <div class="case-bucket-head">
             <h2 class="case-bucket-title">${b.title}</h2>
+            <svg class="bucket-route" aria-hidden="true" focusable="false"><use href="public/images/field-marks.svg#route" /></svg>
           </div>
           <p class="case-bucket-blurb">${b.blurb}</p>
           <div class="case-grid">${ordered.map(caseCard).join('')}

@@ -29,12 +29,13 @@
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 
-<body>
+<body class="page-method">
 
   <main class="page">
     <div class="container">
 
-      <div style="margin-bottom: 2rem;">
+      <header class="illustrated-intro">
+        <div class="intro-copy"><div style="margin-bottom: 2rem;">
         <h1 class="page-title">90/10 Method</h1>
       </div>
 
@@ -50,9 +51,15 @@
         <p class="page-sub" style="margin-bottom: 0;">
           Every engagement runs the same three moves.
         </p>
-      </div>
+      </div></div>
+        <figure class="intro-illustration illustration-method" aria-labelledby="method-diagram-caption">
+          <svg class="page-doodle" aria-hidden="true" focusable="false"><use href="public/images/page-doodles.svg#method" /></svg>
+          <figcaption class="hand-note" id="method-diagram-caption">10% what you build.<br>90% whether people change how they work.</figcaption>
+        </figure>
+      </header>
 
-      <div class="case-section">
+      <div class="case-section method-step">
+        <svg class="step-connector" aria-hidden="true" focusable="false"><use href="public/images/field-marks.svg#arrow" /></svg>
         <h2 class="case-section-title">01 · Map the gap</h2>
         <p class="case-body">Diagnose before deploying. I sit with the leadership team and the actual
           users to find where the AI investment is stalling: which workflows could absorb it, who's
@@ -60,14 +67,15 @@
           human blockers in the way.</p>
       </div>
 
-      <div class="case-section">
+      <div class="case-section method-step">
+        <svg class="step-connector" aria-hidden="true" focusable="false"><use href="public/images/field-marks.svg#arrow" /></svg>
         <h2 class="case-section-title">02 · Prove it small</h2>
         <p class="case-body">One team, one workflow, one visible win. I build the pilot (training,
           prompts, custom agents, whatever the use case needs) and get a small group to genuine daily
           use. Internal proof and internal champions do more for adoption than any mandate from the top.</p>
       </div>
 
-      <div class="case-section">
+      <div class="case-section method-step">
         <h2 class="case-section-title">03 · Scale what works</h2>
         <p class="case-body">Turn the pilot into the playbook: training programs, champion networks,
           rollout sequencing across teams and geographies, and agent builds for the workflows that
