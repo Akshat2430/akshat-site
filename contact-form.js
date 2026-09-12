@@ -14,7 +14,7 @@
     const location = mount.dataset.location || 'unknown';
 
     mount.innerHTML = `
-      <form class="contact-form" novalidate>
+      <form class="contact-form">
         <input type="text" name="botcheck" class="form-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="form-row">
           <label class="form-label" for="cf-name-${location}">Name</label>

@@ -23,12 +23,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream:#F6F1E6;
+    --cream:#f8f3e9;
     --card:#FCFAF4;
-    --ink:#2A251D;
-    --body:#463F34;
-    --muted:#7D715C;
-    --clay:#B4502C;
+    --ink:#35251f;
+    --body:#66544a;
+    --muted:#756254;
+    --clay:#a74320;
     --clay-dark:#9E3B22;
     --teal:#3F7A6B;
     --line:#E0D6C2;
@@ -60,7 +60,7 @@
   .bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden}
   .bar > i{display:block;height:100%;background:var(--clay);width:0;transition:width .35s ease}
 
-  .screen{display:none;animation:fade .3s ease both}
+  .screen{display:none}
   .screen.on{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
   @media (prefers-reduced-motion:reduce){ .screen,.bar>i{animation:none;transition:none} }
@@ -126,10 +126,13 @@
   .next p{margin:0 0 16px;font-size:16px;line-height:1.6;color:var(--body)}
 
   .restart{margin-top:34px;text-align:center}
+
+:focus-visible { outline:2px solid var(--clay); outline-offset:4px; }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
 </style>
 </head>
 <body>
-<div class="wrap">
+<main class="wrap">
   <div class="brand"><span class="kick">AI Adoption Scorecard</span><a class="by" href="/index.html" style="text-decoration:none">The Business Backpacker</a></div>
 
   <div id="progress" style="display:none">
@@ -165,7 +168,7 @@
 
   <!-- RESULT -->
   <section class="screen" id="result"></section>
-</div>
+</main>
 
 <script>
 /* ---------- content ---------- */
@@ -429,7 +432,7 @@ function finish(){
 }
 
 function routing(t, key){
-  const cal = 'https://cal.com/akshatkharbanda/30min';
+  const cal = 'https://cal.com/akshatkharbanda/strategy-call';
   if(key==='holding'){
     return { text:"You don\u2019t need me to run this. But if you want a second pair of eyes on keeping it holding, grab a slot.", cta:'Book a slot &rarr;', href:cal };
   }

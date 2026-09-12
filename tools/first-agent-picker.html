@@ -30,19 +30,19 @@
    when the picker is ported to the site.
    ============================================================ */
 :root{
-  --cream:#F6F1E6;
+  --cream:#f8f3e9;
   --box:#FBF8F1;
-  --ink:#2A251D;
-  --body:#463F34;
-  --muted:#7D715C;
-  --tan:#A99A7D;
-  --clay:#B4502C;
+  --ink:#35251f;
+  --body:#66544a;
+  --muted:#756254;
+  --tan:#756254;
+  --clay:#a74320;
   --clay-dark:#9E3B22;
   --clay-tint:#F0E4D8;
   --teal:#3F7A6B;
   --line:#E0D6C2;
   --dash:#E3DAC8;
-  --radius:8px;
+  --radius:2px;
   --maxw:660px;
 }
 *{box-sizing:border-box}
@@ -135,10 +135,13 @@ body{
   .result{animation:none}
   *{transition:none!important}
 }
+
+:focus-visible { outline:2px solid var(--clay); outline-offset:4px; }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
 </style>
 </head>
 <body>
-<div class="wrap" id="app"></div>
+<main class="wrap" id="app"></main>
 
 <script>
 /* ============================================================
@@ -377,7 +380,7 @@ function renderResult(){
         <p class="sec">${f.intro}</p>
         <div class="sec"><h3>Why not yet</h3><p>${f.reasons[res.reason]}</p></div>
         <div class="sec"><h3>What to do instead</h3><p>${f.instead}</p></div>
-        <div class="cta"><p>Or, if you'd rather I built it with you: the readiness work is where I start most engagements. <a href="https://cal.com/akshatkharbanda/30min" target="_blank" rel="noopener">Let's talk</a>.</p></div>
+        <div class="cta"><p>Or, if you'd rather I built it with you: the readiness work is where I start most engagements. <a href="https://cal.com/akshatkharbanda/strategy-call" target="_blank" rel="noopener">Let's talk</a>.</p></div>
         <button class="restart">Start over</button>
       </div>`;
     app.querySelector(".restart").onclick=reset;
@@ -397,7 +400,7 @@ function renderResult(){
       <div class="sec"><h3>What it saves you in week one</h3><p>${saves}</p></div>
       <div class="sec"><h3>What makes it hold after handoff</h3><p>${a.holds}</p></div>
       <!-- TODO(Akshat): "Build Sprint" isn't a defined offer/page on the site yet. Linked to the booking call for now until you decide whether this needs its own page. -->
-      <div class="cta"><p>Want this built, and built to hold? That's the Build Sprint: one production agent, yours after handoff. <a href="https://cal.com/akshatkharbanda/30min" target="_blank" rel="noopener">See how it works</a>.</p></div>
+      <div class="cta"><p>Want this built, and built to hold? That's the Build Sprint: one production agent, yours after handoff. <a href="https://cal.com/akshatkharbanda/strategy-call" target="_blank" rel="noopener">See how it works</a>.</p></div>
       <button class="restart">Start over</button>
     </div>`;
   app.querySelector(".restart").onclick=reset;

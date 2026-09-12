@@ -73,19 +73,19 @@ function renderCaseBody(c, prev, next) {
     <hr class="divider" />
 
     <div class="case-section">
-      <p class="case-section-title">The problem</p>
+      <h2 class="case-section-title">The problem</h2>
       <p class="case-body">${c.problem}</p>
     </div>
 
     <div class="case-section">
-      <p class="case-section-title">What I did</p>
+      <h2 class="case-section-title">What I did</h2>
       <p class="case-body">${c.what_i_did}</p>
     </div>
 
     <hr class="divider" />
 
     <div class="case-section">
-      <p class="case-section-title">Outcomes</p>
+      <h2 class="case-section-title">Outcomes</h2>
       <div class="outcomes-grid">
         ${c.outcomes.map(o => `
           <div class="outcome-card">
@@ -99,7 +99,7 @@ function renderCaseBody(c, prev, next) {
     <hr class="divider" />
 
     <div class="case-section">
-      <p class="case-section-title">What I learned</p>
+      <h2 class="case-section-title">What I learned</h2>
       ${c.learnings.map(l => `
         <div class="learning-item">
           <p class="learning-text">${l}</p>
@@ -110,7 +110,7 @@ function renderCaseBody(c, prev, next) {
     <hr class="divider" />
 
     <div class="cta-block">
-      <p class="cta-title">Got a similar problem?</p>
+      <h2 class="cta-title">Got a similar problem?</h2>
       <p class="cta-sub">Tell me what you're working on. I'll tell you if it's a fit.</p>
       <div class="contact-form-mount" data-location="case_${c.slug}"></div>
       <p class="cta-fallback">Prefer email? <a href="mailto:workwithakshatkharbanda@gmail.com" onclick="if(typeof va==='function'){va('event',{name:'mailto_click',data:{location:'case_${c.slug}'}})}">workwithakshatkharbanda@gmail.com →</a></p>
@@ -173,6 +173,7 @@ function renderFeaturedCards() {
           <div class="work-row-body">
             <div class="work-row-q">${c.question}</div>
             <div class="work-row-meta">${c.client} · ${c.context}</div>
+            <span class="work-row-outcome">${c.outcomes.map(o => `${o.number} ${o.label}`).join(" · ")}</span>
           </div>
           <div class="work-row-arrow">→</div>
         </a>`).join('');
