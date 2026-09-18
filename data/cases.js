@@ -305,7 +305,7 @@ const cases = [
     problem: "A public company CEO's time wasn't disappearing into big decisions. It was leaking into the hundred small extractions that come before one: dig through this report, summarise that call, draft the first pass of everything. A single assistant trying to cover all of that just becomes one more thing to manage.",
     what_i_did: "Mapped where the hours actually went, not where he assumed they went. Built one agent per job (research, synthesis, meeting prep, drafting), each wired directly into the tools he already used. The requirement: the system had to run without hand-holding through a day that changes every 20 minutes. Now expanding the same architecture company-wide.",
     outcomes: [
-      { number: "4", label: "dedicated agents in daily use" },
+      { number: "4", label: "agents in daily use" },
       { number: "Company-wide", label: "rollout now underway" }
     ],
     learnings: [
