@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Lost &amp; Found · Akshat Kharbanda</title>
+<meta name="description" content="Four things adoption rollouts lose along the way, why they went missing, and what to actually do about each one. No signup." />
+<meta name="author" content="Akshat Kharbanda" />
+<link rel="canonical" href="https://akshatkharbanda.com/lost-and-found.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Akshat Kharbanda" />
+<meta property="og:title" content="AI Lost &amp; Found · Akshat Kharbanda" />
+<meta property="og:description" content="Four things adoption rollouts lose along the way, why they went missing, and what to actually do about each one." />
+<meta property="og:url" content="https://akshatkharbanda.com/lost-and-found.html" />
+<meta property="og:image" content="https://akshatkharbanda.com/public/images/og-image.jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI Lost &amp; Found · Akshat Kharbanda" />
+<meta name="twitter:description" content="Four things adoption rollouts lose along the way, and what to do about each one." />
+<meta name="twitter:image" content="https://akshatkharbanda.com/public/images/og-image.jpeg" />
+<link rel="icon" type="image/jpeg" href="/public/images/akshat-avatar.jpg" />
+<link rel="apple-touch-icon" href="/public/images/akshat-avatar.jpg" />
+<link rel="stylesheet" href="styles.css" />
+<script src="nav.js" defer></script>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+<style>
+  .lf-wrap { max-width: 780px; margin: 0 auto; }
+  .lf-header { border-bottom: 2px solid var(--text-primary); padding-bottom: 22px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+  .lf-title { font: 400 clamp(34px,4.5vw,54px)/1.1 var(--font-serif); letter-spacing: -.02em; }
+  .lf-title em { color: var(--accent); font-style: italic; }
+  .lf-desk { font: 23px/1.2 'Caveat', cursive; color: var(--accent); transform: rotate(-2deg); }
+  .lf-sub { font-size: 15px; color: var(--text-secondary); max-width: 60ch; margin: 18px 0 40px; }
+
+  .lf-shelf { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+  .lf-tag { border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); overflow: hidden; scroll-margin-top: 110px; }
+  .lf-tag-top { width: 100%; text-align: left; padding: 24px 26px; cursor: pointer; background: transparent; border: 0; font: inherit; color: inherit; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .lf-tag-top:hover, .lf-tag-top:focus-visible { background: var(--surface-hover); }
+  .lf-tag-top:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .lf-tag-label-group { flex-grow: 1; }
+  .lf-item-label { font: 400 25px/1.25 var(--font-serif); color: var(--text-primary); margin-bottom: 5px; }
+  .lf-seen { font-family: var(--font-sans); font-size: 12px; letter-spacing: .04em; color: var(--text-tertiary); }
+  .lf-chevron { font-size: 20px; color: var(--accent); transition: transform .2s; flex-shrink: 0; }
+  .lf-tag.open .lf-chevron { transform: rotate(180deg); }
+
+  .lf-reveal { display: none; padding: 0 26px 26px; border-top: 1px dashed var(--border-strong); }
+  .lf-tag.open .lf-reveal { display: block; animation: rise .3s ease both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .lf-recognition { font: italic 17px/1.5 var(--font-serif); color: var(--text-primary); margin: 18px 0 14px; }
+  .lf-explain { font-size: 15px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 18px; }
+  .lf-action-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px; }
+  .lf-action { font-size: 15px; color: var(--text-primary); margin-bottom: 22px; }
+  .lf-entry-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .lf-copy-btn { font-size: 12px; color: var(--text-secondary); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 14px; background: transparent; cursor: pointer; }
+  .lf-copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .lf-copy-flag { font-size: 12px; color: var(--accent); font-weight: 600; }
+
+  .lf-template { border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: 22px 24px; background: var(--bg); margin-top: 6px; }
+  .lf-template h4 { font: 400 16px/1.3 var(--font-serif); color: var(--text-primary); margin-bottom: 12px; }
+  .lf-template ol { margin: 0 0 16px 20px; padding: 0; font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+  .lf-template ol li { margin-bottom: 6px; }
+
+  .lf-footer-nav { border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; font-size: 13px; color: var(--text-tertiary); }
+  .lf-footer-nav a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 560px) {
+    .lf-header { display: block; }
+    .lf-desk { margin-top: 10px; display: inline-block; }
+    .lf-tag-top { padding: 20px; }
+  }
+</style>
+</head>
+<body class="page-lost-and-found">
+
+<main class="page">
+  <div class="container lf-wrap">
+
+    <header class="lf-header">
+      <h1 class="lf-title">AI Lost <em>&amp; Found</em></h1>
+      <span class="lf-desk">Office of unclaimed adoption</span>
+    </header>
+    <p class="lf-sub">Four things rollouts lose along the way. Claim yours, or see what it takes to stop losing things like this.</p>
+
+    <div class="lf-shelf">
+
+      <div class="lf-tag" id="enthusiasm">
+        <button class="lf-tag-top" aria-expanded="false" aria-controls="enthusiasm-body">
+          <div class="lf-tag-label-group">
+            <div class="lf-item-label">Workshop enthusiasm</div>
+            <div class="lf-seen">Last seen: the Monday after training</div>
+          </div>
+          <span class="lf-chevron" aria-hidden="true">&darr;</span>
+        </button>
+        <div class="lf-reveal" id="enthusiasm-body">
+          <p class="lf-recognition">You ran the session. Everyone nodded. Nobody's workflow moved.</p>
+          <p class="lf-explain">The workshop created ideas, but nobody changed a recurring task. Pick one real workflow and have a small team practise it together this week. Give them a reviewer and time to compare outputs. Check whether they repeat it next week without being prompted &mdash; that's the only signal that tells you whether the enthusiasm survived contact with Tuesday.</p>
+          <div class="lf-action-label">This week</div>
+          <p class="lf-action">Give one team one recurring task, one reviewer, and seven days. Watch for repeat use, not applause.</p>
+          <div class="lf-entry-actions">
+            <a class="btn btn-primary" href="tools/adoption-scorecard.html" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'campaign_lost_and_found',tool:'adoption_scorecard',item_id:'enthusiasm'}})}">Find what's blocking your rollout &rarr;</a>
+            <button class="lf-copy-btn" type="button" data-copy-link="enthusiasm">Copy link</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lf-tag" id="licences">
+        <button class="lf-tag-top" aria-expanded="false" aria-controls="licences-body">
+          <div class="lf-tag-label-group">
+            <div class="lf-item-label">Unused licence</div>
+            <div class="lf-seen">Last seen: never opened, still being billed</div>
+          </div>
+          <span class="lf-chevron" aria-hidden="true">&darr;</span>
+        </button>
+        <div class="lf-reveal" id="licences-body">
+          <p class="lf-recognition">The invoice landed again. Nobody remembers requesting the extra seats. Somebody's still paying for them.</p>
+          <p class="lf-explain">A licence nobody opens isn't a tooling problem, it's an adoption problem wearing a budget line. The seat itself was never the blocker &mdash; something about onboarding, workflow fit, or plain awareness is. Chasing it down usually starts with looking at who isn't using it and asking them directly, not renegotiating the contract first.</p>
+          <div class="lf-action-label">This week</div>
+          <p class="lf-action">Pull this month's usage report, find the lowest 20% of users, and have one real conversation with one of them about why before you touch the contract.</p>
+          <div class="lf-entry-actions">
+            <a class="btn btn-primary" href="tools/adoption-scorecard.html" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'campaign_lost_and_found',tool:'adoption_scorecard',item_id:'licences'}})}">Find what's blocking your rollout &rarr;</a>
+            <button class="lf-copy-btn" type="button" data-copy-link="licences">Copy link</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lf-tag" id="owner">
+        <button class="lf-tag-top" aria-expanded="false" aria-controls="owner-body">
+          <div class="lf-tag-label-group">
+            <div class="lf-item-label">Pilot owner</div>
+            <div class="lf-seen">Last seen: everyone remembers meeting them</div>
+          </div>
+          <span class="lf-chevron" aria-hidden="true">&darr;</span>
+        </button>
+        <div class="lf-reveal" id="owner-body">
+          <p class="lf-recognition">The pilot worked. Everyone agreed it worked. Then it sat there, because nobody owned getting it into daily use.</p>
+          <p class="lf-explain">A successful pilot with no named owner for the next stage doesn't fail loudly, it just never boards. The people who ran it move to the next project. The result gets mentioned in a deck twice, then never again. This is the single most common place rollouts stall: not the build, the handoff.</p>
+          <div class="lf-action-label">This week</div>
+          <p class="lf-action">Name one accountable owner for taking this from pilot to daily use. Run through the checklist below to check whether that ownership is real or just a title.</p>
+          <div class="lf-template">
+            <h4>Ownership checklist</h4>
+            <ol>
+              <li>One named person, not a team or a committee.</li>
+              <li>Written into their actual role, not stacked on as "additional duties."</li>
+              <li>A defined handoff date from whoever ran the pilot.</li>
+              <li>A way to ask for help without owning the failure alone.</li>
+            </ol>
+            <a class="text-link" href="tools/first-agent-picker.html" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'campaign_lost_and_found',tool:'first_agent_picker',item_id:'owner'}})}">If the real gap is choosing which agent to build next &rarr;</a>
+          </div>
+          <div class="lf-entry-actions" style="margin-top:18px;">
+            <button class="lf-copy-btn" type="button" data-copy-link="owner">Copy link</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lf-tag" id="baseline">
+        <button class="lf-tag-top" aria-expanded="false" aria-controls="baseline-body">
+          <div class="lf-tag-label-group">
+            <div class="lf-item-label">ROI baseline</div>
+            <div class="lf-seen">Last seen: missing since launch</div>
+          </div>
+          <span class="lf-chevron" aria-hidden="true">&darr;</span>
+        </button>
+        <div class="lf-reveal" id="baseline-body">
+          <p class="lf-recognition">Six months in, someone asks if this is working. There's nothing to compare it to, because nobody measured "before."</p>
+          <p class="lf-explain">Without a baseline, every result is a feeling, not a finding. This isn't about building a dashboard on day one, it's about writing down four honest answers before the next thing launches, so there's something to check the result against later. It takes ten minutes and it's the difference between "I think this helped" and being able to show it.</p>
+          <div class="lf-action-label">This week</div>
+          <p class="lf-action">Fill in the template below for whatever's about to launch next, before it launches.</p>
+          <div class="lf-template">
+            <h4>Baseline template</h4>
+            <ol>
+              <li>What were you measuring before you started? (Nothing? That's the finding.)</li>
+              <li>What's the one number that would tell you this worked?</li>
+              <li>Who checks that number, and how often?</li>
+              <li>What did "normal" look like before AI touched this process?</li>
+            </ol>
+            <a class="text-link" href="tools/adoption-scorecard.html" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'campaign_lost_and_found',tool:'adoption_scorecard',item_id:'baseline'}})}">Check your overall rollout &rarr;</a>
+          </div>
+          <div class="lf-entry-actions" style="margin-top:18px;">
+            <button class="lf-copy-btn" type="button" data-copy-link="baseline">Copy link</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="lf-footer-nav">Four items, no signup, no accounts. <a href="resources.html">See the free tools and downloads &rarr;</a></p>
+
+  </div>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const tags = Array.from(document.querySelectorAll('.lf-tag'));
+
+  function openTag(tag, fromHash) {
+    const wasOpen = tag.classList.contains('open');
+    tag.classList.add('open');
+    tag.querySelector('.lf-tag-top').setAttribute('aria-expanded', 'true');
+    if (!wasOpen && typeof va === 'function') {
+      va('event', { name: 'campaign_item_open', data: { item_id: tag.id } });
+    }
+    if (fromHash) {
+      tag.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }
+  }
+  function closeTag(tag) {
+    tag.classList.remove('open');
+    tag.querySelector('.lf-tag-top').setAttribute('aria-expanded', 'false');
+  }
+
+  tags.forEach(tag => {
+    const top = tag.querySelector('.lf-tag-top');
+    top.addEventListener('click', () => {
+      if (tag.classList.contains('open')) closeTag(tag);
+      else openTag(tag, false);
+    });
+  });
+
+  document.querySelectorAll('[data-copy-link]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-copy-link');
+      const url = window.location.origin + window.location.pathname + '#' + id;
+      const flagAndTrack = () => {
+        if (typeof va === 'function') va('event', { name: 'campaign_share_click', data: { item_id: id, method: 'copy' } });
+        const original = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(flagAndTrack).catch(() => {
+          const ta = document.createElement('textarea');
+          ta.value = url; ta.style.position = 'fixed'; ta.style.left = '-9999px';
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); flagAndTrack(); } catch (e) {}
+          document.body.removeChild(ta);
+        });
+      }
+    });
+  });
+
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {
+    const target = document.getElementById(hash);
+    if (target && target.classList.contains('lf-tag')) openTag(target, true);
+  }
+});
+</script>
+
+</body>
+</html>

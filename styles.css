@@ -2371,3 +2371,12 @@ h2.section-label,h2.case-section-title { font-weight: 500; }
   .tool-preview-grid { grid-template-columns: 1fr; }
   .downloads-grid { grid-template-columns: 1fr; }
 }
+
+/* ---- Homepage campaign teaser ---- */
+.campaign-teaser { border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: 28px 30px; background: var(--surface); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+.campaign-teaser-title { font: 400 26px/1.2 var(--font-serif); color: var(--text-primary); }
+.campaign-teaser-title em { color: var(--accent); font-style: italic; }
+.campaign-teaser-copy p { font-size: 14px; color: var(--text-secondary); margin-top: 6px; }
+@media (max-width: 560px) {
+  .campaign-teaser { flex-direction: column; align-items: flex-start; }
+}
