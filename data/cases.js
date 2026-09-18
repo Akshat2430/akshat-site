@@ -245,7 +245,7 @@ const cases = [
     what_i_did: "Ran it in stages instead of one launch. Progressive pilots to find which use cases actually stuck. Internal resources and training so people had a low-stakes way in. Governance for the things that matter, sensitive data especially, so a first-timer could use AI without worrying they'd break something. That took the organisation from a handful of early adopters to the majority of staff. The question has since shifted from 'is anyone using this' to 'what are the best users doing,' surfacing those use cases and scaling them across teams. Part-time engagement with CHAI's US HQ, ongoing.",
     outcomes: [
       { number: "30+", label: "countries in rollout scope" },
-      { number: "Majority", label: "of staff now active users, up from early adopters" },
+      { number: ">80%", label: "of staff now active users, up from early adopters" },
       { number: "3", label: "phases: pilots, enablement, governance" }
     ],
     learnings: [
@@ -298,7 +298,7 @@ const cases = [
     question: "How do you build a CEO an AI workforce that actually holds?",
     subtitle: "Hundred small extractions → one dedicated agent each",
     category: "Building",
-    client: "Public tech company",
+    client: "$2.6B public tech company",
     context: "USA",
     featured: true,
     homeTag: "Agent build",
