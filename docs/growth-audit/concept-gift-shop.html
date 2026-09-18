@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Concept sketch · AI Office Gift Shop</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { background: var(--bg); }
+  .sketch-frame { max-width: 1120px; margin: 0 auto; padding: 48px 24px 96px; }
+  .sketch-tag { display: inline-block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-tertiary); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 5px 10px; margin-bottom: 28px; }
+
+  .gs-header { border-bottom: 2px solid var(--text-primary); padding-bottom: 22px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+  .gs-title { font: 400 clamp(34px,4.5vw,54px)/1.1 var(--font-serif); letter-spacing: -.02em; }
+  .gs-title em { color: var(--accent); font-style: italic; }
+  .gs-desk { font: 23px/1.2 'Caveat', cursive; color: var(--accent); transform: rotate(-2deg); }
+  .gs-sub { font-size: 15px; color: var(--text-secondary); max-width: 60ch; margin: 18px 0 40px; }
+
+  .gs-shelf-label { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+
+  .gs-product {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+    max-width: 560px; overflow: hidden;
+  }
+  .gs-product-top { padding: 26px 28px 20px; cursor: pointer; }
+  .gs-product-top:hover, .gs-product-top:focus-visible { background: var(--surface-hover); }
+  .gs-product-top:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .gs-price-tag { display: inline-block; font-family: var(--font-sans); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: var(--accent); border-radius: 20px; padding: 4px 12px; margin-bottom: 14px; }
+  .gs-item-label { font: 400 27px/1.25 var(--font-serif); color: var(--text-primary); margin-bottom: 6px; }
+  .gs-item-desc { font-family: var(--font-sans); font-size: 13px; color: var(--text-tertiary); font-style: italic; }
+  .gs-hint { margin-top: 16px; font-size: 13px; color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+
+  .gs-reveal { display: none; padding: 0 28px 26px; }
+  .gs-reveal.open { display: block; animation: rise .3s ease both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .gs-divider { border: 0; border-top: 1px dashed var(--border-strong); margin-bottom: 18px; }
+  .gs-actual-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 8px; }
+  .gs-explain { font-size: 15px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 18px; }
+  .gs-action-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px; }
+  .gs-action { font-size: 15px; color: var(--text-primary); margin-bottom: 22px; }
+
+  .gs-meta { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-tertiary); }
+  .gs-meta a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 560px) {
+    .gs-header { display: block; }
+    .gs-desk { margin-top: 10px; display: inline-block; }
+    .gs-product { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="sketch-frame">
+  <p class="sketch-tag">Concept sketch, Day 1 &middot; one sample item of four &middot; not a production route &middot; no real checkout</p>
+
+  <header class="gs-header">
+    <h1 class="gs-title">The AI Office <em>Gift Shop</em></h1>
+    <span class="gs-desk">Everything your rollout already bought you</span>
+  </header>
+  <p class="gs-sub">Browse the collection. Every item ships free, because you already paid for it &mdash; in licences nobody opened.</p>
+
+  <div>
+    <p class="gs-shelf-label">Featured item 1 of 4</p>
+
+    <div class="gs-product">
+      <button class="gs-product-top" id="itemToggle" aria-expanded="false" aria-controls="itemReveal">
+        <span class="gs-price-tag">Best seller</span>
+        <div class="gs-item-label">Prompt-and-Pray Candle</div>
+        <div class="gs-item-desc">Scent: burnt toast and a Monday standup. Lit before every launch, blown out by Friday.</div>
+        <div class="gs-hint" id="itemHintText">See what this actually needs &rarr;</div>
+      </button>
+
+      <div class="gs-reveal" id="itemReveal">
+        <hr class="gs-divider" />
+        <p class="gs-actual-label">What this actually needs</p>
+        <p class="gs-explain">Nobody lit this candle on purpose. It shows up when a pilot launches with hope instead of a plan: no owner, no baseline, no check-in booked before the excitement fades. Hope isn't a rollout strategy, and a launch-week spike isn't adoption.</p>
+        <div class="gs-action-label">Swap it for</div>
+        <p class="gs-action">A named owner, a one-week check-in on the calendar before launch day, and one thing you'll measure that isn't "vibes in the room."</p>
+        <a class="btn btn-primary" href="../../tools/adoption-scorecard.html">Check where your rollout actually stands &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="gs-meta">
+    Sketch notes: three more items follow the same reveal pattern &mdash; Dashboard Rose-Tinted Glasses, Pilot Life-Support Kit, Champion's Invisible Time Allocation &mdash; each with its own "what this actually needs" fix and a relevant tool link (scorecard or agent picker depending on the item). Full four-item build is Day 6&ndash;7 scope. Tone note for Akshat: this concept reads as the most immediately funny of the three, which is also its main risk &mdash; it can attract broad AI-humor traffic that doesn't convert, and its store framing sits closest to the CISO-campaign reference article's own gift-shop bit. Flagged in the comparison doc.
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('itemToggle');
+  const reveal = document.getElementById('itemReveal');
+  const hint = document.getElementById('itemHintText');
+  btn.addEventListener('click', () => {
+    const open = reveal.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    hint.textContent = open ? 'Close this item ↑' : 'See what this actually needs →';
+  });
+</script>
+</body>
+</html>
