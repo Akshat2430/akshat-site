@@ -91,7 +91,7 @@ function injectNav() {
     navHTML = `
       <a href="#main-content" class="skip-link">Skip to content</a><nav aria-label="Main navigation">
         <div class="nav-inner">
-          <a href="${root}${zone}.html" class="nav-logo">Akshat Kharbanda<small>The Business Backpacker</small></a>
+          <a href="${root}index.html" class="nav-logo">Akshat Kharbanda<small>The Business Backpacker</small></a>
           <ul class="nav-links">
             ${primaryLinks.map(l => `<li>${linkHTML(l)}</li>`).join('')}
             <li><a href="${talkLink.href}" class="nav-talk">${talkLink.label}</a></li>
