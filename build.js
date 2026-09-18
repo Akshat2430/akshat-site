@@ -181,14 +181,14 @@ function renderFeaturedCards() {
 }
 
 function buildIndex() {
-  let html = read('index.html');
+  let html = read('operator.html');
   html = replaceBetween(
     html,
     '<!--BUILD:featured-cases-->',
     '<!--/BUILD:featured-cases-->',
     renderFeaturedCards()
   );
-  write('index.html', html);
+  write('operator.html', html);
   return cases.filter(c => c.featured).length;
 }
 
