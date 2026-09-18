@@ -118,10 +118,6 @@
 .page-operator .service-secondary { border-inline: 0; background: transparent; padding-inline: 0; }
 .page-operator .dispatch-heading { grid-template-columns: 1fr; }
 .page-operator .dispatch-illustration { display: none; }
-.creator-crosslink { padding: 18px 0; }
-.creator-crosslink h2 { font: 400 36px/1.2 var(--font-serif); margin: 15px 0; }
-.creator-crosslink h2 em { color: var(--accent); }
-.creator-crosslink > p:not(.section-label) { color: var(--text-secondary); margin-bottom: 10px; }
 /* Creator: photographic cover and asymmetric reading list. */
 .page-creator .hero { grid-template-columns: 1.05fr 1fr; }
 .creator-portrait { margin: 0; position: relative; }
