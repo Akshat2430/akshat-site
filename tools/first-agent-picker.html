@@ -126,6 +126,11 @@ body{
 .cta a:hover{text-decoration:underline}
 .restart{margin-top:22px;background:none;border:1.5px solid var(--line);color:var(--muted);font:inherit;padding:9px 16px;border-radius:8px;cursor:pointer;transition:border-color .15s,color .15s}
 .restart:hover{border-color:var(--muted);color:var(--ink)}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
+.cta-actions .restart{margin-top:22px}
+.copied-flag{font-size:12px;color:var(--teal);margin-left:6px;font-weight:600}
+.return-link{text-align:center;margin-top:18px;font-size:13px}
+.return-link a{color:var(--muted)}
 
 @media (max-width:520px){
   .q{font-size:26px}
@@ -275,6 +280,16 @@ const FOUNDATION = {
   instead:"Write down how this gets done, once, the way you'd explain it to a new hire. That document is the thing an agent reads later. It's also the thing that makes the work less dependent on you, agent or not. This is the boring part, and it's the 90% of whether any agent survives. It's the work I do most."
 };
 
+/* Case link per archetype — judgement calls, not required by scoreAnswers().
+   Kept separate from the pure scorer so the decision logic above stays untouched. */
+const CASE_LINK = {
+  inbox_triage:      { href:'../work/build-a-signal-scanner-for-a-pe-firm.html', label:'How a PE firm turned a thousand daily updates into one brief' },
+  meeting_to_action:  { href:'../work/build-a-ceo-an-ai-workforce.html', label:'How a CEO’s meeting-prep agent became one of four in daily use' },
+  research_brief:     { href:'../work/shape-market-maternal-ai-devices.html', label:'How scattered literature became one demand assessment and a fundable program' },
+  ops_rollup:         { href:'../work/give-executives-time-back.html', label:'How 10+ scattered data sources became one dashboard executives trusted' },
+  first_draft:        { href:'../work/build-a-ceo-an-ai-workforce.html', label:'How a drafting agent became one of four a CEO uses daily' },
+};
+
 /* Pure scorer. Input: answers object. Output: an outcome id and the
    insert keys to show. No DOM here. */
 function scoreAnswers(a){
@@ -351,6 +366,9 @@ function renderQuestion(){
 
   app.querySelectorAll(".opt").forEach(b=>{
     b.onclick=()=>{
+      if(step===0 && Object.keys(answers).length===0 && typeof va==='function'){
+        va('event',{name:'tool_start',data:{tool:'first_agent_picker'}});
+      }
       answers[q.id]=b.dataset.v;
       // auto-advance feels right on forced choice, but keep Next for changes of mind
       renderQuestion();
@@ -368,11 +386,44 @@ function applyInserts(base, keys, section){
   return [base, ...extra].join(" ");
 }
 
+function fallbackCopy(text, cb){
+  const ta=document.createElement("textarea");
+  ta.value=text; ta.style.position="fixed"; ta.style.left="-9999px";
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand("copy"); cb(); } catch(e){}
+  document.body.removeChild(ta);
+}
+function copyPlan(){
+  const text=window.__planText||"";
+  const flag=document.getElementById("copiedFlag");
+  const showCopied=()=>{ if(flag){ flag.hidden=false; setTimeout(()=>{flag.hidden=true;},2000); } };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(showCopied).catch(()=>fallbackCopy(text,showCopied));
+  } else {
+    fallbackCopy(text, showCopied);
+  }
+}
+function actionsHTML(){
+  return `<div class="cta-actions">
+      <button class="restart" type="button" onclick="copyPlan()">Copy result <span class="copied-flag" id="copiedFlag" hidden>Copied &#10003;</span></button>
+      <button class="restart" type="button" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+    <p class="return-link"><a href="../resources.html">&larr; Back to free resources</a></p>`;
+}
+
 function renderResult(){
   const res=scoreAnswers(answers);
 
   if(res.outcome==="foundation_first"){
     const f=FOUNDATION;
+    window.__planText=[
+      "FIRST-AGENT PICKER — RESULT",
+      f.verdict, "",
+      f.intro, "",
+      "Why not yet: "+f.reasons[res.reason], "",
+      "What to do instead: "+f.instead, "",
+      "akshatkharbanda.com/tools/first-agent-picker.html"
+    ].join("\n");
     app.innerHTML=`
       <div class="result">
         <div class="verdict-kicker">Your result</div>
@@ -380,16 +431,30 @@ function renderResult(){
         <p class="sec">${f.intro}</p>
         <div class="sec"><h3>Why not yet</h3><p>${f.reasons[res.reason]}</p></div>
         <div class="sec"><h3>What to do instead</h3><p>${f.instead}</p></div>
-        <div class="cta"><p>Or, if you'd rather I built it with you: the readiness work is where I start most engagements. <a href="https://cal.com/akshatkharbanda/strategy-call" target="_blank" rel="noopener">Let's talk</a>.</p></div>
-        <button class="restart">Start over</button>
+        <div class="cta"><p>Or, if you'd rather talk it through: the readiness work is where I start most engagements. <a href="https://cal.com/akshatkharbanda/strategy-call" target="_blank" rel="noopener" onclick="if(typeof va==='function'){va('event',{name:'consultation_click',data:{source:'agent_picker_result',tool:'first_agent_picker'}})}">Discuss your workflow</a>.</p></div>
+        ${actionsHTML()}
+        <button class="restart" type="button" id="restartBtn">Start over</button>
       </div>`;
-    app.querySelector(".restart").onclick=reset;
+    app.querySelector("#restartBtn").onclick=reset;
+    if(typeof va==='function'){va('event',{name:'tool_complete',data:{tool:'first_agent_picker',pattern_id:'foundation_first'}})}
     return;
   }
 
   const a=ARCHETYPES[res.outcome];
   const why=applyInserts(a.why, res.why, "why");
   const saves=applyInserts(a.saves, res.why, "saves");
+  const caseLink=CASE_LINK[res.outcome];
+
+  window.__planText=[
+    "FIRST-AGENT PICKER — RESULT",
+    "Your first agent: "+a.verdict, "",
+    a.what, "",
+    "Why this one for you: "+why, "",
+    "What it saves you in week one: "+saves, "",
+    "What makes it hold after handoff: "+a.holds,
+    caseLink ? "\nRelated case: "+caseLink.label : "",
+    "\nakshatkharbanda.com/tools/first-agent-picker.html"
+  ].join("\n");
 
   app.innerHTML=`
     <div class="result">
@@ -399,11 +464,13 @@ function renderResult(){
       <div class="sec"><h3>Why this one for you</h3><p>${why}</p></div>
       <div class="sec"><h3>What it saves you in week one</h3><p>${saves}</p></div>
       <div class="sec"><h3>What makes it hold after handoff</h3><p>${a.holds}</p></div>
-      <!-- TODO(Akshat): "Build Sprint" isn't a defined offer/page on the site yet. Linked to the booking call for now until you decide whether this needs its own page. -->
-      <div class="cta"><p>Want this built, and built to hold? That's the Build Sprint: one production agent, yours after handoff. <a href="https://cal.com/akshatkharbanda/strategy-call" target="_blank" rel="noopener">See how it works</a>.</p></div>
-      <button class="restart">Start over</button>
+      ${caseLink ? `<div class="sec"><h3>See it done</h3><p><a href="${caseLink.href}">${caseLink.label} &rarr;</a></p></div>` : ""}
+      <div class="cta"><p>Want this built, and built to hold? <a href="https://cal.com/akshatkharbanda/strategy-call" target="_blank" rel="noopener" onclick="if(typeof va==='function'){va('event',{name:'consultation_click',data:{source:'agent_picker_result',tool:'first_agent_picker'}})}">Discuss your workflow</a> and we'll figure out what it takes.</p></div>
+      ${actionsHTML()}
+      <button class="restart" type="button" id="restartBtn">Start over</button>
     </div>`;
-  app.querySelector(".restart").onclick=reset;
+  app.querySelector("#restartBtn").onclick=reset;
+  if(typeof va==='function'){va('event',{name:'tool_complete',data:{tool:'first_agent_picker',pattern_id:res.outcome}})}
 }
 
 function reset(){
