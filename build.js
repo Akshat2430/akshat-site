@@ -169,7 +169,7 @@ function buildCasePages(template) {
 function renderFeaturedCards() {
   const rows = cases.filter(c => c.featured).map(c => `
         <a href="work/${c.slug}.html" class="work-row">
-          <span class="tag tag-${c.category}">${c.category}</span>
+          <span class="tag tag-${c.category}">${c.homeTag || c.category}</span>
           <div class="work-row-body">
             <div class="work-row-q">${c.question}</div>
             <div class="work-row-meta">${c.client} · ${c.context}</div>
@@ -181,14 +181,14 @@ function renderFeaturedCards() {
 }
 
 function buildIndex() {
-  let html = read('index.html');
+  let html = read('operator.html');
   html = replaceBetween(
     html,
     '<!--BUILD:featured-cases-->',
     '<!--/BUILD:featured-cases-->',
     renderFeaturedCards()
   );
-  write('index.html', html);
+  write('operator.html', html);
   return cases.filter(c => c.featured).length;
 }
 

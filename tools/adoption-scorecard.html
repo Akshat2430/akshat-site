@@ -116,16 +116,28 @@
   .weak-card{border:1px solid var(--line);border-radius:11px;padding:16px 18px;background:var(--card)}
   .weak-card b{display:block;font-family:var(--serif);font-size:18px;margin-bottom:5px;color:var(--ink)}
   .weak-card span{font-size:15px;color:var(--body)}
+  .weak-experiment{display:block;margin:2px 0 14px;font-size:15px;color:var(--body)}
+  .weak-meta{display:flex;flex-wrap:wrap;gap:14px 24px;border-top:1px dashed var(--line);padding-top:12px}
+  .weak-meta div{flex:1 1 150px;font-size:13px;color:var(--body)}
+  .weak-meta-label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:3px}
 
   .cost{border:1px solid var(--line);border-radius:12px;padding:22px;background:var(--card);margin-bottom:30px}
   .cost .big{font-family:var(--serif);font-size:30px;line-height:1.22;font-weight:600;color:var(--ink);letter-spacing:-.01em}
   .cost .big em{font-style:normal;color:var(--clay)}
   .cost p{margin:10px 0 0;font-size:14px;color:var(--muted)}
 
-  .next{border-top:1px solid var(--line);padding-top:26px;margin-bottom:28px}
+  .related{border-top:1px solid var(--line);padding-top:22px;margin-bottom:28px}
+  .related-item{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--body)}
+  .related-item a{color:var(--clay);font-weight:600;white-space:nowrap}
+
+  .next{border-top:1px solid var(--line);padding-top:26px;margin-bottom:20px}
   .next p{margin:0 0 16px;font-size:16px;line-height:1.6;color:var(--body)}
+  .action-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+  .copied-flag{font-size:12px;color:var(--teal);margin-left:8px;font-weight:600}
 
   .restart{margin-top:34px;text-align:center}
+  .return-link{text-align:center;margin-top:16px;font-size:13px}
+  .return-link a{color:var(--muted)}
 
 :focus-visible { outline:2px solid var(--clay); outline-offset:4px; }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
@@ -133,7 +145,7 @@
 </head>
 <body>
 <main class="wrap">
-  <div class="brand"><span class="kick">AI Adoption Scorecard</span><a class="by" href="/index.html" style="text-decoration:none">The Business Backpacker</a></div>
+  <div class="brand"><span class="kick">AI Adoption Scorecard</span><a class="by" href="/operator.html" style="text-decoration:none">The Business Backpacker</a></div>
 
   <div id="progress" style="display:none">
     <div class="top"><span class="count" id="count"></span></div>
@@ -257,15 +269,43 @@ const Q = [
     extra:'cost' },
 ];
 
-const FIX = {
-  Leadership:  'Get one senior leader to show something they built with AI at the next all-hands. Their own work, warts included. Talk doesn\u2019t move people. Watching their boss do it does.',
-  Safety:      'Make it safe to show AI did the heavy lifting. When someone saves a day, say so out loud instead of handing them the next thing. People hide what gets punished.',
-  Incentive:   'Tie AI-driven wins to how people are rated. If saving time only earns more work, your best people stop saving time where anyone can see.',
-  'First win': 'Build a first-win moment into onboarding. Sit each new user down with their one real use case on day one, so the tool proves itself before they lose interest.',
-  Workflow:    'Move AI out of a separate tab and into something people already do every day. Adoption follows the work. It won\u2019t wait in another window.',
-  Governance:  'Write three guardrails a person can recite from memory: what\u2019s fine, what\u2019s off-limits, who to ask. Fuzzy rules make people avoid the tool.',
-  Champions:   'Give your best users a real remit and protected hours to spread what they know. A title with no time is a dead end, and everyone can tell.',
-  Measurement: 'Look at who is and isn\u2019t using what you pay for, monthly, and act on the gap. A dashboard nobody touches is just a nicer way of not knowing.',
+const EXPERIMENT = {
+  Leadership:  { action:'One senior leader shares something they made with AI \u2014 a doc, analysis, or draft \u2014 at the next team meeting or in the team channel.', owner:'The most senior leader willing to go first.', baseline:'Ask three people if they\u2019ve seen a leader\u2019s own AI work. Count the yeses.', outcome:'Whether anyone references that leader\u2019s example in their own work the following week.' },
+  Safety:      { action:'Next time someone finishes fast with AI, their manager says so out loud, framed as a win.', owner:'Direct manager of the team\u2019s fastest AI adopter.', baseline:'Note whether AI-assisted wins are currently mentioned openly or kept quiet.', outcome:'Whether that person, or others, mention AI use openly again the following week.' },
+  Incentive:   { action:'Add one explicit line crediting AI-assisted efficiency as a positive in the next review conversation.', owner:'The manager running that review.', baseline:'Whether AI use is currently part of any review criteria, yes or no.', outcome:'Whether that person keeps using AI visibly after the review.' },
+  'First win': { action:'Sit the next new hire down with one real, finishable task on day one, using AI start to finish.', owner:'Whoever runs onboarding.', baseline:'How long it took the last new hire to do something real with AI.', outcome:'Whether they use AI again unprompted in week two.' },
+  Workflow:    { action:'Move the AI step for one recurring task into the tool people already use for it, out of a separate tab.', owner:'Owner of that recurring task or process.', baseline:'Where AI currently lives for that task \u2014 separate tab, or embedded.', outcome:'Whether the embedded step keeps getting used without reminders a week later.' },
+  Governance:  { action:'Write exactly three rules \u2014 what\u2019s fine, what\u2019s off-limits, who to ask \u2014 and post them where the team will actually see them.', owner:'Owner of AI or compliance policy.', baseline:'Ask three people what they think the rules are today. Count how many different answers you get.', outcome:'Ask the same three people again in a week. Check for consistency.' },
+  Champions:   { action:'Give one named champion two protected hours this week to help three colleagues finish one real task each.', owner:'The champion\u2019s manager, who has to approve the time.', baseline:'Rough count of who that champion has informally helped in the last month.', outcome:'How many of the three colleagues use it again unprompted the following week.' },
+  Measurement: { action:'Pull this week\u2019s usage report, find the lowest 20% of users, and have one real conversation with one of them about why.', owner:'Owner of the AI tooling budget or admin console.', baseline:'Current usage report, or \u201cwe can\u2019t see this yet\u201d as the honest starting point.', outcome:'Whether that person\u2019s usage changes at all after the conversation.' },
+};
+
+/* Rationale text for "your answers suggest" \u2014 grounded in derivePattern()'s actual branches, not invented. */
+const SUPPORT = {
+  shelfware:   'the clearest signal is breadth: you said fewer than 1 in 5 people with access use it in a normal week.',
+  compliance:  'the clearest signal is leadership: you couldn\u2019t recall a specific leader showing their own AI work.',
+  island:      'the clearest signal is champions and measurement: your standout users aren\u2019t backed with protected time, and usage isn\u2019t spreading past them.',
+  wideshallow: 'the clearest signal is workflow: AI mostly lives outside where the real work happens, even with a lot of people trying it.',
+  fearfrozen:  'the clearest signal is safety or incentive: showing AI did the work isn\u2019t clearly safe or rewarded here yet.',
+  holding:     'the clearest signal is breadth: most of the drivers below scored high, including regular use across the team.',
+};
+
+/* Case/resource pairings per pattern \u2014 judgement calls, see docs/growth-audit/day5-result-content-sheet.md */
+const CASE_LINK = {
+  shelfware:   { href:'../work/scale-ai-across-30-countries.html', label:'How CHAI took AI from early adopters to majority active use' },
+  compliance:  { href:'../work/ai-pilot-that-actually-works.html', label:'How a Novo Nordisk pilot started with leadership modelling the behaviour first' },
+  island:      { href:'../work/scale-ai-across-30-countries.html', label:'How CHAI spread AI use beyond the first pilots' },
+  wideshallow: { href:'../work/give-executives-time-back.html', label:'How scattered effort at Viacom18 became one system people actually used' },
+  fearfrozen:  { href:'../work/scale-ai-across-30-countries.html', label:'How governance let nervous first-timers try AI safely at CHAI' },
+  holding:     { href:'../work/scale-ai-across-30-countries.html', label:'How CHAI got AI use to hold without ongoing hand-holding' },
+};
+const RESOURCE_LINK = {
+  shelfware:   { href:'../public/downloads/internal-ai-champions-playbook.pdf', label:'AI Champions Playbook (PDF)' },
+  compliance:  { href:'../public/downloads/internal-ai-champions-playbook.pdf', label:'AI Champions Playbook (PDF)' },
+  island:      { href:'../public/downloads/internal-ai-champions-playbook.pdf', label:'AI Champions Playbook (PDF)' },
+  wideshallow: null,
+  fearfrozen:  null,
+  holding:     null,
 };
 
 const PATTERN = {
@@ -289,7 +329,7 @@ let seats = null, cost = null, cur = '$';
 let i = 0;
 
 /* ---------- flow ---------- */
-function start(){ i = 0; show('question'); render(); document.getElementById('progress').style.display='block'; }
+function start(){ i = 0; show('question'); render(); document.getElementById('progress').style.display='block'; if(typeof va==='function'){va('event',{name:'tool_start',data:{tool:'adoption_scorecard'}})} }
 
 function render(){
   const q0 = Q[i];
@@ -372,13 +412,79 @@ function weakest(){
 
 function costLine(){
   if(!seats || !cost) return null;
-  const mid = q('breadth').opts[answers['breadth']].mid;
+  const opt = q('breadth').opts[answers['breadth']];
+  const mid = opt.mid;
   const unused = seats * cost * (1-mid);
   const fmt = n => cur + Math.round(n).toLocaleString();
-  return { spend:fmt(seats*cost), unused:fmt(unused) };
+  return { spend:fmt(seats*cost), unused:fmt(unused), bandLabel:opt.t, midPct:Math.round(mid*100) };
 }
 
 /* ---------- result ---------- */
+function weakCardHTML(w){
+  const e = EXPERIMENT[w.dim];
+  return '<div class="weak-card"><b>'+w.dim+'</b>'+
+    '<span class="weak-experiment">'+e.action+'</span>'+
+    '<div class="weak-meta">'+
+      '<div><span class="weak-meta-label">Owner</span>'+e.owner+'</div>'+
+      '<div><span class="weak-meta-label">Baseline</span>'+e.baseline+'</div>'+
+      '<div><span class="weak-meta-label">Check after 7 days</span>'+e.outcome+'</div>'+
+    '</div></div>';
+}
+
+function costPanelHTML(c){
+  return '<div class="cost">'+
+    '<div class="big">You\u2019re paying <em>'+c.spend+'</em> a year across these seats.</div>'+
+    '<p>Estimated spend associated with seats not used weekly: <strong>'+c.unused+'</strong>. Based on the band you selected (\u201c'+c.bandLabel+'\u201d), assuming about '+c.midPct+'% actual weekly use.</p>'+
+    '<p>Infrequent use isn\u2019t automatically wasted spend \u2014 someone using AI for one high-value task a week can be worth more than daily light use elsewhere. Treat this as a starting number for a conversation, not a verdict.</p>'+
+  '</div>';
+}
+
+function buildPlanText(w1, w2, p, key, c){
+  const e1 = EXPERIMENT[w1.dim], e2 = EXPERIMENT[w2.dim];
+  const caseLink = CASE_LINK[key];
+  const lines = [
+    'AI ADOPTION SCORECARD \u2014 RESULT',
+    'Pattern: ' + p.name,
+    '',
+    w1.dim + ': ' + e1.action,
+    '  Owner: ' + e1.owner,
+    '  Baseline: ' + e1.baseline,
+    '  Check after 7 days: ' + e1.outcome,
+    '',
+    w2.dim + ': ' + e2.action,
+    '  Owner: ' + e2.owner,
+    '  Baseline: ' + e2.baseline,
+    '  Check after 7 days: ' + e2.outcome,
+  ];
+  if(c){
+    lines.push('', 'Spend: ' + c.spend + '/yr total \u00b7 ~' + c.unused + ' estimated as spend on seats not used weekly (band: ' + c.bandLabel + ').');
+  }
+  if(caseLink){
+    lines.push('', 'Related case: ' + caseLink.label);
+  }
+  lines.push('', 'akshatkharbanda.com/tools/adoption-scorecard.html');
+  return lines.join('\n');
+}
+
+function fallbackCopy(text, cb){
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); cb(); } catch(e){}
+  document.body.removeChild(ta);
+}
+
+function copyPlan(){
+  const text = window.__planText || '';
+  const flag = document.getElementById('copiedFlag');
+  const showCopied = () => { if(flag){ flag.hidden = false; setTimeout(() => { flag.hidden = true; }, 2000); } };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(showCopied).catch(() => fallbackCopy(text, showCopied));
+  } else {
+    fallbackCopy(text, showCopied);
+  }
+}
+
 function finish(){
   const t = total();
   document.getElementById('fill').style.width='100%';
@@ -397,38 +503,48 @@ function finish(){
   const [w1,w2] = weakest();
   const c = costLine();
   const route = routing(t, key);
+  const caseLink = CASE_LINK[key];
+  const resourceLink = RESOURCE_LINK[key];
 
   let html =
     '<p class="r-kicker">Your adoption pattern</p>'+
     '<h2 class="r-pattern">'+p.name+'</h2>'+
     '<p class="r-band">Score '+t+' / 30 &nbsp;\u00b7&nbsp; '+bandLabel(t)+'</p>'+
     mismatch+
+    '<p class="r-body"><strong>Your answers suggest '+p.name.toLowerCase()+'.</strong> '+SUPPORT[key]+' This is a self-report read from ten questions, not a definitive diagnosis of your organisation \u2014 treat it as a hypothesis to check against what you actually see.</p>'+
     '<p class="r-body">'+p.body+'</p>'+
-    '<p class="sec-h">Your two weakest areas</p>'+
-    '<div class="weak">'+
-      '<div class="weak-card"><b>'+w1.dim+'</b><span>'+FIX[w1.dim]+'</span></div>'+
-      '<div class="weak-card"><b>'+w2.dim+'</b><span>'+FIX[w2.dim]+'</span></div>'+
-    '</div>';
+    '<p class="sec-h">Your two weakest areas \u2014 one seven-day experiment each</p>'+
+    '<div class="weak">'+ weakCardHTML(w1) + weakCardHTML(w2) +'</div>';
 
   if(c){
-    html +=
-      '<div class="cost">'+
-        '<div class="big">You\u2019re paying <em>'+c.spend+'</em> a year, and about <em>'+c.unused+'</em> of it buys access nobody opens.</div>'+
-        '<p>An estimate, based on the usage you reported. It\u2019s the number a CFO reacts to.</p>'+
-      '</div>';
+    html += costPanelHTML(c);
+  }
+
+  if(caseLink || resourceLink){
+    html += '<div class="related">' +
+      (caseLink ? '<div class="related-item"><span>See it done</span><a href="'+caseLink.href+'">'+caseLink.label+' &rarr;</a></div>' : '') +
+      (resourceLink ? '<div class="related-item"><span>Free resource</span><a href="'+resourceLink.href+'" target="_blank" rel="noopener">'+resourceLink.label+' &rarr;</a></div>' : '') +
+    '</div>';
   }
 
   html +=
     '<div class="next">'+
       '<p class="sec-h">Where to go from here</p>'+
       '<p>'+route.text+'</p>'+
-      '<a class="btn btn-primary" href="'+route.href+'" target="_blank" rel="noopener">'+route.cta+'</a>'+
+      '<a class="btn btn-primary" href="'+route.href+'" target="_blank" rel="noopener" onclick="if(typeof va===\'function\'){va(\'event\',{name:\'consultation_click\',data:{source:\'scorecard_result\',tool:\'adoption_scorecard\'}})}">'+route.cta+'</a>'+
+      '<div class="action-row">'+
+        '<button class="btn btn-line" type="button" onclick="copyPlan()">Copy action plan <span class="copied-flag" id="copiedFlag" hidden>Copied &#10003;</span></button>'+
+        '<button class="btn btn-line" type="button" onclick="window.print()">Print / Save as PDF</button>'+
+      '</div>'+
     '</div>'+
-    '<div class="restart"><button class="btn btn-ghost" onclick="location.reload()">Start again</button></div>';
+    '<div class="restart"><button class="btn btn-ghost" onclick="location.reload()">Start again</button></div>'+
+    '<p class="return-link"><a href="../resources.html">&larr; Back to free resources</a></p>';
 
   document.getElementById('result').innerHTML = html;
   show('result');
   window.scrollTo({top:0, behavior:'smooth'});
+  window.__planText = buildPlanText(w1, w2, p, key, c);
+  if(typeof va==='function'){va('event',{name:'tool_complete',data:{tool:'adoption_scorecard',pattern_id:key}})}
 }
 
 function routing(t, key){
@@ -436,10 +552,7 @@ function routing(t, key){
   if(key==='holding'){
     return { text:"You don\u2019t need me to run this. But if you want a second pair of eyes on keeping it holding, grab a slot.", cta:'Book a slot &rarr;', href:cal };
   }
-  if(t>=20 && t<=26){
-    return { text:"You\u2019re adopted but fragile. Send me your rollout before it drifts and I\u2019ll send back a 15-minute Loom and a one-page fix list.", cta:'Get the Teardown &rarr;', href:cal };
-  }
-  return { text:"Send me your rollout and I\u2019ll send back a 15-minute Loom and a one-page fix list showing exactly where it\u2019s stuck and the first three moves.", cta:'Get the Teardown &rarr;', href:cal };
+  return { text:"Want a second pair of eyes on this? Send me your rollout and let\u2019s talk through where it\u2019s stuck.", cta:'Discuss your rollout &rarr;', href:cal };
 }
 
 /* ---------- helpers ---------- */

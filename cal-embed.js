@@ -29,6 +29,7 @@
           action: 'bookingSuccessful',
           callback: function () {
             trackEvent('cal_booking', { location: mount.dataset.location || 'unknown' });
+            trackEvent('consultation_click', { source: mount.dataset.location || 'unknown' });
           },
         });
         initialised = true;

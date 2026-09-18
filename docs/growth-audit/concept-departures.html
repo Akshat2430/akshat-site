@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Concept sketch · AI Departures</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { background: var(--bg); }
+  .sketch-frame { max-width: 1120px; margin: 0 auto; padding: 48px 24px 96px; }
+  .sketch-tag { display: inline-block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-tertiary); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 5px 10px; margin-bottom: 28px; }
+
+  .dp-header { border-bottom: 2px solid var(--text-primary); padding-bottom: 22px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+  .dp-title { font: 400 clamp(34px,4.5vw,54px)/1.1 var(--font-serif); letter-spacing: -.02em; }
+  .dp-title em { color: var(--accent); font-style: italic; }
+  .dp-desk { font: 23px/1.2 'Caveat', cursive; color: var(--accent); transform: rotate(-2deg); }
+  .dp-sub { font-size: 15px; color: var(--text-secondary); max-width: 60ch; margin: 18px 0 40px; }
+
+  .dp-board-label { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: flex; justify-content: space-between; }
+
+  .dp-board {
+    background: var(--text-primary); border-radius: var(--radius-md); max-width: 680px;
+    padding: 6px; font-family: var(--mono, 'DM Sans'), monospace;
+  }
+  .dp-row {
+    display: grid; grid-template-columns: 1fr 1fr auto; gap: 16px; align-items: center;
+    padding: 16px 18px; border-radius: var(--radius-sm); cursor: pointer; width: 100%;
+    background: transparent; border: 0; text-align: left; color: var(--bg);
+  }
+  .dp-row:hover, .dp-row:focus-visible { background: rgba(255,255,255,.06); }
+  .dp-row:focus-visible { outline: 2px solid var(--accent-light); outline-offset: -2px; }
+  .dp-row.is-open { background: rgba(255,255,255,.08); }
+  .dp-route { font: 400 18px/1.3 var(--font-serif); color: #fff9f0; }
+  .dp-route-sub { font-family: var(--font-sans); font-size: 11px; color: var(--accent-light); margin-top: 3px; }
+  .dp-status { font-family: var(--font-sans); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-light); text-align: right; }
+  .dp-status.delayed { color: #f0a878; }
+  .dp-status.gate { color: #e9c992; }
+  .dp-arrow { color: var(--accent-light); font-size: 16px; }
+
+  .dp-reveal { display: none; max-width: 680px; margin-top: 4px; background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--accent); border-radius: var(--radius-md); padding: 26px 28px; }
+  .dp-reveal.open { display: block; animation: rise .3s ease both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .dp-recognition { font: italic 17px/1.5 var(--font-serif); color: var(--text-primary); margin-bottom: 14px; }
+  .dp-explain { font-size: 15px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 18px; }
+  .dp-action-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px; }
+  .dp-action { font-size: 15px; color: var(--text-primary); margin-bottom: 22px; }
+
+  .dp-meta { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-tertiary); }
+  .dp-meta a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 560px) {
+    .dp-header { display: block; }
+    .dp-desk { margin-top: 10px; display: inline-block; }
+    .dp-row { grid-template-columns: 1fr auto; }
+    .dp-status { grid-column: 1/2; text-align: left; }
+    .dp-arrow { grid-row: 1/2; grid-column: 2/3; }
+  }
+</style>
+</head>
+<body>
+<div class="sketch-frame">
+  <p class="sketch-tag">Concept sketch, Day 1 &middot; one sample item of four &middot; not a production route</p>
+
+  <header class="dp-header">
+    <h1 class="dp-title">AI <em>Departures</em></h1>
+    <span class="dp-desk">Gate information for stalled rollouts</span>
+  </header>
+  <p class="dp-sub">Four journeys currently delayed. Select one to see the blocker on the gate agent's screen and the next move to get it moving again.</p>
+
+  <p class="dp-board-label"><span>Route &middot; Status</span><span>Board 2 of 4</span></p>
+
+  <div class="dp-board">
+    <button class="dp-row is-open" id="itemToggle" aria-expanded="false" aria-controls="itemReveal">
+      <div>
+        <div class="dp-route">Pilot &rarr; Production</div>
+        <div class="dp-route-sub">Gate: no assigned owner</div>
+      </div>
+      <div class="dp-status delayed">Delayed</div>
+      <div class="dp-arrow" id="itemHintText">&darr;</div>
+    </button>
+  </div>
+
+  <div class="dp-reveal" id="itemReveal">
+    <p class="dp-recognition">The pilot worked. Everyone agreed it worked. Then it sat at the gate, because nobody owned getting it onto the next flight.</p>
+    <p class="dp-explain">A successful pilot with no named owner for the next stage doesn't fail loudly, it just never boards. The people who ran it move to the next project. The result gets mentioned in a deck twice, then never again. This is the single most common place rollouts stall: not the build, the handoff.</p>
+    <div class="dp-action-label">Next move</div>
+    <p class="dp-action">Name one accountable owner for taking this from pilot to daily use, before you run another pilot. If you're not sure who that should be, that's the gap to check first.</p>
+    <a class="btn btn-primary" href="../../tools/adoption-scorecard.html">Find your rollout's blocker &rarr;</a>
+  </div>
+
+  <div class="dp-meta">
+    Sketch notes: three more rows follow &mdash; Workshop &rarr; Habit (cancelled after launch), Licence &rarr; Value (gate change), Agent &rarr; Everyday use (awaiting handoff) &mdash; each opening its own gate-agent explanation and routing to scorecard or agent picker. Full four-row board with stable anchors is Day 6&ndash;7 scope. Accessibility note carried into that build: the departure-board metaphor needs a plain-language status label alongside the airport styling (already present here as "Delayed") so the joke doesn't cost comprehension for anyone unfamiliar with the format.
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('itemToggle');
+  const reveal = document.getElementById('itemReveal');
+  const hint = document.getElementById('itemHintText');
+  btn.addEventListener('click', () => {
+    const open = reveal.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    hint.textContent = open ? '↑' : '↓';
+  });
+</script>
+</body>
+</html>

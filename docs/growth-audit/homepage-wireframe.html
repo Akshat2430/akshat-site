@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Homepage wireframe (Day 1 draft) · not for publication</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  /* Wireframe-only scaffolding. Real component classes below (hero, topic-grid, work-row,
+     writing-grid, cta-block, btn) are the live ones from styles.css — reused, not redefined,
+     so Day 3 implementation can lift markup straight from here. New sections not yet in
+     styles.css (tool cards, example panel, service-hierarchy, campaign teaser) get their own
+     scoped classes here, meant to move into the shared stylesheet on build. */
+  body { background: var(--bg); }
+  .wf-banner { background: var(--text-primary); color: var(--bg); font-size: 12px; text-align: center; padding: 10px 16px; }
+  .wf-note { font-size: 12px; color: var(--text-tertiary); border-left: 2px dashed var(--border-strong); padding: 4px 0 4px 14px; margin: 10px 0 28px; max-width: 70ch; }
+
+  /* nav placeholder: real injected nav.js is not wired into this static wireframe.
+     This block stands in for the brief's simplified nav spec so it can be reviewed in place. */
+  .wf-nav { display: flex; justify-content: space-between; align-items: center; max-width: 1240px; margin: 0 auto; padding: 20px 24px; border-bottom: .5px solid var(--border); }
+  .wf-nav-logo { font-family: var(--font-serif); font-size: 21px; }
+  .wf-nav-logo small { display: block; font: 9px var(--font-sans); text-transform: uppercase; letter-spacing: .19em; color: var(--text-secondary); }
+  .wf-nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .wf-nav-links a { font-size: 14px; color: var(--text-secondary); }
+  .wf-nav-links a.current { text-decoration: underline; text-underline-offset: 6px; color: var(--text-primary); }
+  .wf-nav-talk { font-weight: 600; color: var(--accent) !important; }
+
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* proof-below-cta: one verified line directly under hero actions, per brief P1 mobile fix */
+  .wf-proof-line { font-size: 14px; color: var(--text-secondary); margin: 14px 0 0; }
+  .wf-proof-line strong { color: var(--text-primary); }
+
+  /* hero art placeholder: real SVG reduction (160-180px mobile) is Day 3 art work, not this wireframe */
+  .wf-hero-art-note { border: 1px dashed var(--border-strong); border-radius: var(--radius-md); padding: 18px; font-size: 12px; color: var(--text-tertiary); text-align: center; }
+
+  /* two verified outcomes, linked to real cases */
+  .wf-outcomes { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 40px 0; }
+  .wf-outcome-card { border-top: 1px solid var(--border-strong); padding-top: 18px; }
+  .wf-outcome-kicker { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .wf-outcome-stat { font: 400 34px/1.1 var(--font-serif); color: var(--text-primary); }
+  .wf-outcome-label { font-size: 14px; color: var(--text-secondary); margin: 6px 0 12px; }
+  .wf-outcome-link { font-size: 13px; text-decoration: underline; text-underline-offset: 4px; }
+
+  /* two tool cards, equal width, example result panel */
+  .wf-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; }
+  .wf-tool-card { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 26px; background: var(--surface); display: flex; flex-direction: column; }
+  .wf-tool-kicker { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .wf-tool-headline { font: 400 24px/1.25 var(--font-serif); color: var(--text-primary); margin-bottom: 10px; }
+  .wf-tool-copy { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+  .wf-tool-meta { font-size: 12px; color: var(--text-tertiary); margin-top: 10px; }
+
+  .wf-example-panel { border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: 26px 28px; background: var(--bg); position: relative; margin-bottom: 48px; }
+  .wf-example-label { position: absolute; top: -11px; left: 22px; background: var(--text-primary); color: var(--bg); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; }
+  .wf-example-pattern { font: 400 22px/1.3 var(--font-serif); color: var(--text-primary); margin: 6px 0 10px; }
+  .wf-example-body { font-size: 15px; line-height: 1.65; color: var(--text-secondary); }
+  .wf-example-body strong { color: var(--text-primary); }
+
+  /* service hierarchy: two primary + one secondary row */
+  .wf-services-primary { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+  .wf-service-card { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 26px; }
+  .wf-service-num { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+  .wf-service-title { font: 400 24px/1.25 var(--font-serif); margin-bottom: 10px; }
+  .wf-service-body { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+  .wf-service-secondary { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; background: var(--surface); }
+  .wf-service-secondary p { font-size: 14px; color: var(--text-secondary); margin: 0; }
+  .wf-service-secondary a { font-size: 13px; text-decoration: underline; text-underline-offset: 4px; flex-shrink: 0; }
+
+  /* campaign teaser */
+  .wf-campaign { border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: 30px; background: var(--surface); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .wf-campaign-title { font: 400 26px/1.2 var(--font-serif); }
+  .wf-campaign-title em { color: var(--accent); font-style: italic; }
+  .wf-campaign p { font-size: 14px; color: var(--text-secondary); max-width: 50ch; margin: 10px 0 0; }
+
+  /* footer link groups: moved-out secondary pages */
+  .wf-footer-groups { display: flex; gap: 40px; flex-wrap: wrap; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .wf-footer-groups a { font-size: 13px; color: var(--text-secondary); display: block; padding: 6px 0; }
+
+  @media (max-width: 768px) {
+    .wf-outcomes, .wf-tools, .wf-services-primary { grid-template-columns: 1fr; }
+    .wf-nav-links { display: none; }
+  }
+</style>
+</head>
+<body class="home">
+<div class="wf-banner">Day 1 wireframe &middot; rough layout only, copy per brief &sect;3 &middot; not the production homepage &middot; implementation is Day 3 scope</div>
+
+<header class="wf-nav">
+  <div class="wf-nav-logo">Akshat Kharbanda<small>The Business Backpacker</small></div>
+  <ul class="wf-nav-links" style="list-style:none; display:flex; gap:28px;">
+    <li><a href="#">Work</a></li>
+    <li><a href="#" class="current">Free Tools</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#contact" class="wf-nav-talk">Let's talk &rarr;</a></li>
+  </ul>
+</header>
+<div class="container">
+  <p class="wf-note">Nav note: brief §2 asks for Work / Free Tools / About / Let's talk at ~14px, with Method, Writing, Speaking, Content, Side Quests moved to the footer (see bottom of this wireframe) and keyboard-operable mobile menu preserved from <code>nav.js</code>. "Free Resources" label kept vs. "Free Tools" is a copy call for Akshat &mdash; brief text uses both; picked "Free Tools" here to match §2's acceptance criterion wording, flagging for confirmation.</p>
+
+  <!-- 2. HERO -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="section-label">Akshat Kharbanda &middot; The Business Backpacker</p>
+      <h1 class="page-title">Make AI part of how your team <em>works.</em></h1>
+      <p class="hero-bridge">I help leaders turn scattered experiments into everyday workflows with practical agents and the adoption work that makes them stick.</p>
+      <div class="hero-actions">
+        <a href="../../tools/adoption-scorecard.html" class="btn btn-primary">Find your adoption bottleneck &rarr;</a>
+        <a href="#contact" class="text-link">Discuss a project &rarr;</a>
+      </div>
+      <p class="wf-proof-line">Free scorecard &middot; 10 questions &middot; No email required.</p>
+      <p class="wf-note">Two-minute estimate kept from the existing tool meta description &mdash; brief says keep only if timed trials support it; no timing data exists yet (see Day 1 inventory §5/§7 gap list), so this should be re-timed before Day 3 ships, per brief §6 ("Time five completions").</p>
+    </div>
+    <aside class="hero-art">
+      <div class="wf-hero-art-note">Hero art: reduce to ~160&ndash;180px height on mobile (brief P1). Reuses existing coffee/signature SVG from <code>public/images/field-marks.svg</code>, re-cropped &mdash; art rework is Day 3, not redrawn for this wireframe.</div>
+    </aside>
+  </section>
+
+  <!-- 3. TWO VERIFIED OUTCOMES -->
+  <section class="wf-outcomes">
+    <div class="wf-outcome-card">
+      <p class="wf-outcome-kicker">Verified &middot; AI adoption</p>
+      <div class="wf-outcome-stat">Majority</div>
+      <p class="wf-outcome-label">of CHAI staff now active AI users, up from early adopters, across 30+ countries.</p>
+      <a class="wf-outcome-link" href="../../work/scale-ai-across-30-countries.html">Read the rollout &rarr;</a>
+    </div>
+    <div class="wf-outcome-card">
+      <p class="wf-outcome-kicker">Verified &middot; Agent build</p>
+      <div class="wf-outcome-stat">4 agents</div>
+      <p class="wf-outcome-label">in daily use for a public company CEO. Company-wide rollout now underway.</p>
+      <a class="wf-outcome-link" href="../../work/build-a-ceo-an-ai-workforce.html">Read the build &rarr;</a>
+    </div>
+  </section>
+  <p class="wf-note">Both numbers pulled directly from <code>data/cases.js</code> outcomes arrays (source of truth) rather than the current homepage teaser copy, which merges/paraphrases figures &mdash; see Day 1 inventory §6 for the specific mismatches to avoid repeating.</p>
+
+  <!-- 4. TWO TOOL CARDS + EXAMPLE -->
+  <section>
+    <p class="section-label">01 / Free tools</p>
+    <h2 class="section-title">Try it before you <em>talk to me.</em></h2>
+    <div class="wf-tools">
+      <div class="wf-tool-card">
+        <p class="wf-tool-kicker">Adoption scorecard</p>
+        <h3 class="wf-tool-headline">Your team has AI. What's getting in the way?</h3>
+        <p class="wf-tool-copy">Get a likely adoption pattern, two areas to investigate, and a practical next step.</p>
+        <a class="btn btn-primary" href="../../tools/adoption-scorecard.html">Check your rollout &rarr;</a>
+        <p class="wf-tool-meta">10 questions &middot; no email required</p>
+      </div>
+      <div class="wf-tool-card">
+        <p class="wf-tool-kicker">First-agent picker</p>
+        <h3 class="wf-tool-headline">Which agent should you build first?</h3>
+        <p class="wf-tool-copy">Start with the work that is piling up. Get a suggested starting point to investigate.</p>
+        <a class="btn btn-primary" href="../../tools/first-agent-picker.html">Find a starting point &rarr;</a>
+        <p class="wf-tool-meta">6 questions &middot; no email required</p>
+      </div>
+    </div>
+    <div class="wf-example-panel">
+      <span class="wf-example-label">Illustrative example</span>
+      <p class="wf-tool-kicker" style="margin-top:6px;">Likely pattern</p>
+      <p class="wf-example-pattern">Island of excellence</p>
+      <p class="wf-example-body">A few people get value; the practice isn't spreading. <strong>This week:</strong> give one champion protected time to help three colleagues complete a real task. <strong>Measure:</strong> how many repeat it without help.</p>
+    </div>
+  </section>
+  <p class="wf-note">This example panel is the brief's one required "inset paper panel" (§2 P1) doing double duty as the tool section's example result (§3). Copy is verbatim from brief §3; must stay clearly labelled "Illustrative example" everywhere it appears and never be positioned near the real scorecard flow where it could read as an actual result &mdash; per brief §2 acceptance criterion.</p>
+
+  <!-- 5. SERVICE HIERARCHY -->
+  <section>
+    <p class="section-label">02 / What I do</p>
+    <h2 class="section-title">Different problems.<br><em>Same human gap.</em></h2>
+    <div class="wf-services-primary">
+      <div class="wf-service-card">
+        <p class="wf-service-num">AI adoption</p>
+        <h3 class="wf-service-title">Turn access into everyday practice.</h3>
+        <p class="wf-service-body">Anyone can report login numbers. I close the gap between "bought" and "used" until it's the norm, not a launch-week spike.</p>
+      </div>
+      <div class="wf-service-card">
+        <p class="wf-service-num">Agent builds</p>
+        <h3 class="wf-service-title">Build an agent around a real workflow.</h3>
+        <p class="wf-service-body">Coding is the 10%. The 90% is designing agents around someone's real day, then building them to hold after handoff.</p>
+      </div>
+    </div>
+    <div class="wf-service-secondary">
+      <p>Entering a new market or rethinking your positioning? Explore brand &amp; GTM work.</p>
+      <a href="../../work.html">See brand &amp; GTM cases &rarr;</a>
+    </div>
+  </section>
+
+  <!-- 6. THREE CASES, AI FIRST -->
+  <section>
+    <p class="section-label">03 / Selected work</p>
+    <h2 class="section-title">Dispatches from <em>the field.</em></h2>
+    <div>
+      <a href="../../work/scale-ai-across-30-countries.html" class="work-row">
+        <span class="tag tag-Building">Adoption</span>
+        <div class="work-row-body">
+          <div class="work-row-q">How do you roll out Generative AI across 30+ countries?</div>
+          <div class="work-row-meta">Clinton Health Access Initiative &middot; USA</div>
+        </div>
+        <div class="work-row-arrow">&rarr;</div>
+      </a>
+      <a href="../../work/build-a-ceo-an-ai-workforce.html" class="work-row">
+        <span class="tag tag-Building">Agent</span>
+        <div class="work-row-body">
+          <div class="work-row-q">How do you build a CEO an AI workforce that actually holds?</div>
+          <div class="work-row-meta">Public tech company &middot; USA</div>
+        </div>
+        <div class="work-row-arrow">&rarr;</div>
+      </a>
+      <a href="../../work/brand-for-millions-across-15-countries.html" class="work-row">
+        <span class="tag tag-Building">Brand</span>
+        <div class="work-row-body">
+          <div class="work-row-q">How do you define a brand for millions of people across 15 countries?</div>
+          <div class="work-row-meta">Novo Nordisk &middot; Denmark</div>
+        </div>
+        <div class="work-row-arrow">&rarr;</div>
+      </a>
+    </div>
+  </section>
+  <p class="wf-note">Order flips current homepage sequence (brand, adoption, agent) to adoption, agent, brand per brief P1. "Building" tag reused as-is here only because it's the existing `data/cases.js` category value &mdash; brief flags this label as ambiguous project-status-sounding copy; the fix is a copy/data decision for Akshat (add a role label or drop the tag), not something this wireframe should silently resolve.</p>
+
+  <!-- 7. CAMPAIGN TEASER -->
+  <section>
+    <div class="wf-campaign">
+      <div>
+        <h3 class="wf-campaign-title">AI Lost <em>&amp; Found</em></h3>
+        <p>Four familiar adoption failures, and what to actually do about each one.</p>
+      </div>
+      <a class="btn btn-line" href="concept-lost-and-found.html">Preview the concept &rarr;</a>
+    </div>
+    <p class="wf-note">Placeholder teaser only &mdash; links to the Day 1 concept sketch, not a real campaign page. Lost &amp; Found is the Day 1 judgement-based recommendation (see concept-comparison.md); swap this block's title/link once Akshat confirms the concept on Day 2 and the real /lost-and-found.html (or chosen alternative) exists.</p>
+  </section>
+
+  <!-- 8 & 9: compact speaking/writing + invitation kept structurally identical to current homepage sections, not redrawn here -->
+  <p class="wf-note">Sections 8 (compact speaking/writing) and 9 (project invitation + footer) are structurally unchanged from the current homepage's existing <code>.speaking-preview</code>, <code>.writing-grid</code>, and <code>.cta-block</code> markup &mdash; no wireframe redraw needed, just copy updates per brief (e.g. CTA defaulting to "Discuss your workflow" until the AI Workflow &amp; Adoption Sprint offer is confirmed, per brief §3).</p>
+
+  <div class="wf-footer-groups">
+    <div><a href="#">Method</a></div>
+    <div><a href="#">Writing</a></div>
+    <div><a href="#">Speaking</a></div>
+    <div><a href="#">Content</a></div>
+    <div><a href="#">Side Quests</a></div>
+  </div>
+  <p class="wf-note">Footer link group for pages moved out of primary nav per brief §2. Existing footer (LinkedIn/Instagram/Substack/Email) stays; this row is additive, sitting in <code>nav.js</code>'s <code>footerHTML</code> template.</p>
+</div>
+</body>
+</html>

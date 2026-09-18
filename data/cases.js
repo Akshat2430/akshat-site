@@ -232,27 +232,6 @@ const cases = [
     ]
   },
   {
-    slug: "brand-for-millions-across-15-countries",
-    question: "How do you define a brand for millions of people across 15 countries?",
-    subtitle: "Double-digit global preference boost",
-    category: "Building",
-    client: "Novo Nordisk",
-    context: "Denmark",
-    featured: true,
-    problem: "Novo Nordisk needed brand positioning that worked for millions of people across 15+ countries with different healthcare systems, cultural attitudes, and regulatory environments. GLP-1 market had evolved from niche specialty to consumer-influenced phenomenon. The brand needed to succeed in both clinical credibility with healthcare providers and consumer appeal with patients...simultaneously, globally.",
-    what_i_did: "Served on the core team developing global brand strategy for Novo Nordisk's leading obesity medication. Structured analysis across three lines of inquiry: market dynamics, consumer psychology, and clinical differentiation. Translated the 7000-person segmentation research into actionable positioning inputs. Developed the positioning framework balancing emotional and functional benefits, tested across stakeholder groups, built for global consistency with local flexibility.",
-    outcomes: [
-      { number: "15+", label: "countries covered in positioning" },
-      { number: "Double-digit", label: "projected global preference improvement" },
-      { number: "3", label: "strategic pillars developed" }
-    ],
-    learnings: [
-      "Universal psychological patterns exist across markets, but you have to design your research to find them. Assuming local uniqueness produces local insights.",
-      "The hardest creative tension in global brand work: maintaining a core that travels, while giving markets enough flexibility to feel local ownership.",
-      "Brand strategy is only as good as its translation into execution. Shared language across regions and functions matters as much as the strategy itself."
-    ]
-  },
-  {
     slug: "scale-ai-across-30-countries",
     question: "How do you roll out Generative AI across 30+ countries?",
     subtitle: "A licence everyone has → a tool the majority actually use",
@@ -261,11 +240,12 @@ const cases = [
     context: "USA",
     featured: true,
     highlight: true,
+    homeTag: "Adoption",
     problem: "CHAI bought access to generative AI tools for teams in 30+ countries. That decision took an afternoon. Getting people to use them was the real problem: thousands of staff, each in a different healthcare system, each starting from a different level of technical comfort, each choosing every day whether to open the tool or fall back on the way they already knew. Some workflows touched sensitive health data, which raised the stakes for anyone trying it for the first time. The brief read like a software rollout. The work was behaviour change at organisational scale.",
     what_i_did: "Ran it in stages instead of one launch. Progressive pilots to find which use cases actually stuck. Internal resources and training so people had a low-stakes way in. Governance for the things that matter, sensitive data especially, so a first-timer could use AI without worrying they'd break something. That took the organisation from a handful of early adopters to the majority of staff. The question has since shifted from 'is anyone using this' to 'what are the best users doing,' surfacing those use cases and scaling them across teams. Part-time engagement with CHAI's US HQ, ongoing.",
     outcomes: [
       { number: "30+", label: "countries in rollout scope" },
-      { number: "Majority", label: "of staff now active users, up from early adopters" },
+      { number: ">80%", label: "of staff now active users, up from early adopters" },
       { number: "3", label: "phases: pilots, enablement, governance" }
     ],
     learnings: [
@@ -318,19 +298,42 @@ const cases = [
     question: "How do you build a CEO an AI workforce that actually holds?",
     subtitle: "Hundred small extractions → one dedicated agent each",
     category: "Building",
-    client: "Public tech company",
+    client: "$2.6B public tech company",
     context: "USA",
     featured: true,
+    homeTag: "Agent build",
     problem: "A public company CEO's time wasn't disappearing into big decisions. It was leaking into the hundred small extractions that come before one: dig through this report, summarise that call, draft the first pass of everything. A single assistant trying to cover all of that just becomes one more thing to manage.",
     what_i_did: "Mapped where the hours actually went, not where he assumed they went. Built one agent per job (research, synthesis, meeting prep, drafting), each wired directly into the tools he already used. The requirement: the system had to run without hand-holding through a day that changes every 20 minutes. Now expanding the same architecture company-wide.",
     outcomes: [
-      { number: "4", label: "dedicated agents in daily use" },
+      { number: "4", label: "agents in daily use" },
       { number: "Company-wide", label: "rollout now underway" }
     ],
     learnings: [
       "Most of what ate his day was never actually his job: research, synthesis, first drafts. That's what the agents took over.",
       "One agent per job outperformed one assistant trying to do everything.",
       "The hard part was behavioural design, figuring out what he'd trust enough to stop double-checking."
+    ]
+  },
+  {
+    slug: "brand-for-millions-across-15-countries",
+    question: "How do you define a brand for millions of people across 15 countries?",
+    subtitle: "Double-digit global preference boost",
+    category: "Building",
+    client: "Novo Nordisk",
+    context: "Denmark",
+    featured: true,
+    homeTag: "Brand & GTM",
+    problem: "Novo Nordisk needed brand positioning that worked for millions of people across 15+ countries with different healthcare systems, cultural attitudes, and regulatory environments. GLP-1 market had evolved from niche specialty to consumer-influenced phenomenon. The brand needed to succeed in both clinical credibility with healthcare providers and consumer appeal with patients...simultaneously, globally.",
+    what_i_did: "Served on the core team developing global brand strategy for Novo Nordisk's leading obesity medication. Structured analysis across three lines of inquiry: market dynamics, consumer psychology, and clinical differentiation. Translated the 7000-person segmentation research into actionable positioning inputs. Developed the positioning framework balancing emotional and functional benefits, tested across stakeholder groups, built for global consistency with local flexibility.",
+    outcomes: [
+      { number: "15+", label: "countries covered in positioning" },
+      { number: "Double-digit", label: "projected global preference improvement" },
+      { number: "3", label: "strategic pillars developed" }
+    ],
+    learnings: [
+      "Universal psychological patterns exist across markets, but you have to design your research to find them. Assuming local uniqueness produces local insights.",
+      "The hardest creative tension in global brand work: maintaining a core that travels, while giving markets enough flexibility to feel local ownership.",
+      "Brand strategy is only as good as its translation into execution. Shared language across regions and functions matters as much as the strategy itself."
     ]
   },
   {

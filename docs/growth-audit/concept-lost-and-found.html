@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Concept sketch · AI Lost &amp; Found</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  /* Sketch-only scaffolding. Reuses house tokens/fonts from styles.css; nothing here overrides shared components. */
+  body { background: var(--bg); }
+  .sketch-frame { max-width: 1120px; margin: 0 auto; padding: 48px 24px 96px; }
+  .sketch-tag { display: inline-block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-tertiary); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 5px 10px; margin-bottom: 28px; }
+  .lf-header { border-bottom: 2px solid var(--text-primary); padding-bottom: 22px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+  .lf-title { font: 400 clamp(34px,4.5vw,54px)/1.1 var(--font-serif); letter-spacing: -.02em; }
+  .lf-title em { color: var(--accent); font-style: italic; }
+  .lf-desk { font: 23px/1.2 'Caveat', cursive; color: var(--accent); transform: rotate(-2deg); }
+  .lf-sub { font-size: 15px; color: var(--text-secondary); max-width: 60ch; margin: 18px 0 40px; }
+
+  .lf-shelf { border-top: 1px dashed var(--border-strong); padding-top: 30px; }
+  .lf-shelf-label { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+
+  .lf-tag {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 26px 28px; max-width: 560px; position: relative; cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .lf-tag:hover, .lf-tag:focus-visible { border-color: var(--accent); background: var(--surface-hover); }
+  .lf-tag:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .lf-tag::before {
+    content: ''; position: absolute; top: -10px; left: 28px; width: 18px; height: 18px;
+    border-radius: 50%; background: var(--bg); border: 1px solid var(--border-strong);
+  }
+  .lf-item-label { font: 400 26px/1.25 var(--font-serif); color: var(--text-primary); margin-bottom: 6px; }
+  .lf-seen { font-family: var(--font-sans); font-size: 12px; letter-spacing: .04em; color: var(--text-tertiary); }
+  .lf-hint { margin-top: 16px; font-size: 13px; color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+
+  .lf-reveal { display: none; max-width: 560px; margin-top: 18px; border-left: 2px solid var(--accent); padding: 4px 0 4px 22px; }
+  .lf-reveal.open { display: block; animation: rise .3s ease both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .lf-recognition { font: italic 17px/1.5 var(--font-serif); color: var(--text-primary); margin-bottom: 14px; }
+  .lf-explain { font-size: 15px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 18px; }
+  .lf-action-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px; }
+  .lf-action { font-size: 15px; color: var(--text-primary); margin-bottom: 22px; }
+  .lf-cta { display: inline-flex; align-items: center; gap: 8px; }
+
+  .lf-meta { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-tertiary); }
+  .lf-meta a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 560px) {
+    .lf-header { display: block; }
+    .lf-desk { margin-top: 10px; display: inline-block; }
+    .lf-tag, .lf-reveal { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="sketch-frame">
+  <p class="sketch-tag">Concept sketch, Day 1 &middot; one sample item of four &middot; not a production route</p>
+
+  <header class="lf-header">
+    <h1 class="lf-title">AI Lost <em>&amp; Found</em></h1>
+    <span class="lf-desk">Office of unclaimed adoption</span>
+  </header>
+  <p class="lf-sub">Everything here belongs to somebody's rollout. Claim yours, or see what it takes to stop losing things like this.</p>
+
+  <div class="lf-shelf">
+    <p class="lf-shelf-label">Item 2 of 4 &middot; Filed under: Enthusiasm</p>
+
+    <button class="lf-tag" id="itemToggle" aria-expanded="false" aria-controls="itemReveal">
+      <div class="lf-item-label">Workshop enthusiasm</div>
+      <div class="lf-seen">Last seen: the Monday after training</div>
+      <div class="lf-hint" id="itemHintText">Claim this item &rarr;</div>
+    </button>
+
+    <div class="lf-reveal" id="itemReveal">
+      <p class="lf-recognition">You ran the session. Everyone nodded. Nobody's workflow moved.</p>
+      <p class="lf-explain">The workshop created ideas, but nobody changed a recurring task. Pick one real workflow and have a small team practise it together this week. Give them a reviewer and time to compare outputs. Check whether they repeat it next week without being prompted &mdash; that's the only signal that tells you whether the enthusiasm survived contact with Tuesday.</p>
+      <div class="lf-action-label">This week</div>
+      <p class="lf-action">Give one team one recurring task, one reviewer, and seven days. Watch for repeat use, not applause.</p>
+      <a class="btn btn-primary lf-cta" href="../../tools/adoption-scorecard.html">Find what's blocking your rollout &rarr;</a>
+    </div>
+  </div>
+
+  <div class="lf-meta">
+    Sketch notes: the other three items (Pilot owner &rarr; ownership checklist, ROI baseline &rarr; measurement template, Unused licence &rarr; scorecard) follow this same claim-a-tag pattern with their own recognition line, explanation, and CTA. Full build with four stable anchors (<code>#licences #enthusiasm #owner #baseline</code>) is a Day 6&ndash;7 deliverable, not this sketch. This item links live to <a href="../../tools/adoption-scorecard.html">the real adoption scorecard</a>.
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('itemToggle');
+  const reveal = document.getElementById('itemReveal');
+  const hint = document.getElementById('itemHintText');
+  btn.addEventListener('click', () => {
+    const open = reveal.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    hint.textContent = open ? 'Close this item ↑' : 'Claim this item →';
+  });
+</script>
+</body>
+</html>
