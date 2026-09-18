@@ -67,12 +67,14 @@ function injectNav() {
       ? [
           { href: `${root}work.html`, label: 'Work', key: 'work' },
           { href: `${root}resources.html`, label: 'Free Tools', key: 'resources' },
+          { href: `${root}creator.html`, label: 'Writing & speaking', key: 'creator' },
           { href: `${root}about.html`, label: 'About', key: 'about' },
         ]
       : [
           { href: `${root}writing.html`, label: 'Writing', key: 'writing' },
           { href: `${root}speaking.html`, label: 'Speaking', key: 'speaking' },
           { href: `${root}content.html`, label: 'Content', key: 'content' },
+          { href: `${root}operator.html`, label: 'Work with me', key: 'operator' },
           { href: `${root}about.html`, label: 'About', key: 'about' },
         ];
     const talkLink = { href: `${root}${zone}.html#contact`, label: "Let's talk" };

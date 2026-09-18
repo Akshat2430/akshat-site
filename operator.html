@@ -31,6 +31,7 @@
   <link rel="apple-touch-icon" href="/public/images/akshat-avatar.jpg" />
 
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="editorial.css" />
   <script src="data/cases.js"></script>
   <script src="nav.js" defer></script>
   <script src="cal-embed.js" defer></script>
@@ -40,93 +41,63 @@
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 
-<body class="home">
+<body class="home page-operator">
 
   <main class="page">
     <div class="container">
 
       <section class="hero">
         <div class="hero-copy">
-          <p class="section-label">Akshat Kharbanda · The Business Backpacker</p>
+          <p class="section-label">01 / The work · AI, with people in mind</p>
           <h1 class="page-title">Make AI part of how your team <em>works.</em></h1>
-          <p class="hero-bridge">I help leaders turn scattered experiments into <em>everyday workflows</em> with practical agents and the adoption work that <em>makes them stick</em>.</p>
+          <p class="hero-bridge">Practical agents. Better workflows. The human work that makes them stick. I help leaders turn scattered AI experiments into everyday practice.</p>
           <div class="hero-actions"><a href="tools/adoption-scorecard.html" class="btn btn-primary" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'homepage_hero',tool:'adoption_scorecard'}})}">Find your adoption bottleneck ↗</a><a href="#contact" class="text-link">Discuss a project →</a></div>
           <p class="hero-proof-line">Free scorecard · 10 questions · No email required.</p>
         </div>
-        <aside class="hero-art" aria-label="Artificial Akshat Intelligence. Ideas fuelled by coffee and curiosity.">
-          <div class="signature"><span><s>Artificial</s> <em>Akshat</em></span><span>Intelligence.</span></div>
-          <svg class="coffee-art" viewBox="0 0 400 360" aria-hidden="true"><use href="public/images/field-marks.svg#coffee" /></svg>
-          <p class="hand-note">Serious about the work.<br>A little less about myself.</p>
+        <aside class="field-sheet" aria-label="My approach: from pilot to practice">
+          <div class="sheet-header"><span>FIELD NOTES / 001</span><span>THE APPROACH</span></div>
+          <h2>The pilot worked.<br>Now make it <em>stick.</em></h2>
+          <ol class="workflow-steps">
+            <li><span class="step-index">01</span><div><strong>Start with the real work</strong><p>One recurring task. A result worth improving.</p></div></li>
+            <li><span class="step-index">02</span><div><strong>Build around someone's day</strong><p>A useful agent. A clear owner. A human check.</p></div></li>
+            <li><span class="step-index">03</span><div><strong>Make the new way stick</strong><p>Practice, feedback, and evidence of progress.</p></div></li>
+          </ol>
+          <div class="sheet-footer"><span class="hand-note">The people are the point.</span><a href="method.html">My method ↗</a></div>
         </aside>
       </section>
 
-      <!-- AGGREGATE PROOF: sits right below the hero, before Try it yourself -->
-      <section class="proof-strip" aria-label="Experience in numbers">
-        <div class="stats-row" style="margin-bottom: 2rem;">
-          <div class="stat">
-            <div class="stat-num">25+</div>
-            <div class="stat-label">projects</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">8</div>
-            <div class="stat-label">industries</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">40+</div>
-            <div class="stat-label">talks</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">5</div>
-            <div class="stat-label">countries</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">50K+</div>
-            <div class="stat-label">followers</div>
-          </div>
+      <section class="evidence-strip" aria-label="Selected experience">
+        <p>From the field,<br><em>not just the whiteboard.</em></p>
+        <a href="work/scale-ai-across-30-countries.html"><strong>30+</strong><span>countries in an AI rollout <b>↗</b></span></a>
+        <a href="work/build-a-ceo-an-ai-workforce.html"><strong>4</strong><span>dedicated agents in daily use <b>↗</b></span></a>
+      </section>
+
+      <!-- FREE TOOLS: show the output before asking for the input -->
+      <section class="diagnostic-feature" aria-labelledby="diagnostic-title">
+        <div class="diagnostic-copy"><p class="section-label">A useful place to start</p>
+          <h2 id="diagnostic-title">You bought the AI.<br><em>What got in the way?</em></h2>
+          <p>A few questions about how your team actually works. A likely adoption pattern, two areas to investigate, and a next step you can use.</p>
+          <a href="tools/adoption-scorecard.html" class="btn btn-primary" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'homepage_tools',tool:'adoption_scorecard'}})}">Check your rollout →</a>
+          <span class="diagnostic-meta">10 questions · Free · No email required</span>
+          <a class="agent-route" href="tools/first-agent-picker.html" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'homepage_tools',tool:'first_agent_picker'}})}">Already building? Find your first agent ↗</a>
+        </div>
+        <div class="result-preview">
+          <div class="sheet-header"><span>ADOPTION SCORECARD</span><span>EXAMPLE RESULT</span></div>
+          <p class="result-eyebrow">Your answers might suggest</p><h3>Island of<br><em>excellence.</em></h3>
+          <div class="island-diagram" aria-hidden="true"><span></span><span></span><span class="island-active"></span><span></span><span></span><span></span><span></span></div>
+          <p>A few people get enormous value.<br>The practice isn't spreading.</p>
+          <div class="result-action"><span>ONE MOVE THIS WEEK</span><p>Give one champion protected time to help three colleagues complete a real task.</p></div>
+          <p class="preview-disclaimer">Illustrative example. Your result depends on your answers.</p>
         </div>
       </section>
 
-      <!-- FREE TOOLS -->
-      <section class="tools-section field-section">
-        <p class="section-label">01 / Free tools</p><h2 class="section-title">Try it <em>yourself.</em></h2>
-        <div class="tool-cards-grid">
-          <a class="tool-card" href="tools/adoption-scorecard.html" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'homepage_tools',tool:'adoption_scorecard'}})}">
-            <p class="tool-card-kicker">Adoption scorecard</p>
-            <h3 class="tool-card-headline">Your team has AI. What's getting in the way?</h3>
-            <p class="tool-card-copy">Get a likely adoption pattern, two areas to investigate, and a practical next step.</p>
-            <span class="btn btn-primary tool-card-cta">Check your rollout →</span>
-            <p class="tool-card-meta">10 questions · no email required</p>
-          </a>
-          <a class="tool-card" href="tools/first-agent-picker.html" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'homepage_tools',tool:'first_agent_picker'}})}">
-            <p class="tool-card-kicker">First-agent picker</p>
-            <h3 class="tool-card-headline">Which agent should you build first?</h3>
-            <p class="tool-card-copy">Start with the work that is piling up. Get a suggested starting point to investigate.</p>
-            <span class="btn btn-primary tool-card-cta">Find a starting point →</span>
-            <p class="tool-card-meta">6 questions · no email required</p>
-          </a>
-        </div>
-
-        <div class="lf-grid">
-          <a class="lf-tile" href="tools/adoption-scorecard.html" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'homepage_grid',tool:'adoption_scorecard',item_id:'enthusiasm'}})}">
-            <svg class="lf-tile-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 10 L35 20 L45 20 L37 27 L40 37 L32 31 L24 37 L27 27 L19 20 L29 20 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 44 Q 32 50 50 44" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="1 6" stroke-linecap="round"/></svg>
-            <span class="lf-tile-label">Workshop enthusiasm</span>
-            <span class="lf-tile-seen">Last seen: the Monday after training</span>
-          </a>
-          <a class="lf-tile" href="tools/adoption-scorecard.html" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'homepage_grid',tool:'adoption_scorecard',item_id:'licences'}})}">
-            <svg class="lf-tile-icon" viewBox="0 0 64 64" aria-hidden="true"><rect x="16" y="26" width="32" height="22" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M22 26 V18 a10 10 0 0 1 20 0 v8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="36" r="3" fill="currentColor"/><path d="M32 39 v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            <span class="lf-tile-label">Unused licence</span>
-            <span class="lf-tile-seen">Last seen: still being billed</span>
-          </a>
-          <a class="lf-tile" href="tools/first-agent-picker.html" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'homepage_grid',tool:'first_agent_picker',item_id:'owner'}})}">
-            <svg class="lf-tile-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 12 C22 12 16 20 16 28 C16 38 32 52 32 52 C32 52 48 38 48 28 C48 20 42 12 32 12 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><text x="32" y="33" font-size="16" text-anchor="middle" fill="currentColor" font-family="serif">?</text></svg>
-            <span class="lf-tile-label">Pilot owner</span>
-            <span class="lf-tile-seen">Last seen: everyone remembers meeting them</span>
-          </a>
-          <a class="lf-tile" href="tools/adoption-scorecard.html" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'homepage_grid',tool:'adoption_scorecard',item_id:'baseline'}})}">
-            <svg class="lf-tile-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 48 H50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="20" y="30" width="7" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 3"/><rect x="31" y="22" width="7" height="26" fill="none" stroke="currentColor" stroke-width="2"/><rect x="42" y="16" width="7" height="32" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-            <span class="lf-tile-label">ROI baseline</span>
-            <span class="lf-tile-seen">Last seen: missing since launch</span>
-          </a>
+      <section class="lost-property" aria-labelledby="lost-title">
+        <div class="lost-heading"><div><p class="section-label">The AI lost &amp; found</p><h2 id="lost-title">Sound <em>familiar?</em></h2></div><p>A small collection of things that go missing<br>between the kickoff and the real work.</p></div>
+        <div class="property-grid">
+          <details class="property-tag"><summary><span class="property-number">ITEM 01 <span aria-hidden="true">+</span></span><span class="property-object" aria-hidden="true">✳</span><span class="property-name">Workshop enthusiasm</span><span class="property-seen">Last seen: the Monday after training.</span><span class="property-open">Open the case ↓</span></summary><div class="property-advice"><p>Pick one recurring task. Have three colleagues practise it together, then check whether they repeat it without help the following week.</p><a href="tools/adoption-scorecard.html">Check your rollout →</a></div></details>
+          <details class="property-tag"><summary><span class="property-number">ITEM 02 <span aria-hidden="true">+</span></span><span class="property-object" aria-hidden="true">▱</span><span class="property-name">Unused licence</span><span class="property-seen">Last seen: still being billed.</span><span class="property-open">Open the case ↓</span></summary><div class="property-advice"><p>Ask one person to show you the task they tried. Find the point where the tool became harder than doing the work themselves.</p><a href="tools/adoption-scorecard.html">Find the bottleneck →</a></div></details>
+          <details class="property-tag"><summary><span class="property-number">ITEM 03 <span aria-hidden="true">+</span></span><span class="property-object" aria-hidden="true">?</span><span class="property-name">Pilot owner</span><span class="property-seen">Last seen: everyone remembers meeting them.</span><span class="property-open">Open the case ↓</span></summary><div class="property-advice"><p>Name the person who owns the result, the person who checks quality, and what happens when the agent needs help.</p><a href="tools/first-agent-picker.html">Explore a first agent →</a></div></details>
+          <details class="property-tag"><summary><span class="property-number">ITEM 04 <span aria-hidden="true">+</span></span><span class="property-object" aria-hidden="true">↗</span><span class="property-name">ROI baseline</span><span class="property-seen">Last seen: missing since launch.</span><span class="property-open">Open the case ↓</span></summary><div class="property-advice"><p>Measure time, quality and rework on one task before changing it. Compare the same task after the experiment.</p><a href="tools/adoption-scorecard.html">Review your rollout →</a></div></details>
         </div>
       </section>
 
@@ -213,56 +184,12 @@
 
       <hr class="divider" />
 
-      <!-- SPEAKING PREVIEW -->
-      <section class="speaking-preview">
-        <p class="section-label">04 / Out loud</p><h2 class="section-title">Ideas are better <em>in conversation.</em></h2><img class="speaking-preview-photo" src="public/images/spkimg1.jpeg" alt="Akshat speaking at an event" loading="lazy" width="1280" height="1695" />
-        <div class="writing-grid">
-          <a href="speaking.html" class="writing-card">
-            <div class="writing-source">DD News</div>
-            <div class="writing-title">AI in health and what it means for India</div>
-            <div class="writing-date">National television</div>
-          </a>
-          <a href="speaking.html" class="writing-card">
-            <div class="writing-source">Dixon Technologies</div>
-            <div class="writing-title">First AI corporate training in India</div>
-            <div class="writing-date">Corporate training</div>
-          </a>
-          <a href="speaking.html" class="writing-card">
-            <div class="writing-source">Small Talks</div>
-            <div class="writing-title">Future of work, global macro, and strategy</div>
-            <div class="writing-date">Podcast</div>
-          </a>
-        </div>
-        <a href="speaking.html" class="link-more">All speaking →</a>
-      </section>
-
-      <hr class="divider" />
-
-      <!-- WRITING PREVIEW -->
-      <section>
-        <p class="section-label">05 / On paper</p><h2 class="section-title">Notes from a <em>curious mind.</em></h2>
-        <div class="writing-grid">
-          <a href="writing.html" class="writing-card">
-            <div class="writing-source">Humanise by Plum</div>
-            <div class="writing-title">Around the world in 80 workdays</div>
-          </a>
-          <a href="writing.html" class="writing-card">
-            <div class="writing-source">The Nuanced Perspective</div>
-            <div class="writing-title">Build your AI Chief of Staff in 45 minutes</div>
-          </a>
-          <a href="writing.html" class="writing-card">
-            <div class="writing-source">The Whole Truth</div>
-            <div class="writing-title">If obesity is universal, why does every country treat it differently?</div>
-          </a>
-        </div>
-        <a href="writing.html" class="link-more">All writing →</a>
-      </section>
-
+      <aside class="creator-crosslink"><p class="section-label">Away from the whiteboard</p><h2>There’s more to <em>the story.</em></h2><p>Writing, talks, and things I've learned across cultures and careers.</p><a class="text-link" href="creator.html">Explore writing &amp; speaking →</a></aside>
       <hr class="divider" />
 
       <!-- CTA -->
       <section id="contact" class="cta-block">
-        <p class="section-label">06 / The next interesting thing</p><h2 class="cta-title">Let's work <em>together.</em></h2><p class="hand-note">Messy problems welcome. Coffee optional.</p>
+        <p class="section-label">The next interesting thing</p><h2 class="cta-title">Let's work <em>together.</em></h2><p class="hand-note">Messy problems welcome. Coffee optional.</p>
         <p class="cta-sub">New market strategy, brand confusion, AI adoption resistance: tell me what you're
           working on.</p>
         <p class="contact-direct"><a class="btn btn-primary" href="https://cal.com/akshatkharbanda/strategy-call" target="_blank" rel="noopener" onclick="if(typeof va==='function'){va('event',{name:'consultation_click',data:{source:'homepage_contact'}})}">Find a time to talk ↗</a><a class="text-link" href="mailto:workwithakshatkharbanda@gmail.com">Or send me a note →</a></p><details class="booking-details"><summary>Book right here</summary><div class="cal-embed-mount" data-location="homepage_contact"></div></details>
