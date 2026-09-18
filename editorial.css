@@ -22,8 +22,10 @@
 .chooser-wrap { max-width: 1236px; text-align: left; }
 .chooser-intro { position: relative; margin-bottom: 44px; }
 .chooser-hero-row { display: grid; grid-template-columns: 1.35fr 1fr; align-items: center; gap: 48px; margin-top: 28px; }
-.chooser-sub { font-size: 17px; line-height: 1.7; max-width: 480px; }
-.chooser-sub em { font-style: normal; display: block; margin-top: 10px; color: var(--text-secondary); }
+.chooser-headline { font-size: clamp(36px,4.5vw,58px); line-height: 1.08; letter-spacing: -.035em; max-width: 620px; margin-bottom: 0; }
+.chooser-headline em { color: var(--accent); position: relative; font-style: normal; white-space: nowrap; }
+.chooser-headline em:after { content: ''; position: absolute; height: 6px; border-top: 2px solid var(--accent); border-radius: 50%; left: 0; right: -4px; bottom: -4px; transform: rotate(-2deg); }
+.chooser-headline-note { font: italic 18px/1.5 var(--font-serif); color: var(--text-secondary); margin-top: 16px; }
 .entrance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .entrance-work,.entrance-stories { position: relative; overflow: hidden; min-height: 400px; color: white; }
 .entrance-work { background: #182b25; }
