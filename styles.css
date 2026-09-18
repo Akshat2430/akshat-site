@@ -2294,3 +2294,55 @@ h2.section-label,h2.case-section-title { font-weight: 500; }
   .dispatch-illustration .hand-note { font-size: 20px; }
   .resource-clip { width: 50px; }
 }
+
+/* ---- Growth brief additions: nav, outcomes, tools, service hierarchy ---- */
+
+.nav-talk { color: var(--accent) !important; font-weight: 600; }
+.nav-mobile-divider { border: 0; border-top: 0.5px solid var(--border); margin: 8px 0; }
+.footer-pages { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+.footer-pages a { font-size: 13px; color: var(--text-tertiary); transition: color 0.15s; }
+.footer-pages a:hover, .footer-pages a.active { color: var(--accent); }
+
+.hero-proof-line { font-size: 13px; color: var(--text-secondary); margin-top: 14px; }
+
+.outcomes-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 8px 0 44px; padding-top: 28px; border-top: 1px solid var(--border); }
+.outcome-kicker { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.outcome-stat { font: 400 34px/1.1 var(--font-serif); color: var(--text-primary); }
+.outcome-label { font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin: 6px 0 12px; max-width: 42ch; }
+.outcome-link { font-size: 13px; text-decoration: underline; text-underline-offset: 4px; color: var(--accent); }
+
+.tools-section { margin-top: 44px; padding: 40px 0 4px; border-top: 1px solid var(--border); position: relative; }
+.tool-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 22px; }
+.tool-card { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 26px; background: var(--surface); transition: border-color .15s, background .15s; }
+.tool-card:hover, .tool-card:focus-visible { border-color: var(--accent); background: var(--surface-hover); }
+.tool-card-kicker { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.tool-card-headline { font: 400 24px/1.25 var(--font-serif); color: var(--text-primary); margin-bottom: 10px; }
+.tool-card-copy { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+.tool-card-cta { display: inline-block; width: fit-content; }
+.tool-card-meta { font-size: 12px; color: var(--text-tertiary); margin: 12px 0 0; }
+
+.example-panel { border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: 26px 28px; background: var(--bg); position: relative; margin-bottom: 8px; }
+.example-label { position: absolute; top: -11px; left: 22px; background: var(--text-primary); color: var(--bg); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; }
+.example-pattern { font: 400 22px/1.3 var(--font-serif); color: var(--text-primary); margin: 4px 0 10px; }
+.example-body { font-size: 15px; line-height: 1.65; color: var(--text-secondary); }
+.example-body strong { color: var(--text-primary); }
+
+.services-primary { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 20px; }
+.service-card { padding: 20px 0; border-top: 1px solid var(--border-strong); }
+.service-num { font: 10px var(--font-sans); letter-spacing: .14em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
+.service-title { font: 400 24px/1.25 var(--font-serif); color: var(--text-primary); margin-bottom: 12px; }
+.service-body { font-size: 14px; line-height: 1.7; color: var(--text-secondary); }
+.service-secondary { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; background: var(--surface); }
+.service-secondary p { font-size: 14px; color: var(--text-secondary); margin: 0; max-width: 46ch; }
+.service-secondary a { font-size: 13px; text-decoration: underline; text-underline-offset: 4px; color: var(--accent); flex-shrink: 0; }
+
+@media (max-width: 768px) {
+  .outcomes-row { grid-template-columns: 1fr; gap: 24px; }
+  .tool-cards-grid { grid-template-columns: 1fr; }
+  .services-primary { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (max-width: 560px) {
+  .outcome-stat { font-size: 29px; }
+  .example-panel { padding: 22px 20px; }
+  .service-secondary { flex-direction: column; align-items: flex-start; }
+}

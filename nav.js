@@ -23,30 +23,38 @@ function getRoot() {
 function injectNav() {
   const root = getRoot();
   const current = getCurrentPage();
-  const links = [
+  const primaryLinks = [
     { href: `${root}work.html`, label: 'Work', key: 'work' },
-    { href: `${root}resources.html`, label: 'Free Resources', key: 'resources' },
+    { href: `${root}resources.html`, label: 'Free Tools', key: 'resources' },
+    { href: `${root}about.html`, label: 'About', key: 'about' },
+  ];
+  const talkLink = { href: `${root}index.html#contact`, label: "Let's talk", key: 'talk' };
+  const secondaryLinks = [
     { href: `${root}method.html`, label: 'Method', key: 'method' },
     { href: `${root}writing.html`, label: 'Writing', key: 'writing' },
     { href: `${root}speaking.html`, label: 'Speaking', key: 'speaking' },
     { href: `${root}content.html`, label: 'Content', key: 'content' },
     { href: `${root}sidequests.html`, label: 'Side Quests', key: 'sidequests' },
-    { href: `${root}about.html`, label: 'About', key: 'about' },
   ];
+  const linkHTML = l => `<a href="${l.href}" ${current === l.key ? 'aria-current="page"' : ''} class="${current === l.key ? 'active' : ''}">${l.label}</a>`;
 
   const navHTML = `
     <a href="#main-content" class="skip-link">Skip to content</a><nav aria-label="Main navigation">
       <div class="nav-inner">
         <a href="${root}index.html" class="nav-logo">Akshat Kharbanda<small>The Business Backpacker</small></a>
         <ul class="nav-links">
-          ${links.map(l => `<li><a href="${l.href}" ${current === l.key ? 'aria-current="page"' : ''} class="${current === l.key ? 'active' : ''}">${l.label}</a></li>`).join('')}
+          ${primaryLinks.map(l => `<li>${linkHTML(l)}</li>`).join('')}
+          <li><a href="${talkLink.href}" class="nav-talk">${talkLink.label}</a></li>
         </ul>
         <button class="nav-mobile-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMobileMenu()">
           <span></span><span></span><span></span>
         </button>
       </div>
       <div class="nav-mobile-menu" id="mobileMenu">
-        ${links.map(l => `<a href="${l.href}" ${current === l.key ? 'aria-current="page"' : ''} class="${current === l.key ? 'active' : ''}">${l.label}</a>`).join('')}
+        ${primaryLinks.map(linkHTML).join('')}
+        <a href="${talkLink.href}" class="nav-talk">${talkLink.label}</a>
+        <hr class="nav-mobile-divider" />
+        ${secondaryLinks.map(linkHTML).join('')}
       </div>
     </nav>
   `;
@@ -55,6 +63,9 @@ function injectNav() {
     <footer>
       <div class="footer-inner">
         <span class="footer-name"><svg class="footer-route" viewBox="0 0 160 50" aria-hidden="true"><use href="${root}public/images/field-marks.svg#route" /></svg>Akshat Kharbanda &copy; ${new Date().getFullYear()}</span>
+        <nav class="footer-pages" aria-label="More pages">
+          ${secondaryLinks.map(linkHTML).join('')}
+        </nav>
         <div class="footer-links">
           <a href="https://linkedin.com/in/akshat-kharbanda" target="_blank">LinkedIn</a>
           <a href="https://www.instagram.com/thebusinessbackpacker/" target="_blank">Instagram</a>
