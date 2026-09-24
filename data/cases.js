@@ -262,6 +262,7 @@ const cases = [
     client: "Clinton Health Access Initiative",
     context: "USA",
     featured: false,
+    homeTag: "Market shaping",
     problem: "'AI-assisted ultrasound will help pregnant women in low-income countries.' Probably true. But an organisation can't fund 'probably true.' The space was new and thinly mapped: no clear read on which devices were real, no evidence on whether the clinics that needed them could actually use them, and nothing a donor could write a cheque against. The idea had to become a program someone could fund and run.",
     what_i_did: "Started on supply: who actually makes these devices, and which of them are real. Mapped manufacturers against the things that decide whether a device survives contact with a rural clinic: commercial terms, evidence of real deployments, existing partnerships, service networks. Then demand: went through the literature on prior pilots to pull out what had worked, built a demand assessment, and took it into several countries to hear directly from the people who would have to deploy it. Fused both sides into three deliverables: a market-shaping strategy for internal use, a donor-facing narrative for fundraising, and a product annex holding the detailed breakdowns.",
     outcomes: [

@@ -2323,7 +2323,7 @@ h2.section-label,h2.case-section-title { font-weight: 500; }
 .lf-tile-label { font: 400 16px/1.2 var(--font-serif); color: var(--text-primary); }
 .lf-tile-seen { font-size: 11px; color: var(--text-tertiary); }
 
-.services-primary { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 20px; }
+.services-primary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 20px; }
 .service-card { padding: 20px 0; border-top: 1px solid var(--border-strong); }
 .service-num { font: 10px var(--font-sans); letter-spacing: .14em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
 .service-title { font: 400 24px/1.25 var(--font-serif); color: var(--text-primary); margin-bottom: 12px; }

@@ -148,7 +148,7 @@ function buildCasePages(template) {
     const next = i < cases.length - 1 ? cases[i + 1] : null;
 
     const title = `${c.question} · Akshat Kharbanda`;
-    const desc = `${c.subtitle}. Case study by Akshat Kharbanda, cross-cultural strategist and AI adoption consultant.`;
+    const desc = `${c.subtitle}. Case study by Akshat Kharbanda, 0→1 strategy and operations consultant.`;
     const url = `https://akshatkharbanda.com/work/${c.slug}.html`;
 
     let html = template.replace(/\s*<!--TEMPLATE-NOTE[\s\S]*?TEMPLATE-NOTE-->/, '');
