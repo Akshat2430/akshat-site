@@ -217,10 +217,7 @@
 .stall-fix p:not(.stall-fix-label) { font-size: 16px; line-height: 1.7; color: var(--text-primary); }
 .stall-close { font: 400 clamp(26px,2.8vw,36px)/1.25 var(--font-serif); letter-spacing: -.02em; max-width: 860px; margin: 48px 0 28px; }
 .stall-close em { color: var(--accent); }
-.stall-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px 32px; flex-wrap: wrap; }
-.stall-kicker { font: italic 400 18px/1.4 var(--font-serif); color: var(--text-secondary); }
-.stall-kicker em { color: var(--accent); }
-.stall-method { display: flex; align-items: center; gap: 16px; }
+.stall-method { margin-top: -8px; }
 
 /* Contact: honest scarcity and the end-of-page sign-off. */
 .capacity-line { display: inline-block; font-size: 14px; color: var(--text-primary); border: 1px dashed var(--border-strong); padding: 8px 14px; margin: 4px 0 0; }
@@ -236,7 +233,6 @@
  .stall-row { grid-template-columns: 1fr; gap: 14px; padding: 24px 0; }
  .stall-fail h3,.stall-fix-label { font-size: 24px; }
  .stall-close { margin-top: 36px; }
- .stall-foot { flex-direction: column; align-items: flex-start; }
  .signoff { margin-top: 56px; font-size: 21px; }
 }
 
