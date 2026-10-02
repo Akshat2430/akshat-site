@@ -344,7 +344,3 @@
 @keyframes head-bobble { 0%,100% { transform: rotate(-6deg); } 15% { transform: rotate(6deg); } 30% { transform: rotate(-9deg); } 45% { transform: rotate(4deg); } 60% { transform: rotate(-6deg); } }
 @media (prefers-reduced-motion: reduce) { .stage-doodle .s-bulb { opacity: 1; } }
 .stage-doodle .doodle-btn:hover .s-bulb circle { fill: #F7D27A; }
-
-/* Writing: the biggest names, right under the intro. */
-.featured-in { font-size: 14px; color: var(--text-secondary); margin-top: 14px; }
-.featured-in strong { color: var(--text-primary); font-weight: 500; }
