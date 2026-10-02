@@ -160,7 +160,7 @@
  .property-name,.property-seen { min-height: 0; }
  .entrance-work-copy,.entrance-story-copy { padding: 24px; }
 }
-.page-creator .speaking-preview-photo { object-position: center 55%; }
+.page-creator .speaking-preview-photo { object-position: center 22%; }
 .property-tag { position: relative; }
 .property-tag:before { content: ''; position: absolute; top: -7px; left: calc(50% - 6px); width: 12px; height: 12px; border: 2px solid #bca888; border-radius: 50%; background: var(--bg); }
 
@@ -334,9 +334,13 @@
 .stage-doodle .s-bulb circle { fill: #F2C14E; stroke: var(--text-primary); stroke-width: 1.4; }
 .stage-doodle .s-bulb path { stroke: var(--text-primary); stroke-width: 1.4; fill: none; stroke-linecap: round; }
 .stage-doodle .s-bulb .s-ray { stroke: var(--accent); }
-.stage-doodle .s-note { font: 500 25px 'Caveat', cursive; fill: var(--accent); }
-.stage-doodle .s-arrow { fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .stage-doodle.is-playing .s-bulb { animation: bulb-on .45s cubic-bezier(.3,1.6,.6,1) forwards; animation-delay: calc(.5s + var(--i) * .6s); }
 @keyframes bulb-on { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: scale(1); } }
+/* The cutout: a cardboard-white ring, and a bobble as the bulbs come on. */
+.stage-doodle .s-cutout { fill: #fffdf7; stroke: var(--text-primary); stroke-width: 1.4; }
+.stage-doodle .s-face-ring { fill: none; stroke: var(--border-strong); stroke-width: 1; }
+.stage-doodle .s-head { transform-box: fill-box; transform-origin: 50% 100%; transform: rotate(-6deg); }
+.stage-doodle.is-playing .s-head { animation: head-bobble 2.6s ease-in-out .4s 1; }
+@keyframes head-bobble { 0%,100% { transform: rotate(-6deg); } 15% { transform: rotate(6deg); } 30% { transform: rotate(-9deg); } 45% { transform: rotate(4deg); } 60% { transform: rotate(-6deg); } }
 @media (prefers-reduced-motion: reduce) { .stage-doodle .s-bulb { opacity: 1; } }
 .stage-doodle .doodle-btn:hover .s-bulb circle { fill: #F7D27A; }

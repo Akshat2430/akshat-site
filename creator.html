@@ -57,13 +57,21 @@
         <!-- Doodle: a stage, a mic, and an audience whose lightbulbs come on one by one.
              Plays once in view; click to replay. Script at the bottom of the page. -->
         <figure class="hero-doodle stage-doodle">
-          <svg viewBox="0 0 440 340" focusable="false" aria-hidden="true">
+          <svg viewBox="26 -4 388 326" focusable="false" aria-hidden="true">
             <path class="s-light" d="M220 0 L292 150 L148 150 Z" />
             <ellipse class="s-pool" cx="220" cy="150" rx="86" ry="13" />
             <path class="s-ink" d="M36 176 L404 177" />
-            <path class="s-ink" d="M220 150 L221 96 M206 151 L220 140 L234 151" />
-            <rect class="s-mic" x="213" y="70" width="15" height="26" rx="7" />
-            <path class="s-ink" d="M221 108 C 238 112, 238 126, 226 132" />
+            <defs><clipPath id="face-clip"><circle cx="204" cy="45" r="31" /></clipPath></defs>
+            <!-- A tiny doodled body with a (much too big) photo cutout of a head. -->
+            <path class="s-ink" d="M204 79 L204 122 M204 122 L193 150 M204 122 L215 150 M204 90 L183 72 M204 92 L241 92" />
+            <g class="s-head">
+              <circle class="s-cutout" cx="204" cy="45" r="35" />
+              <image href="public/images/akshat-face.jpg" x="173" y="14" width="62" height="62" clip-path="url(#face-clip)" />
+              <circle class="s-face-ring" cx="204" cy="45" r="31" />
+            </g>
+            <path class="s-ink" d="M244 150 L242 90 M230 151 L244 140 L258 151" />
+            <rect class="s-mic" x="234" y="62" width="13" height="24" rx="6.5" transform="rotate(-28 240 74)" />
+            <path class="s-ink" d="M243 104 C 258 110, 258 124, 248 130" />
             <g class="s-crowd" transform="translate(0 16)">
               <g><circle cx="70" cy="248" r="19" /><path d="M36 302 C 36 272, 104 272, 104 302" /></g>
               <g><circle cx="145" cy="250" r="19" /><path d="M111 304 C 111 274, 179 274, 179 304" /></g>
@@ -78,38 +86,13 @@
               <g class="s-bulb" style="--i: 4"><circle cx="295" cy="202" r="10" /><path d="M290 213 L300 213 M291 217 L299 217" /><path class="s-ray" d="M295 184 L295 179 M280 192 L276 188 M310 192 L314 188" /></g>
               <g class="s-bulb" style="--i: 2"><circle cx="370" cy="200" r="10" /><path d="M365 211 L375 211 M366 215 L374 215" /><path class="s-ray" d="M370 182 L370 177 M355 190 L351 186 M385 190 L389 186" /></g>
             </g>
-            <text class="s-note" x="432" y="48" text-anchor="end">your audience,</text>
-            <text class="s-note" x="432" y="76" text-anchor="end">mid-epiphany.</text>
-            <path class="s-arrow" d="M352 88 C 338 132, 342 172, 366 202 M352 198 L367 205 L370 190" />
           </svg>
         </figure>
       </section>
 
-      <!-- WRITING PREVIEW -->
-      <section class="field-section" style="margin-top: 44px; padding-top: 40px; border-top: 1px solid var(--border);">
-        <p class="section-label">01 / On paper</p><h2 class="section-title">Notes from a <em>curious mind.</em></h2>
-        <div class="writing-grid editorial-writing">
-          <a href="writing" class="writing-card">
-            <img class="editorial-cover" src="public/images/writing/humanise.webp" alt="" loading="lazy" /><div class="writing-source">Humanise by Plum</div>
-            <div class="writing-title">Around the world in 80 workdays</div>
-          </a>
-          <a href="writing" class="writing-card">
-            <div class="writing-source">The Nuanced Perspective</div>
-            <div class="writing-title">Build your AI Chief of Staff in 45 minutes</div>
-          </a>
-          <a href="writing" class="writing-card">
-            <div class="writing-source">The Whole Truth</div>
-            <div class="writing-title">If obesity is universal, why does every country treat it differently?</div>
-          </a>
-        </div>
-        <a href="writing" class="link-more">All writing →</a>
-      </section>
-
-      <hr class="divider" />
-
       <!-- SPEAKING PREVIEW -->
-      <section class="speaking-preview">
-        <p class="section-label">02 / Out loud</p><h2 class="section-title">Ideas are better <em>in conversation.</em></h2><img class="speaking-preview-photo" src="public/images/spkimg2.jpeg" alt="Akshat leading an AI session with an audience" loading="lazy" width="1280" height="960" />
+      <section class="speaking-preview" style="margin-top: 44px; padding-top: 40px; border-top: 1px solid var(--border);">
+        <p class="section-label">01 / Out loud</p><h2 class="section-title">Ideas are better <em>in conversation.</em></h2><img class="speaking-preview-photo" src="public/images/spkimg1.jpeg" alt="Akshat on stage, speaking into a microphone" loading="lazy" width="1280" height="1695" />
         <div class="writing-grid">
           <a href="speaking" class="writing-card">
             <div class="writing-source">DD News</div>
@@ -128,6 +111,28 @@
           </a>
         </div>
         <a href="speaking" class="link-more">All speaking →</a>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- WRITING PREVIEW -->
+      <section class="field-section">
+        <p class="section-label">02 / On paper</p><h2 class="section-title">Notes from a <em>curious mind.</em></h2>
+        <div class="writing-grid editorial-writing">
+          <a href="writing" class="writing-card">
+            <img class="editorial-cover" src="public/images/writing/humanise.webp" alt="" loading="lazy" /><div class="writing-source">Humanise by Plum</div>
+            <div class="writing-title">Around the world in 80 workdays</div>
+          </a>
+          <a href="writing" class="writing-card">
+            <div class="writing-source">The Nuanced Perspective</div>
+            <div class="writing-title">Build your AI Chief of Staff in 45 minutes</div>
+          </a>
+          <a href="writing" class="writing-card">
+            <div class="writing-source">The Whole Truth</div>
+            <div class="writing-title">If obesity is universal, why does every country treat it differently?</div>
+          </a>
+        </div>
+        <a href="writing" class="link-more">All writing →</a>
       </section>
 
       <hr class="divider" />
