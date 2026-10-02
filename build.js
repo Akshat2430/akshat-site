@@ -226,6 +226,19 @@ function buildCasePages(template) {
 
 /* --------------------------------------------------- homepage featured cards */
 
+// Optional "messy artefact" (whiteboard, ugly v1) from data/site.js. Cards
+// render complete without one.
+function renderArtefact(slug) {
+  const a = (site.caseArtefacts || []).find(x => x.caseSlug === slug && x.image);
+  if (!a) return '';
+  const alt = a.alt || a.caption || '';
+  return `
+            <figure class="work-row-artefact">
+              <img src="public/images/${a.image}" alt="${alt.replace(/"/g, '&quot;')}" loading="lazy" />
+              ${a.caption ? `<figcaption class="hand-note">${ph(a.caption)}</figcaption>` : ''}
+            </figure>`;
+}
+
 function renderFeaturedCards() {
   const rows = cases.filter(c => c.featured).map(c => `
         <a href="work/${c.slug}" class="work-row">
@@ -233,7 +246,7 @@ function renderFeaturedCards() {
           <div class="work-row-body">
             <div class="work-row-q">${c.question}</div>
             <div class="work-row-meta">${c.client} · ${c.context}</div>
-            <span class="work-row-outcome">${c.outcomes.map(o => `${o.number} ${o.label}`).join(" · ")}</span>
+            <span class="work-row-outcome">${c.outcomes.map(o => `${o.number} ${o.label}`).join(" · ")}</span>${renderArtefact(c.slug)}
           </div>
           <div class="work-row-arrow">→</div>
         </a>`).join('');
@@ -342,9 +355,73 @@ function renderCapacity() {
   return `\n        <p class="capacity-line">I take on ${ph(c.perQuarter)} new bets a quarter. ${status}</p>\n        `;
 }
 
+/* ------------------------------------------ operator: the route so far */
+
+// Passport stamps along a dotted route. Underneath it's a plain ordered list.
+function renderRoute() {
+  const stops = site.routeStops || [];
+  if (!stops.length) return '';
+  const pad = n => String(n).padStart(2, '0');
+  const stamp = (s, i) => `
+          <li class="route-stop">
+            <span class="route-pin" aria-hidden="true"></span>
+            <div class="route-stamp">
+              <span class="route-num" aria-hidden="true">${pad(i + 1)}</span>
+              ${s.logo ? `<img class="route-logo" src="public/images/${s.logo}" alt="" loading="lazy" />` : '<span class="route-logo route-logo-empty" aria-hidden="true"></span>'}
+              <h3 class="route-org">${ph(s.org)}</h3>
+              <p class="route-place">${ph(s.place)}</p>
+              <p class="route-line">${ph(s.line)}</p>
+            </div>
+          </li>`;
+  return `
+      <section class="route-section" aria-labelledby="route-title">
+        <p class="section-label">04 / The route so far</p>
+        <h2 id="route-title" class="section-title">A backpacker's <em>CV.</em></h2>
+        <ol class="route-list">${stops.map(stamp).join('')}
+          <li class="route-stop route-next">
+            <span class="route-pin" aria-hidden="true"></span>
+            <a class="route-stamp" href="#contact" onclick="if(typeof va==='function'){va('event',{name:'cta_click',data:{cta:'route_next_stop',section:'operator_route'}})}">
+              <span class="route-num" aria-hidden="true">${pad(stops.length + 1)}</span>
+              <span class="route-org">Next stop: your bet.</span>
+              <span class="route-line">Bring me the gap ↗</span>
+            </a>
+          </li>
+        </ol>
+      </section>
+      `;
+}
+
+/* ------------------------------------------- operator: bets I got wrong */
+
+// Pratfall. Real stories only; an empty list hides the whole section.
+function renderPratfalls() {
+  const items = (site.pratfalls || []).filter(p => p && p.believed && p.happened && p.now);
+  if (!items.length) return '';
+  return `
+      <hr class="divider" />
+
+      <section class="pratfall-section" aria-labelledby="pratfall-title">
+        <p class="section-label">05 / Detours</p>
+        <h2 id="pratfall-title" class="section-title">Bets I got <em>wrong.</em></h2>
+        <p class="pratfall-sub">(Kept here on purpose. You learn more from the detours.)</p>
+        <ol class="pratfall-list">${items.map(p => `
+          <li class="pratfall">
+            <dl>
+              <div class="pratfall-believed"><dt>What I believed</dt><dd><span class="stall-strike">${ph(p.believed)}</span></dd></div>
+              <div><dt>What actually happened</dt><dd>${ph(p.happened)}</dd></div>
+              <div class="pratfall-now"><dt>What I do differently now</dt><dd>${ph(p.now)}</dd></div>
+            </dl>
+          </li>`).join('')}
+        </ol>
+      </section>
+      `;
+}
+
 function buildOperator() {
   let html = read('operator.html');
   html = replaceBetween(html, '<!--BUILD:capacity-->', '<!--/BUILD:capacity-->', renderCapacity());
+  html = replaceBetween(html, '<!--BUILD:route-->', '<!--/BUILD:route-->', renderRoute());
+  html = replaceBetween(html, '<!--BUILD:pratfalls-->', '<!--/BUILD:pratfalls-->', renderPratfalls());
   write('operator.html', html);
 }
 

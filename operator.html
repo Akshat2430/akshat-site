@@ -167,28 +167,142 @@
         <a href="work" class="link-more">See all projects →</a>
       </section>
 
-      <!-- LOGO MARQUEE -->
-      <div class="logo-marquee" style="margin-bottom: 3rem;">
-        <div class="logo-strip-heading"><span class="logo-marquee-label">Across classrooms &amp; boardrooms</span><button class="logo-motion-toggle" type="button" aria-pressed="false" aria-controls="logo-track">Pause logos</button></div>
-        <div class="logo-marquee-viewport">
-          <div class="logo-marquee-track" id="logo-track">
-            <img class="logo-mark" src="public/images/bits-pilani.png" alt="BITS Pilani" data-name="BITS Pilani" />
-            <img class="logo-mark" src="public/images/insead.png" alt="INSEAD" data-name="INSEAD" />
-            <img class="logo-mark" src="public/images/kpmg.png" alt="KPMG" data-name="KPMG" />
-            <img class="logo-mark" src="public/images/ey.png" alt="EY" data-name="EY" />
-            <img class="logo-mark" src="public/images/tata.png" alt="Tata" data-name="Tata" />
-            <img class="logo-mark" src="public/images/novo-nordisk.png" alt="Novo Nordisk" data-name="Novo Nordisk" />
-            <img class="logo-mark" src="public/images/chai.png" alt="Clinton Health Access Initiative"
-              data-name="Clinton Health" />
-            <img class="logo-mark" src="public/images/the-whole-truth.png" alt="The Whole Truth"
-              data-name="The Whole Truth" />
-            <img class="logo-mark" src="public/images/upgrad.png" alt="upGrad" data-name="upGrad" />
-            <img class="logo-mark" src="public/images/plum.png" alt="Plum" data-name="Plum" />
-            <img class="logo-mark" src="public/images/levelup-labs.png" alt="LevelUp Labs" data-name="LevelUp Labs" />
-            <img class="logo-mark" src="public/images/viacom.png" alt="Viacom" data-name="Viacom" />
-          </div>
-        </div>
-      </div>
+      <hr class="divider" />
+
+      <!-- THE ROUTE SO FAR: story over logos. Rendered from data/site.js -->
+      <!--BUILD:route-->
+      <section class="route-section" aria-labelledby="route-title">
+        <p class="section-label">04 / The route so far</p>
+        <h2 id="route-title" class="section-title">A backpacker's <em>CV.</em></h2>
+        <ol class="route-list">
+          <li class="route-stop">
+            <span class="route-pin" aria-hidden="true"></span>
+            <div class="route-stamp">
+              <span class="route-num" aria-hidden="true">01</span>
+              <img class="route-logo" src="public/images/bits-pilani.png" alt="" loading="lazy" />
+              <h3 class="route-org">BITS Pilani</h3>
+              <p class="route-place">Goa</p>
+              <p class="route-line"><mark class="akshat-ph">[[AKSHAT: draft: "Learned to build things. There was a beach 5 minutes away."]]</mark></p>
+            </div>
+          </li>
+          <li class="route-stop">
+            <span class="route-pin" aria-hidden="true"></span>
+            <div class="route-stamp">
+              <span class="route-num" aria-hidden="true">02</span>
+              <img class="route-logo" src="public/images/ey.png" alt="" loading="lazy" />
+              <h3 class="route-org">EY</h3>
+              <p class="route-place">Delhi</p>
+              <p class="route-line"><mark class="akshat-ph">[[AKSHAT: draft: "Lots of PowerPoint and Excel."]]</mark></p>
+            </div>
+          </li>
+          <li class="route-stop">
+            <span class="route-pin" aria-hidden="true"></span>
+            <div class="route-stamp">
+              <span class="route-num" aria-hidden="true">03</span>
+              <span class="route-logo route-logo-empty" aria-hidden="true"></span>
+              <h3 class="route-org"><mark class="akshat-ph">[[AKSHAT: which org was Mumbai? Viacom?]]</mark></h3>
+              <p class="route-place">Mumbai</p>
+              <p class="route-line"><mark class="akshat-ph">[[AKSHAT: draft: "Football streaming rights. Messi lifted the World Cup. You're welcome."]]</mark></p>
+            </div>
+          </li>
+          <li class="route-stop">
+            <span class="route-pin" aria-hidden="true"></span>
+            <div class="route-stamp">
+              <span class="route-num" aria-hidden="true">04</span>
+              <img class="route-logo" src="public/images/kpmg.png" alt="" loading="lazy" />
+              <h3 class="route-org">KPMG</h3>
+              <p class="route-place">Gurgaon</p>
+              <p class="route-line"><mark class="akshat-ph">[[AKSHAT: draft: "Lots of PowerPoint and Excel, again."]]</mark></p>
+            </div>
+          </li>
+          <li class="route-stop">
+            <span class="route-pin" aria-hidden="true"></span>
+            <div class="route-stamp">
+              <span class="route-num" aria-hidden="true">05</span>
+              <img class="route-logo" src="public/images/insead.png" alt="" loading="lazy" />
+              <h3 class="route-org">INSEAD</h3>
+              <p class="route-place">Fontainebleau → Singapore</p>
+              <p class="route-line"><mark class="akshat-ph">[[AKSHAT: draft: "Two campuses, one Dean's List."]]</mark></p>
+            </div>
+          </li>
+          <li class="route-stop">
+            <span class="route-pin" aria-hidden="true"></span>
+            <div class="route-stamp">
+              <span class="route-num" aria-hidden="true">06</span>
+              <img class="route-logo" src="public/images/tata.png" alt="" loading="lazy" />
+              <h3 class="route-org">Tata Steel</h3>
+              <p class="route-place">Kolkata</p>
+              <p class="route-line"><mark class="akshat-ph">[[AKSHAT: draft: "Internship. Everything was sorted except the work."]]</mark></p>
+            </div>
+          </li>
+          <li class="route-stop">
+            <span class="route-pin" aria-hidden="true"></span>
+            <div class="route-stamp">
+              <span class="route-num" aria-hidden="true">07</span>
+              <img class="route-logo" src="public/images/novo-nordisk.png" alt="" loading="lazy" />
+              <h3 class="route-org">Novo Nordisk</h3>
+              <p class="route-place">India → Denmark → UK</p>
+              <p class="route-line"><mark class="akshat-ph">[[AKSHAT: draft: "Global brand strategy for GLP-1s, across 15+ countries."]]</mark></p>
+            </div>
+          </li>
+          <li class="route-stop">
+            <span class="route-pin" aria-hidden="true"></span>
+            <div class="route-stamp">
+              <span class="route-num" aria-hidden="true">08</span>
+              <img class="route-logo" src="public/images/chai.png" alt="" loading="lazy" />
+              <h3 class="route-org">Clinton Health Access Initiative</h3>
+              <p class="route-place">30+ countries</p>
+              <p class="route-line"><mark class="akshat-ph">[[AKSHAT: draft: "Taking generative AI from pilot to habit."]]</mark></p>
+            </div>
+          </li>
+          <li class="route-stop">
+            <span class="route-pin" aria-hidden="true"></span>
+            <div class="route-stamp">
+              <span class="route-num" aria-hidden="true">09</span>
+              <img class="route-logo" src="public/images/levelup-labs.png" alt="" loading="lazy" />
+              <h3 class="route-org">LevelUp Labs</h3>
+              <p class="route-place">Gurgaon</p>
+              <p class="route-line"><mark class="akshat-ph">[[AKSHAT: draft: "Chai & AI, for executives who hate AI hype."]]</mark></p>
+            </div>
+          </li>
+          <li class="route-stop route-next">
+            <span class="route-pin" aria-hidden="true"></span>
+            <a class="route-stamp" href="#contact" onclick="if(typeof va==='function'){va('event',{name:'cta_click',data:{cta:'route_next_stop',section:'operator_route'}})}">
+              <span class="route-num" aria-hidden="true">10</span>
+              <span class="route-org">Next stop: your bet.</span>
+              <span class="route-line">Bring me the gap ↗</span>
+            </a>
+          </li>
+        </ol>
+      </section>
+      <!--/BUILD:route-->
+
+      <!-- BETS I GOT WRONG: pratfall. Hidden entirely when data/site.js has none -->
+      <!--BUILD:pratfalls-->
+      <hr class="divider" />
+
+      <section class="pratfall-section" aria-labelledby="pratfall-title">
+        <p class="section-label">05 / Detours</p>
+        <h2 id="pratfall-title" class="section-title">Bets I got <em>wrong.</em></h2>
+        <p class="pratfall-sub">(Kept here on purpose. You learn more from the detours.)</p>
+        <ol class="pratfall-list">
+          <li class="pratfall">
+            <dl>
+              <div class="pratfall-believed"><dt>What I believed</dt><dd><span class="stall-strike"><mark class="akshat-ph">[[AKSHAT: what I believed]]</mark></span></dd></div>
+              <div><dt>What actually happened</dt><dd><mark class="akshat-ph">[[AKSHAT: what actually happened]]</mark></dd></div>
+              <div class="pratfall-now"><dt>What I do differently now</dt><dd><mark class="akshat-ph">[[AKSHAT: what I do differently now]]</mark></dd></div>
+            </dl>
+          </li>
+          <li class="pratfall">
+            <dl>
+              <div class="pratfall-believed"><dt>What I believed</dt><dd><span class="stall-strike"><mark class="akshat-ph">[[AKSHAT: what I believed]]</mark></span></dd></div>
+              <div><dt>What actually happened</dt><dd><mark class="akshat-ph">[[AKSHAT: what actually happened]]</mark></dd></div>
+              <div class="pratfall-now"><dt>What I do differently now</dt><dd><mark class="akshat-ph">[[AKSHAT: what I do differently now]]</mark></dd></div>
+            </dl>
+          </li>
+        </ol>
+      </section>
+      <!--/BUILD:pratfalls-->
 
       <hr class="divider" />
 
@@ -226,32 +340,6 @@
     </a>
   `).join('');
       }
-
-      // Logo marquee: swap broken images for text fallback, duplicate items inside track for seamless loop
-      const track = document.getElementById('logo-track');
-      if (!track) return;
-      const attachErrorFallback = img => {
-        img.addEventListener('error', () => {
-          const span = document.createElement('span');
-          span.className = 'logo-mark';
-          span.textContent = img.dataset.name || img.alt;
-          img.replaceWith(span);
-        });
-      };
-      track.querySelectorAll('img.logo-mark').forEach(attachErrorFallback);
-      Array.from(track.children).forEach(node => {
-        const duplicate = node.cloneNode(true);
-        duplicate.setAttribute('aria-hidden', 'true');
-        duplicate.classList.add('logo-duplicate');
-        if (duplicate.tagName === 'IMG') attachErrorFallback(duplicate);
-        track.appendChild(duplicate);
-      });
-      const motionToggle = document.querySelector('.logo-motion-toggle');
-      motionToggle.addEventListener('click', () => {
-        const paused = track.classList.toggle('is-paused');
-        motionToggle.setAttribute('aria-pressed', String(paused));
-        motionToggle.textContent = paused ? 'Resume logos' : 'Pause logos';
-      });
 
     });
   </script>
