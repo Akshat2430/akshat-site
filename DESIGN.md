@@ -37,3 +37,12 @@ Added a shared, 9 KB SVG symbol file (`public/images/page-doodles.svg`) with sev
 Illustrated introductions share a responsive component; mobile puts illustrations below the original introduction. Decorative figures are hidden from assistive technology and do not receive focus. The Method diagram has an accessible explanation. No new animation, raster downloads, JavaScript, or production dependencies. About, existing logos, copy, bookings, and tools are preserved.
 
 Validation: all eight affected pages checked in Chromium at 1440, 1024, 768, and 390 pixels, with desktop and mobile illustrations visually reviewed. All retain a single H1 and have no page overflow or runtime errors. SVG parsed and referenced symbol IDs validated; generated Work route marks are maintained in both build output and fallback rendering.
+
+## Alchemy rework (Oct 2026, branch `alchemy-rework`)
+Behavioural-science pass: one primary CTA sitewide ("Bring me the gap ↗"), one low-commitment secondary ("Take the AI scorecard →", `10 questions · free · no email`), loss-framed "How bets stall", route map instead of a logo wall, pratfalls, peak-end contact and sign-off. Weird elements are rationed: the homepage has exactly two (strikethrough signature, obsession line).
+
+- **Editable copy lives in `data/site.js`** (obsessions, capacity, route stops, pratfalls, case artefacts). `build.js` renders it between `<!--BUILD:capacity|route|pratfalls|obsessions-->` markers. Don't hand-edit inside those markers.
+- **Placeholders:** `[[AKSHAT: ...]]` anywhere in `data/site.js` or a served page renders as a yellow badge locally and on previews, and **fails the build when `VERCEL_ENV=production`** (or `node build.js --strict`). Emptying `pratfalls` hides that section entirely.
+- **Honest scarcity:** the capacity line only renders when all values are set and before `validUntil`; after that the build hides it and warns.
+- **Analytics events:** `cta_click {cta, section}` (hero, nav, route), `consultation_click {source:'operator_contact'}` (Cal), `tool_entry_click {source:'operator_hero'|'operator_scorecard'|'not_found', tool}`, `mailto_click {location:'operator_contact'}`, `obsession_reroll`, `not_found {path}`. Note the existing `tool_entry_click {source:'chooser', tool:'operator'|'creator'}` is the homepage fork, not a tool.
+- `404.html` uses absolute asset paths because Vercel serves it at any depth. `hello.js` (console note) loads on every page, tools and generated case pages included.
