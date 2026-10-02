@@ -376,7 +376,9 @@
   `).join('');
       }
 
-      // Hero doodle: each click moves the bet one step along the method.
+      // Hero doodle: plays the method once when it comes into view
+      // (? → Akshat → Your team → next bet?), then stops. Clicks step through it.
+      // Hover, focus or a click takes over; no autoplay under reduced motion.
       const doodle = document.querySelector('.hero-doodle');
       if (doodle) {
         const steps = [
@@ -386,6 +388,7 @@
           { state: 'gap', note: 'next bet?', say: 'An empty box again. Next bet?' }
         ];
         let step = 0;
+        let timers = [];
         const svg = doodle.querySelector('svg');
         const note = doodle.querySelector('.d-note');
         const box = doodle.querySelector('.d-gap-box');
@@ -398,15 +401,34 @@
         live.className = 'visually-hidden';
         live.setAttribute('aria-live', 'polite');
         svg.replaceWith(btn); btn.append(svg); doodle.append(live);
-        btn.addEventListener('click', () => {
-          step = step === steps.length - 1 ? 1 : step + 1;
-          const s = steps[step];
+
+        function show(i, announce) {
+          step = i;
+          const s = steps[i];
           doodle.dataset.state = s.state;
           note.textContent = s.note;
-          live.textContent = s.say;
+          if (announce) live.textContent = s.say;
           box.classList.remove('is-popping'); void box.getBoundingClientRect(); box.classList.add('is-popping');
-          if (typeof va === 'function') va('event', { name: 'doodle_click', data: { state: s.state, step } });
+        }
+        function stopAutoplay() { timers.forEach(clearTimeout); timers = []; }
+
+        btn.addEventListener('click', () => {
+          stopAutoplay();
+          show(step === steps.length - 1 ? 1 : step + 1, true);
+          if (typeof va === 'function') va('event', { name: 'doodle_click', data: { state: steps[step].state, step } });
         });
+        ['pointerenter', 'focus'].forEach(ev => btn.addEventListener(ev, stopAutoplay));
+
+        // Each step 1.5s apart, so the whole play is done in under five seconds.
+        const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!still && 'IntersectionObserver' in window) {
+          const io = new IntersectionObserver(entries => {
+            if (!entries.some(e => e.isIntersecting)) return;
+            io.disconnect();
+            timers = [1, 2, 3].map(i => setTimeout(() => show(i, false), 1200 + (i - 1) * 1500));
+          }, { threshold: 0.6 });
+          io.observe(doodle);
+        }
       }
 
     });
