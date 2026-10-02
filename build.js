@@ -436,8 +436,8 @@ function obsessionItemHTML(cat, item) {
 }
 
 // Server-renders one item (crawlable, works without JS) plus the full list as
-// JSON; the inline script on index.html picks a random one per visit and wires
-// the emoji buttons and the coffee cup.
+// JSON; the inline script on index.html picks a random one per visit, makes the
+// item itself clickable, and wires the coffee cup.
 function renderObsessions() {
   const cats = (site.obsessions || []).filter(c => c && c.items && c.items.length);
   if (!cats.length) return '';
@@ -446,9 +446,6 @@ function renderObsessions() {
             <div class="obsession" data-obsession>
               <p class="obsession-now"><span class="obsession-label">Currently obsessed with:</span>
                 <span class="obsession-item" data-obsession-item>${obsessionItemHTML(cats[0], cats[0].items[0])}</span></p>
-              <div class="obsession-picks" role="group" aria-label="Show me another" hidden>${cats.map(c => `
-                <button type="button" data-cat="${c.key}" aria-pressed="false" aria-label="Another ${esc(c.noun.toLowerCase())}" title="Another ${esc(c.noun.toLowerCase())}">${c.emoji}</button>`).join('')}
-              </div>
             </div>
             <script type="application/json" id="obsession-data">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>
             `;

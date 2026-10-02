@@ -61,11 +61,6 @@
             <div class="obsession" data-obsession>
               <p class="obsession-now"><span class="obsession-label">Currently obsessed with:</span>
                 <span class="obsession-item" data-obsession-item><span class="obsession-emoji" aria-hidden="true">📺</span><span class="visually-hidden">Show: </span><span class="obsession-title">The Mentalist</span></span></p>
-              <div class="obsession-picks" role="group" aria-label="Show me another" hidden>
-                <button type="button" data-cat="show" aria-pressed="false" aria-label="Another show" title="Another show">📺</button>
-                <button type="button" data-cat="book" aria-pressed="false" aria-label="Another book" title="Another book">📚</button>
-                <button type="button" data-cat="song" aria-pressed="false" aria-label="Another song" title="Another song">🎧</button>
-              </div>
             </div>
             <script type="application/json" id="obsession-data">[{"key":"show","emoji":"📺","noun":"Show","items":[{"title":"The Mentalist"},{"title":"Dexter"},{"title":"The Sopranos"},{"title":"Modern Family"},{"title":"Better Call Saul"},{"title":"Suits"},{"title":"The Haunting of Hill House"}]},{"key":"book","emoji":"📚","noun":"Book","items":[{"title":"Alchemy","by":"Rory Sutherland"},{"title":"Before the Coffee Gets Cold","by":"Toshikazu Kawaguchi"},{"title":"A Man Called Ove","by":"Fredrik Backman"},{"title":"Contagious","by":"Jonah Berger"},{"title":"The Midnight Library","by":"Matt Haig"},{"title":"Beyond Belief","by":"Nir Eyal"},{"title":"The Vegetarian","by":"Han Kang"},{"title":"Zero to Scale","by":"Arindam Paul"}]},{"key":"song","emoji":"🎧","noun":"Song","items":[{"title":"505","by":"Arctic Monkeys"},{"title":"Meet Me Halfway","by":"Black Eyed Peas"},{"title":"Instant Crush","by":"Daft Punk"},{"title":"Let It Happen","by":"Tame Impala"},{"title":"Mayonaka no Door (Stay With Me)","by":"Miki Matsubara"},{"title":"All the Stars","by":"Kendrick Lamar & SZA"},{"title":"Pompeii","by":"Bastille"},{"title":"Riptide","by":"Vance Joy"}]}]</script>
             <!--/BUILD:obsessions-->
@@ -97,60 +92,77 @@
   </main>
 
   <script>
-    // "Currently obsessed with": a random pick per visit. Emoji buttons pull
-    // another from that shelf; the coffee cup refills from any shelf.
-    // Never auto-rotates. Items live in data/site.js.
+    // "Currently obsessed with": a random pick per visit. Click the item for
+    // another; shake the coffee cup for another (with spillage). Never
+    // auto-rotates. Items live in data/site.js.
     (function () {
       var root = document.querySelector('[data-obsession]');
       var dataEl = document.getElementById('obsession-data');
       if (!root || !dataEl) return;
       var cats = JSON.parse(dataEl.textContent);
-      var slot = root.querySelector('[data-obsession-item]');
-      var picks = root.querySelector('.obsession-picks');
-      var buttons = picks.querySelectorAll('button');
+      var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var current = { cat: -1, item: -1 };
 
       function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; }
-      function render(c, i) {
-        var cat = cats[c], item = cat.items[i];
+      function replay(node, cls) { node.classList.remove(cls); void node.getBoundingClientRect(); node.classList.add(cls); }
+
+      // Upgrade the static item into a button.
+      var item = el('button', 'obsession-item');
+      item.type = 'button';
+      root.querySelector('[data-obsession-item]').replaceWith(item);
+      var live = el('span', 'visually-hidden'); live.setAttribute('aria-live', 'polite');
+      root.append(live);
+
+      function render(c, i, announce) {
+        var cat = cats[c], it = cat.items[i];
         current = { cat: c, item: i };
         var emoji = el('span', 'obsession-emoji', cat.emoji); emoji.setAttribute('aria-hidden', 'true');
-        slot.replaceChildren(emoji, el('span', 'visually-hidden', cat.noun + ': '), el('span', 'obsession-title', item.title));
-        if (item.by) slot.append(' ', el('span', 'obsession-by', 'by ' + item.by));
-        buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.cat === cat.key)); });
+        item.replaceChildren(emoji, el('span', 'visually-hidden', cat.noun + ': '), el('span', 'obsession-title', it.title));
+        if (it.by) item.append(' ', el('span', 'obsession-by', 'by ' + it.by));
+        item.append(el('span', 'visually-hidden', '. Show another.'));
+        if (announce) live.textContent = cat.noun + ': ' + it.title + (it.by ? ' by ' + it.by : '');
       }
       function rand(n) { return Math.floor(Math.random() * n); }
-      function pick(c) {
-        if (c === undefined) c = rand(cats.length);
-        var n = cats[c].items.length, i;
-        do { i = rand(n); } while (n > 1 && c === current.cat && i === current.item);
-        render(c, i);
+      function pick(announce) {
+        var c, i;
+        do { c = rand(cats.length); i = rand(cats[c].items.length); } while (c === current.cat && i === current.item);
+        render(c, i, announce);
       }
       function track(via) { if (typeof va === 'function') va('event', { name: 'obsession_reroll', data: { via: via, category: cats[current.cat].key } }); }
 
-      pick();
-      slot.setAttribute('aria-live', 'polite'); // announce re-rolls, not the first pick
-      picks.hidden = false;
-      buttons.forEach(function (b) {
-        b.addEventListener('click', function () {
-          for (var c = 0; c < cats.length; c++) if (cats[c].key === b.dataset.cat) pick(c);
-          track('emoji');
-        });
-      });
+      pick(false);
+      item.addEventListener('click', function () { pick(true); replay(item, 'is-jiggling'); track('text'); });
 
-      // The coffee cup becomes a "refill" button once JS is here.
+      // The coffee cup becomes a "shake for another" button once JS is here.
       var cup = document.querySelector('.hero-art .coffee-art');
       if (!cup) return;
       var refill = el('button', 'cup-refill');
       refill.type = 'button';
-      refill.setAttribute('aria-label', 'Refill the cup: show another obsession');
-      refill.title = 'Refill';
+      refill.setAttribute('aria-label', 'Shake the cup: show another obsession');
+      refill.title = 'Shake me';
       cup.replaceWith(refill); refill.append(cup);
       refill.addEventListener('click', function () {
-        pick();
-        cup.classList.remove('is-sipping'); void cup.getBoundingClientRect(); cup.classList.add('is-sipping');
+        pick(true);
+        replay(cup, 'is-shaking');
+        replay(item, 'is-jiggling');
+        if (!still) spill();
         track('cup');
       });
+
+      // A few drops slosh over the rim and fall. Removed once they land.
+      function spill() {
+        for (var d = 0; d < 6; d++) {
+          var drop = el('span', 'spill-drop');
+          drop.setAttribute('aria-hidden', 'true');
+          drop.style.setProperty('--x', (45 + Math.random() * 30) + '%');
+          drop.style.setProperty('--dx', (Math.random() < .5 ? -1 : 1) * (20 + Math.random() * 45) + 'px');
+          drop.style.setProperty('--dy', (110 + Math.random() * 90) + 'px');
+          drop.style.setProperty('--s', (0.6 + Math.random() * 0.8).toFixed(2));
+          drop.style.animationDelay = (d * 40) + 'ms';
+          drop.addEventListener('animationend', function () { this.remove(); });
+          refill.append(drop);
+        }
+      }
     })();
   </script>
 
