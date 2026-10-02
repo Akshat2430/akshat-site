@@ -34,7 +34,6 @@
   <link rel="stylesheet" href="editorial.css" />
   <script src="nav.js" defer></script>
   <script src="hello.js" defer></script>
-  <script src="cal-embed.js" defer></script>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
@@ -48,40 +47,92 @@
 
       <section class="hero">
         <div class="hero-copy">
-          <p class="section-label">02 / The detours · Writing &amp; speaking</p>
-          <h1 class="page-title">Perspective from the road,<br><em>made useful.</em></h1>
-          <p class="hero-bridge">Making sense of life and work across borders, especially AI and marketing from a Gen-Z lens. Created a gazillion content pieces and spoken on 50+ stages.</p>
-          <div class="hero-actions"><a href="content" class="btn btn-primary">Check out my content →</a><a href="#contact" class="text-link">Discuss a brief →</a></div>
-          <p class="hero-proof-line">50K+ LinkedIn · 50+ talks · 6.5K+ Instagram</p>
+          <p class="section-label">02 / The detours · Speaking &amp; writing</p>
+          <h1 class="page-title">The speaker who's actually <em>done the thing.</em></h1>
+          <p class="hero-bridge">AI rollouts across 30+ countries. Brand strategy across 15+. I talk about what actually happened, on 50+ stages from IIT Madras to national TV.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary" onclick="if(typeof va==='function'){va('event',{name:'cta_click',data:{cta:'primary',section:'creator_hero'}})}">Book me to speak ↗</a>
+            <a href="speaking" class="btn btn-secondary" onclick="if(typeof va==='function'){va('event',{name:'cta_click',data:{cta:'secondary',section:'creator_hero'}})}">Watch me speak →</a>
+          </div>
+          <p class="hero-proof-line">50+ talks · National TV · 50K+ on LinkedIn</p>
         </div>
-        <figure class="creator-portrait"><img src="public/images/spkimg1.jpeg" alt="Akshat on stage, speaking into a microphone" width="1280" height="1695" /></figure>
+        <!-- Doodle: a stage, a mic, and an audience whose lightbulbs come on one by one.
+             Plays once in view; click to replay. Script at the bottom of the page. -->
+        <figure class="hero-doodle stage-doodle">
+          <svg viewBox="0 0 440 340" focusable="false" aria-hidden="true">
+            <path class="s-light" d="M220 0 L292 150 L148 150 Z" />
+            <ellipse class="s-pool" cx="220" cy="150" rx="86" ry="13" />
+            <path class="s-ink" d="M36 176 L404 177" />
+            <path class="s-ink" d="M220 150 L221 96 M206 151 L220 140 L234 151" />
+            <rect class="s-mic" x="213" y="70" width="15" height="26" rx="7" />
+            <path class="s-ink" d="M221 108 C 238 112, 238 126, 226 132" />
+            <g class="s-crowd" transform="translate(0 16)">
+              <g><circle cx="70" cy="248" r="19" /><path d="M36 302 C 36 272, 104 272, 104 302" /></g>
+              <g><circle cx="145" cy="250" r="19" /><path d="M111 304 C 111 274, 179 274, 179 304" /></g>
+              <g><circle cx="220" cy="247" r="19" /><path d="M186 301 C 186 271, 254 271, 254 301" /></g>
+              <g><circle cx="295" cy="250" r="19" /><path d="M261 304 C 261 274, 329 274, 329 304" /></g>
+              <g><circle cx="370" cy="248" r="19" /><path d="M336 302 C 336 272, 404 272, 404 302" /></g>
+            </g>
+            <g class="s-bulbs" transform="translate(0 16)">
+              <g class="s-bulb" style="--i: 1"><circle cx="70" cy="200" r="10" /><path d="M65 211 L75 211 M66 215 L74 215" /><path class="s-ray" d="M70 182 L70 177 M55 190 L51 186 M85 190 L89 186" /></g>
+              <g class="s-bulb" style="--i: 3"><circle cx="145" cy="202" r="10" /><path d="M140 213 L150 213 M141 217 L149 217" /><path class="s-ray" d="M145 184 L145 179 M130 192 L126 188 M160 192 L164 188" /></g>
+              <g class="s-bulb" style="--i: 0"><circle cx="220" cy="199" r="10" /><path d="M215 210 L225 210 M216 214 L224 214" /><path class="s-ray" d="M220 181 L220 176 M205 189 L201 185 M235 189 L239 185" /></g>
+              <g class="s-bulb" style="--i: 4"><circle cx="295" cy="202" r="10" /><path d="M290 213 L300 213 M291 217 L299 217" /><path class="s-ray" d="M295 184 L295 179 M280 192 L276 188 M310 192 L314 188" /></g>
+              <g class="s-bulb" style="--i: 2"><circle cx="370" cy="200" r="10" /><path d="M365 211 L375 211 M366 215 L374 215" /><path class="s-ray" d="M370 182 L370 177 M355 190 L351 186 M385 190 L389 186" /></g>
+            </g>
+            <text class="s-note" x="432" y="48" text-anchor="end">your audience,</text>
+            <text class="s-note" x="432" y="76" text-anchor="end">mid-epiphany.</text>
+            <path class="s-arrow" d="M352 88 C 338 128, 340 162, 364 190 M350 186 L365 193 L368 178" />
+          </svg>
+        </figure>
       </section>
 
-      <!-- WRITING PREVIEW -->
-      <section class="field-section" style="margin-top: 44px; padding-top: 40px; border-top: 1px solid var(--border);">
-        <p class="section-label">01 / On paper</p><h2 class="section-title">Notes from a <em>curious mind.</em></h2>
-        <div class="writing-grid editorial-writing">
-          <a href="writing" class="writing-card">
-            <img class="editorial-cover" src="public/images/writing/humanise.webp" alt="" loading="lazy" /><div class="writing-source">Humanise by Plum</div>
-            <div class="writing-title">Around the world in 80 workdays</div>
-          </a>
-          <a href="writing" class="writing-card">
-            <div class="writing-source">The Nuanced Perspective</div>
-            <div class="writing-title">Build your AI Chief of Staff in 45 minutes</div>
-          </a>
-          <a href="writing" class="writing-card">
-            <div class="writing-source">The Whole Truth</div>
-            <div class="writing-title">If obesity is universal, why does every country treat it differently?</div>
-          </a>
+      <!-- Authority, right under the claim. -->
+      <section class="spoken-at" aria-labelledby="spoken-at-title">
+        <h2 id="spoken-at-title" class="logo-wall-label">Spoken at</h2>
+        <ul>
+          <li>DD News</li>
+          <li>IIT Madras</li>
+          <li>Dixon Technologies</li>
+          <li>UpStarts LSR</li>
+          <li>Zero In with Kiran Shah</li>
+          <li>Small Talks</li>
+        </ul>
+      </section>
+
+      <!-- TALKS: a menu, so an organiser can picture the slot. -->
+      <section class="field-section talks-menu" aria-labelledby="talks-title">
+        <p class="section-label">01 / Talks I give</p>
+        <h2 id="talks-title" class="section-title">Three talks, <em>tuned to the room.</em></h2>
+        <div class="topic-grid">
+          <div class="topic-card">
+            <span class="field-number">Talk 01</span>
+            <h3 class="topic-name">Cross-cultural strategy</h3>
+            <p class="topic-desc">Why brands and people who win in one market can fail in another, and what to do about it.</p>
+          </div>
+          <div class="topic-card">
+            <span class="field-number">Talk 02</span>
+            <h3 class="topic-name">AI in the real world</h3>
+            <p class="topic-desc">What happens when you deploy AI inside a large org across multiple countries. No hype.</p>
+          </div>
+          <div class="topic-card">
+            <span class="field-number">Talk 03</span>
+            <h3 class="topic-name">Careers &amp; generalism</h3>
+            <p class="topic-desc">For people navigating non-linear careers in a world that keeps asking you to pick a lane.</p>
+          </div>
         </div>
-        <a href="writing" class="link-more">All writing →</a>
+        <dl class="talk-facts">
+          <div><dt>Formats</dt><dd>Conferences, corporate sessions, university talks, podcasts</dd></div>
+          <div><dt>Audiences</dt><dd>Students, corporate teams, AI practitioners, CXOs and founders, national TV</dd></div>
+          <div><dt>Where</dt><dd>Flexible on format and geography</dd></div>
+        </dl>
       </section>
 
       <hr class="divider" />
 
-      <!-- SPEAKING PREVIEW -->
+      <!-- SELECTED TALKS: the stage photo lives here now, as proof. -->
       <section class="speaking-preview">
-        <p class="section-label">02 / Out loud</p><h2 class="section-title">Ideas are better <em>in conversation.</em></h2><img class="speaking-preview-photo" src="public/images/spkimg2.jpeg" alt="Akshat leading an AI session with an audience" loading="lazy" width="1280" height="960" />
+        <p class="section-label">02 / Out loud</p><h2 class="section-title">Ideas are better <em>in conversation.</em></h2><img class="speaking-preview-photo" src="public/images/spkimg1.jpeg" alt="Akshat on stage, speaking into a microphone" loading="lazy" width="1280" height="1695" />
         <div class="writing-grid">
           <a href="speaking" class="writing-card">
             <div class="writing-source">DD News</div>
@@ -104,57 +155,66 @@
 
       <hr class="divider" />
 
-      <!-- FOLLOW / CONTENT -->
-      <section>
-        <p class="section-label">03 / Follow along</p><h2 class="section-title">One idea. <em>Many conversations.</em></h2>
-        <div class="follow-grid" style="margin-top: 24px;">
-          <a href="https://linkedin.com/in/akshat-kharbanda" target="_blank" class="follow-card follow-card-linkedin">
-            <div class="follow-card-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-              </svg>
-            </div>
-            <div class="follow-card-body">
-              <div class="follow-platform">LinkedIn</div>
-              <div class="follow-num">50K+</div>
-              <span class="follow-cta">Follow on LinkedIn →</span>
-            </div>
+      <!-- WRITING PREVIEW -->
+      <section class="field-section">
+        <p class="section-label">03 / On paper</p><h2 class="section-title">Notes from a <em>curious mind.</em></h2>
+        <p class="bylines">Bylines in <strong>Humanise by Plum</strong>, <strong>The Whole Truth</strong>, <strong>Boye &amp; Co</strong> and <strong>InTheKnow by INSEAD</strong>. Quoted in <strong>Mint</strong> and <strong>Indian Express</strong>.</p>
+        <div class="writing-grid editorial-writing">
+          <a href="writing" class="writing-card">
+            <img class="editorial-cover" src="public/images/writing/humanise.webp" alt="" loading="lazy" /><div class="writing-source">Humanise by Plum</div>
+            <div class="writing-title">Around the world in 80 workdays</div>
           </a>
-          <a href="https://www.instagram.com/thebusinessbackpacker/" target="_blank"
-            class="follow-card follow-card-instagram">
-            <div class="follow-card-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-            </div>
-            <div class="follow-card-body">
-              <div class="follow-platform">Instagram</div>
-              <div class="follow-num">6.5K+</div>
-              <span class="follow-cta">Follow on Instagram →</span>
-            </div>
+          <a href="writing" class="writing-card">
+            <div class="writing-source">The Nuanced Perspective</div>
+            <div class="writing-title">Build your AI Chief of Staff in 45 minutes</div>
+          </a>
+          <a href="writing" class="writing-card">
+            <div class="writing-source">The Whole Truth</div>
+            <div class="writing-title">If obesity is universal, why does every country treat it differently?</div>
           </a>
         </div>
+        <a href="writing" class="link-more">All writing →</a>
       </section>
 
       <hr class="divider" />
 
-      <!-- SIDE QUESTS TEASER -->
-      <section class="service-secondary" style="margin-bottom: 3rem;">
-        <p>Certifications, builds, volunteering, teaching...</p>
-        <a href="sidequests">See side quests →</a>
-      </section>
-
-      <!-- CTA -->
+      <!-- CONTACT -->
       <section id="contact" class="cta-block">
-        <p class="section-label">04 / Let's create something</p><h2 class="cta-title">Let's <em>create</em> together.</h2><p class="hand-note">Stages, podcasts, bylines, collabs.</p>
-        <p class="cta-sub">Tell me what you're thinking.</p>
-        <p class="contact-direct"><a class="btn btn-primary" href="https://cal.com/akshatkharbanda/content-call" target="_blank" rel="noopener" onclick="if(typeof va==='function'){va('event',{name:'consultation_click',data:{source:'creator_contact'}})}">Find a time to talk ↗</a><a class="text-link" href="mailto:workwithakshatkharbanda@gmail.com">Or send me a note →</a></p><details class="booking-details"><summary>Book right here</summary><div class="cal-embed-mount" data-location="creator_contact" data-cal-link="akshatkharbanda/content-call"></div></details>
+        <p class="section-label">The next stage</p>
+        <h2 class="cta-title">Got a stage <em>(or a page)?</em></h2>
+        <p class="cta-sub">Send the date, the audience and the format. I'll come back with the talk that fits. Writing briefs welcome too.</p>
+        <p class="contact-direct"><a class="btn btn-primary" href="https://cal.com/akshatkharbanda/content-call" target="_blank" rel="noopener" onclick="if(typeof va==='function'){va('event',{name:'consultation_click',data:{source:'creator_contact'}})}">Book me to speak ↗</a></p>
+        <p class="cta-fallback">Prefer email? <a href="mailto:workwithakshatkharbanda@gmail.com" onclick="if(typeof va==='function'){va('event',{name:'mailto_click',data:{location:'creator_contact'}})}">workwithakshatkharbanda@gmail.com</a></p>
       </section>
 
     </div>
   </main>
+
+  <script>
+    // Stage doodle: lightbulbs come on one by one when it scrolls into view. Click to replay.
+    (function () {
+      var fig = document.querySelector('.stage-doodle');
+      if (!fig) return;
+      var svg = fig.querySelector('svg');
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'doodle-btn';
+      btn.title = 'Again!';
+      btn.setAttribute('aria-label', 'Replay the audience doodle');
+      svg.replaceWith(btn); btn.append(svg);
+      function play() { fig.classList.remove('is-playing'); void fig.getBoundingClientRect(); fig.classList.add('is-playing'); }
+      btn.addEventListener('click', function () {
+        play();
+        if (typeof va === 'function') va('event', { name: 'doodle_click', data: { doodle: 'stage' } });
+      });
+      if (!('IntersectionObserver' in window)) { fig.classList.add('is-playing'); return; }
+      var io = new IntersectionObserver(function (entries) {
+        if (!entries.some(function (e) { return e.isIntersecting; })) return;
+        io.disconnect(); play();
+      }, { threshold: 0.6 });
+      io.observe(fig);
+    })();
+  </script>
 
 </body>
 

@@ -76,11 +76,11 @@ function injectNav() {
           { href: `${root}sidequests`, label: 'Side Quests', key: 'sidequests' },
           { href: `${root}about`, label: 'About', key: 'about' },
         ];
-    // Operator zone uses the sitewide primary CTA label; creator keeps its own.
+    // Each zone's nav carries that zone's primary CTA label.
     const talkLink = isOperator
       ? { href: `${root}operator#contact`, label: 'Bring me the gap ↗', track: 'nav' }
-      : { href: `${root}creator#contact`, label: "Let's talk" };
-    const talkHTML = `<a href="${talkLink.href}" class="nav-talk"${talkLink.track ? ` onclick="if(typeof va==='function'){va('event',{name:'cta_click',data:{cta:'primary',section:'nav'}})}"` : ''}>${talkLink.label}</a>`;
+      : { href: `${root}creator#contact`, label: 'Book me to speak ↗', track: 'nav' };
+    const talkHTML = `<a href="${talkLink.href}" class="nav-talk"${talkLink.track ? ` onclick="if(typeof va==='function'){va('event',{name:'cta_click',data:{cta:'primary',section:'nav_${zone}'}})}"` : ''}>${talkLink.label}</a>`;
     const secondaryLinks = isOperator
       ? [
           { href: `${root}method`, label: 'Method', key: 'method' },
