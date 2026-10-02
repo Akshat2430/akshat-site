@@ -62,14 +62,14 @@ const site = {
   // Novo Nordisk AI pilot).
   pratfalls: [
     {
-      believed: 'A good dashboard shows everything. So my first one was built to be comprehensive.',
+      believed: 'A good dashboard shows everything.',
       happened: 'Too many metrics. Adoption only went up once I cut it back to the essentials.',
       now: 'I start from the decision an executive needs to make, and work backwards to the few numbers that answer it.'
     },
     {
       believed: 'Get the technology right on a “simple” AI tool, and people will use it.',
-      happened: 'The technology was the easy part. I underestimated how much change management it needed.',
-      now: 'I plan adoption from day one: start with 10 power users, appoint champions, scale only once it’s proven.'
+      happened: 'I underestimated how much change management it needed.',
+      now: 'I plan adoption from day one: start with power users, appoint champions, scale once it’s proven.'
     }
   ],
 

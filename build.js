@@ -367,7 +367,7 @@ function renderPratfalls() {
       <section class="pratfall-section" aria-labelledby="pratfall-title">
         <p class="section-label">04 / Detours</p>
         <h2 id="pratfall-title" class="section-title">Bets I got <em>wrong.</em></h2>
-        <p class="pratfall-sub">(Kept here on purpose. You learn more from the detours.)</p>
+        <p class="pratfall-sub">(You learn more from the detours.)</p>
         <ol class="pratfall-list">${items.map(p => `
           <li class="pratfall">
             <dl>
