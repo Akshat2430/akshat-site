@@ -30,31 +30,11 @@
   <link rel="icon" type="image/jpeg" href="/public/images/akshat-avatar.jpg" />
   <link rel="apple-touch-icon" href="/public/images/akshat-avatar.jpg" />
 
-  <!-- JSON-LD Person schema -->
+  <!--BUILD:person-jsonld-->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Akshat Kharbanda",
-    "alternateName": "The Business Backpacker",
-    "url": "https://akshatkharbanda.com/",
-    "image": "https://akshatkharbanda.com/public/images/akshat-avatar.jpg",
-    "jobTitle": "Independent Strategist | 0→1 Strategy & Operations",
-    "description": "Akshat Kharbanda (The Business Backpacker). I build the system behind ambitious business bets, from market shaping and product strategy to AI systems and adoption.",
-    "alumniOf": [
-      { "@type": "CollegeOrUniversity", "name": "INSEAD" },
-      { "@type": "CollegeOrUniversity", "name": "BITS Pilani" }
-    ],
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Clinton Health Access Initiative"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/akshat-kharbanda/",
-      "https://www.instagram.com/thebusinessbackpacker/"
-    ]
-  }
+  {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://akshatkharbanda.com/#website","url":"https://akshatkharbanda.com/","name":"Akshat Kharbanda","publisher":{"@id":"https://akshatkharbanda.com/#person"}},{"@type":"Person","@id":"https://akshatkharbanda.com/#person","name":"Akshat Kharbanda","alternateName":"The Business Backpacker","url":"https://akshatkharbanda.com/","image":"https://akshatkharbanda.com/public/images/akshat-avatar.jpg","jobTitle":"Independent Strategist | 0→1 Strategy & Operations","description":"Akshat Kharbanda (The Business Backpacker). I build the system behind ambitious business bets, from market shaping and product strategy to AI systems and adoption.","knowsAbout":["0→1 strategy","Go-to-market strategy","Market shaping","AI adoption","AI agents and automation","Cross-cultural strategy","Brand strategy","Healthcare and pharma strategy"],"alumniOf":[{"@type":"CollegeOrUniversity","name":"INSEAD"},{"@type":"CollegeOrUniversity","name":"BITS Pilani"}],"worksFor":{"@type":"Organization","name":"Clinton Health Access Initiative"},"sameAs":["https://www.linkedin.com/in/akshat-kharbanda/","https://www.instagram.com/thebusinessbackpacker/","https://github.com/Akshat2430"]}]}
   </script>
+  <!--/BUILD:person-jsonld-->
 
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="editorial.css" />
@@ -85,7 +65,7 @@
         </div>
       </div>
       <div class="entrance-grid">
-        <a class="entrance-work" href="operator.html" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'chooser',tool:'operator'}})}">
+        <a class="entrance-work" href="operator" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'chooser',tool:'operator'}})}">
           <img src="public/images/spkimg2.jpeg" alt="Akshat presenting to a room" width="1280" height="960" />
           <div class="entrance-work-copy">
             <div class="entrance-top"><span>01 / Work with me</span><span aria-hidden="true">↗</span></div>
@@ -93,12 +73,12 @@
             <span class="entrance-link">Explore the work <span aria-hidden="true">→</span></span>
           </div>
         </a>
-        <a class="entrance-stories" href="creator.html" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'chooser',tool:'creator'}})}">
+        <a class="entrance-stories" href="creator" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'chooser',tool:'creator'}})}">
           <img src="public/images/spkimg1.jpeg" alt="Akshat speaking to an audience" width="1280" height="1695" />
           <div class="entrance-story-copy"><div class="entrance-top"><span>02 / Create with me</span><span aria-hidden="true">↗</span></div><h2>Notes from<br>a curious global mind.</h2><span class="entrance-link">Follow the detours <span aria-hidden="true">→</span></span></div>
         </a>
       </div>
-      <div class="entrance-bottom"><a href="about.html">A little about me →</a></div>
+      <div class="entrance-bottom"><a href="about">A little about me →</a></div>
 
     </div>
   </main>

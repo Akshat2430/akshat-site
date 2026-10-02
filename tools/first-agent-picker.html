@@ -6,11 +6,11 @@
 <title>Which Agent Should You Build First? · Akshat Kharbanda</title>
 <meta name="description" content="Six questions about what's actually piling up in your week. Get one agent to build first, not five, and an honest answer if the real fix isn't an agent yet." />
 <meta name="author" content="Akshat Kharbanda" />
-<link rel="canonical" href="https://akshatkharbanda.com/tools/first-agent-picker.html" />
+<link rel="canonical" href="https://akshatkharbanda.com/tools/first-agent-picker" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Which Agent Should You Build First? · Akshat Kharbanda" />
 <meta property="og:description" content="Six questions about what's piling up in your week. Get one agent to build first, not five." />
-<meta property="og:url" content="https://akshatkharbanda.com/tools/first-agent-picker.html" />
+<meta property="og:url" content="https://akshatkharbanda.com/tools/first-agent-picker" />
 <meta property="og:image" content="https://akshatkharbanda.com/public/images/og-image.jpeg" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Which Agent Should You Build First? · Akshat Kharbanda" />
@@ -144,9 +144,23 @@ body{
 :focus-visible { outline:2px solid var(--clay); outline-offset:4px; }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
 </style>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "Which Agent Should You Build First?", "url": "https://akshatkharbanda.com/tools/first-agent-picker", "description": "Six questions about what's actually piling up in your week. Get one agent to build first, not five, and an honest answer if the real fix isn't an agent yet.", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "creator": {"@type": "Person", "@id": "https://akshatkharbanda.com/#person", "name": "Akshat Kharbanda"}}
+</script>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 <body>
-<main class="wrap" id="app"></main>
+<main class="wrap" id="app">
+  <!-- Static summary for crawlers and no-JS readers; render() replaces it on load. -->
+  <div class="kicker">Which agent should you build first?</div>
+  <h1 class="q">Which AI agent should you build first?</h1>
+  <p class="sec">Six questions about what's actually piling up in your week. You get one agent to build first, not five, and an honest answer if the real fix isn't an agent yet.</p>
+  <p class="sec">The picker recommends one of five starting points: a triage layer for your inbox, a meeting-to-action layer, a research-brief layer, an ops-rollup layer, or a first-draft layer. Each result explains why it fits your answers, what it saves you in week one, and what makes it hold after handoff.</p>
+  <p class="sec">Built by <a href="../operator">Akshat Kharbanda</a>. Free, no email needed. This tool needs JavaScript to run.</p>
+</main>
 
 <script>
 /* ============================================================
@@ -283,11 +297,11 @@ const FOUNDATION = {
 /* Case link per archetype — judgement calls, not required by scoreAnswers().
    Kept separate from the pure scorer so the decision logic above stays untouched. */
 const CASE_LINK = {
-  inbox_triage:      { href:'../work/build-a-signal-scanner-for-a-pe-firm.html', label:'How a PE firm turned a thousand daily updates into one brief' },
-  meeting_to_action:  { href:'../work/build-a-ceo-an-ai-workforce.html', label:'How a CEO’s meeting-prep agent became one of four in daily use' },
-  research_brief:     { href:'../work/shape-market-maternal-ai-devices.html', label:'How scattered literature became one demand assessment and a fundable program' },
-  ops_rollup:         { href:'../work/give-executives-time-back.html', label:'How 10+ scattered data sources became one dashboard executives trusted' },
-  first_draft:        { href:'../work/build-a-ceo-an-ai-workforce.html', label:'How a drafting agent became one of four a CEO uses daily' },
+  inbox_triage:      { href:'../work/build-a-signal-scanner-for-a-pe-firm', label:'How a PE firm turned a thousand daily updates into one brief' },
+  meeting_to_action:  { href:'../work/build-a-ceo-an-ai-workforce', label:'How a CEO’s meeting-prep agent became one of four in daily use' },
+  research_brief:     { href:'../work/shape-market-maternal-ai-devices', label:'How scattered literature became one demand assessment and a fundable program' },
+  ops_rollup:         { href:'../work/give-executives-time-back', label:'How 10+ scattered data sources became one dashboard executives trusted' },
+  first_draft:        { href:'../work/build-a-ceo-an-ai-workforce', label:'How a drafting agent became one of four a CEO uses daily' },
 };
 
 /* Pure scorer. Input: answers object. Output: an outcome id and the
@@ -408,7 +422,7 @@ function actionsHTML(){
       <button class="restart" type="button" onclick="copyPlan()">Copy result <span class="copied-flag" id="copiedFlag" hidden>Copied &#10003;</span></button>
       <button class="restart" type="button" onclick="window.print()">Print / Save as PDF</button>
     </div>
-    <p class="return-link"><a href="../resources.html">&larr; Back to free resources</a></p>`;
+    <p class="return-link"><a href="../resources">&larr; Back to free resources</a></p>`;
 }
 
 function renderResult(){
@@ -422,7 +436,7 @@ function renderResult(){
       f.intro, "",
       "Why not yet: "+f.reasons[res.reason], "",
       "What to do instead: "+f.instead, "",
-      "akshatkharbanda.com/tools/first-agent-picker.html"
+      "akshatkharbanda.com/tools/first-agent-picker"
     ].join("\n");
     app.innerHTML=`
       <div class="result">
@@ -453,7 +467,7 @@ function renderResult(){
     "What it saves you in week one: "+saves, "",
     "What makes it hold after handoff: "+a.holds,
     caseLink ? "\nRelated case: "+caseLink.label : "",
-    "\nakshatkharbanda.com/tools/first-agent-picker.html"
+    "\nakshatkharbanda.com/tools/first-agent-picker"
   ].join("\n");
 
   app.innerHTML=`

@@ -6,11 +6,11 @@
 <title>AI Adoption Scorecard · Akshat Kharbanda</title>
 <meta name="description" content="Ten questions, two minutes. Get a named pattern for your AI rollout, your two weakest spots, and what unused seats are quietly costing you." />
 <meta name="author" content="Akshat Kharbanda" />
-<link rel="canonical" href="https://akshatkharbanda.com/tools/adoption-scorecard.html" />
+<link rel="canonical" href="https://akshatkharbanda.com/tools/adoption-scorecard" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="AI Adoption Scorecard · Akshat Kharbanda" />
 <meta property="og:description" content="You bought the AI seats. Will your team actually use them? Ten questions, two minutes, a named pattern for your rollout." />
-<meta property="og:url" content="https://akshatkharbanda.com/tools/adoption-scorecard.html" />
+<meta property="og:url" content="https://akshatkharbanda.com/tools/adoption-scorecard" />
 <meta property="og:image" content="https://akshatkharbanda.com/public/images/og-image.jpeg" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="AI Adoption Scorecard · Akshat Kharbanda" />
@@ -142,10 +142,17 @@
 :focus-visible { outline:2px solid var(--clay); outline-offset:4px; }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
 </style>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "AI Adoption Scorecard", "url": "https://akshatkharbanda.com/tools/adoption-scorecard", "description": "Ten questions, two minutes. Get a named pattern for your AI rollout, your two weakest spots, and what unused seats are quietly costing you.", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "creator": {"@type": "Person", "@id": "https://akshatkharbanda.com/#person", "name": "Akshat Kharbanda"}}
+</script>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 <body>
 <main class="wrap">
-  <div class="brand"><span class="kick">AI Adoption Scorecard</span><a class="by" href="/operator.html" style="text-decoration:none">The Business Backpacker</a></div>
+  <div class="brand"><span class="kick">AI Adoption Scorecard</span><a class="by" href="/operator" style="text-decoration:none">The Business Backpacker</a></div>
 
   <div id="progress" style="display:none">
     <div class="top"><span class="count" id="count"></span></div>
@@ -292,12 +299,12 @@ const SUPPORT = {
 
 /* Case/resource pairings per pattern \u2014 judgement calls, see docs/growth-audit/day5-result-content-sheet.md */
 const CASE_LINK = {
-  shelfware:   { href:'../work/scale-ai-across-30-countries.html', label:'How CHAI took AI from early adopters to majority active use' },
-  compliance:  { href:'../work/ai-pilot-that-actually-works.html', label:'How a Novo Nordisk pilot started with leadership modelling the behaviour first' },
-  island:      { href:'../work/scale-ai-across-30-countries.html', label:'How CHAI spread AI use beyond the first pilots' },
-  wideshallow: { href:'../work/give-executives-time-back.html', label:'How scattered effort at Viacom18 became one system people actually used' },
-  fearfrozen:  { href:'../work/scale-ai-across-30-countries.html', label:'How governance let nervous first-timers try AI safely at CHAI' },
-  holding:     { href:'../work/scale-ai-across-30-countries.html', label:'How CHAI got AI use to hold without ongoing hand-holding' },
+  shelfware:   { href:'../work/scale-ai-across-30-countries', label:'How CHAI took AI from early adopters to majority active use' },
+  compliance:  { href:'../work/ai-pilot-that-actually-works', label:'How a Novo Nordisk pilot started with leadership modelling the behaviour first' },
+  island:      { href:'../work/scale-ai-across-30-countries', label:'How CHAI spread AI use beyond the first pilots' },
+  wideshallow: { href:'../work/give-executives-time-back', label:'How scattered effort at Viacom18 became one system people actually used' },
+  fearfrozen:  { href:'../work/scale-ai-across-30-countries', label:'How governance let nervous first-timers try AI safely at CHAI' },
+  holding:     { href:'../work/scale-ai-across-30-countries', label:'How CHAI got AI use to hold without ongoing hand-holding' },
 };
 const RESOURCE_LINK = {
   shelfware:   { href:'../public/downloads/internal-ai-champions-playbook.pdf', label:'AI Champions Playbook (PDF)' },
@@ -462,7 +469,7 @@ function buildPlanText(w1, w2, p, key, c){
   if(caseLink){
     lines.push('', 'Related case: ' + caseLink.label);
   }
-  lines.push('', 'akshatkharbanda.com/tools/adoption-scorecard.html');
+  lines.push('', 'akshatkharbanda.com/tools/adoption-scorecard');
   return lines.join('\n');
 }
 
@@ -538,7 +545,7 @@ function finish(){
       '</div>'+
     '</div>'+
     '<div class="restart"><button class="btn btn-ghost" onclick="location.reload()">Start again</button></div>'+
-    '<p class="return-link"><a href="../resources.html">&larr; Back to free resources</a></p>';
+    '<p class="return-link"><a href="../resources">&larr; Back to free resources</a></p>';
 
   document.getElementById('result').innerHTML = html;
   show('result');

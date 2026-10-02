@@ -3,6 +3,8 @@
 const cases = [
   {
     slug: "sell-to-customers-who-dont-need-you",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you sell to customers who think they don't need you?",
     subtitle: "Limited penetration → 115% YoY growth",
     category: "Entering",
@@ -24,6 +26,8 @@ const cases = [
   },
   {
     slug: "edtech-market-that-doesnt-exist",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you define an edtech market that doesn't exist yet?",
     subtitle: "Emerging segment to 5K downloads",
     category: "Entering",
@@ -44,6 +48,8 @@ const cases = [
   },
   {
     slug: "policy-ambition-to-business-strategy",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you turn policy ambition into business strategy?",
     subtitle: "India's first green hydrogen publication",
     category: "Finding",
@@ -64,6 +70,8 @@ const cases = [
   },
   {
     slug: "pharma-ecommerce-first-mover",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you become a first-mover in pharma e-commerce distribution?",
     subtitle: "5M impressions in 3 months",
     category: "Entering",
@@ -84,6 +92,8 @@ const cases = [
   },
   {
     slug: "enter-worlds-most-complex-healthcare-market",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you enter the world's most complex healthcare market?",
     subtitle: "Vast market → 5 target states, 7 channels, first 100 customers",
     category: "Entering",
@@ -106,6 +116,8 @@ const cases = [
   },
   {
     slug: "patterns-7000-people-7-countries",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you find patterns across 7000 people in 7 countries?",
     subtitle: "Fragmented research → one global consumer framework",
     category: "Finding",
@@ -128,6 +140,8 @@ const cases = [
   },
   {
     slug: "manage-300k-across-10-partners",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you manage £300k across 10 partners you've never worked with?",
     subtitle: "30mn impressions in 3 months",
     category: "Building",
@@ -149,6 +163,8 @@ const cases = [
   },
   {
     slug: "launch-campaign-social-media-suspended",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you launch a campaign when social media got you suspended?",
     subtitle: "3-year paralysis to affiliate's highest CSAT score",
     category: "Entering",
@@ -170,6 +186,8 @@ const cases = [
   },
   {
     slug: "ai-pilot-that-actually-works",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you build an AI pilot that actually works?",
     subtitle: "10% time reduction, new team formation",
     category: "Building",
@@ -191,6 +209,8 @@ const cases = [
   },
   {
     slug: "give-executives-time-back",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you give busy execs time back?",
     subtitle: "Days of reporting to 75% faster decision-making",
     category: "Building",
@@ -212,6 +232,8 @@ const cases = [
   },
   {
     slug: "fix-customer-feedback-nobody-trusts",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you fix a customer feedback system that nobody trusts?",
     subtitle: "7% submission boost, strategic redesign",
     category: "Finding",
@@ -233,6 +255,8 @@ const cases = [
   },
   {
     slug: "scale-ai-across-30-countries",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you roll out Generative AI across 30+ countries?",
     subtitle: "A licence everyone has → a tool the majority actually use",
     category: "Building",
@@ -256,6 +280,8 @@ const cases = [
   },
   {
     slug: "shape-market-maternal-ai-devices",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you shape a market for AI-assisted ultrasound?",
     subtitle: "Niche idea → program design, donor narrative, and playbook",
     category: "Finding",
@@ -278,6 +304,8 @@ const cases = [
   },
   {
     slug: "find-signal-in-ai-hype",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you find the signal in AI hype?",
     subtitle: "Invite-only community for FAANG & F500 execs",
     category: "Finding",
@@ -296,6 +324,8 @@ const cases = [
   },
   {
     slug: "build-a-ceo-an-ai-workforce",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you build a CEO an AI workforce that actually holds?",
     subtitle: "Hundred small extractions → one dedicated agent each",
     category: "Building",
@@ -317,6 +347,8 @@ const cases = [
   },
   {
     slug: "brand-for-millions-across-15-countries",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you define a brand for millions of people across 15 countries?",
     subtitle: "Double-digit global preference boost",
     category: "Building",
@@ -339,6 +371,8 @@ const cases = [
   },
   {
     slug: "build-a-signal-scanner-for-a-pe-firm",
+    published: "2026-04-24",
+    updated: "2026-09-24",
     question: "How do you turn a thousand updates into one brief a team actually reads?",
     subtitle: "Thousand daily updates → one standing brief for a 10-person team",
     category: "Finding",

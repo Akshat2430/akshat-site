@@ -1,0 +1,25 @@
+# Akshat Kharbanda
+
+> Independent strategist (The Business Backpacker) working on 0→1 strategy and operations: market shaping, go-to-market, AI systems and AI adoption, with a cross-cultural lens from work across India, Denmark, the UK and 30+ countries. INSEAD and BITS Pilani alumnus; formerly Novo Nordisk.
+
+## Work with me
+- [Working with Akshat](https://akshatkharbanda.com/operator): 0→1 strategy and operations services
+- [The 90/10 Method](https://akshatkharbanda.com/method): how engagements are run
+- [Case studies](https://akshatkharbanda.com/work): 17 projects across new markets, research, and building systems
+
+## Free tools
+- [AI Adoption Scorecard](https://akshatkharbanda.com/tools/adoption-scorecard): ten questions that diagnose why an AI rollout stalls
+- [Which Agent Should You Build First?](https://akshatkharbanda.com/tools/first-agent-picker): six questions that pick one agent to build first
+- [Resources](https://akshatkharbanda.com/resources): playbooks and guides
+
+## Selected case studies
+- [Scaling AI across 30 countries](https://akshatkharbanda.com/work/scale-ai-across-30-countries)
+- [Patterns from 7,000 people in 7 countries](https://akshatkharbanda.com/work/patterns-7000-people-7-countries)
+- [Entering the world's most complex healthcare market](https://akshatkharbanda.com/work/enter-worlds-most-complex-healthcare-market)
+- [Building a CEO an AI workforce](https://akshatkharbanda.com/work/build-a-ceo-an-ai-workforce)
+
+## About
+- [About Akshat](https://akshatkharbanda.com/about)
+- [Writing and publications](https://akshatkharbanda.com/writing)
+- [Speaking](https://akshatkharbanda.com/speaking)
+- [LinkedIn](https://www.linkedin.com/in/akshat-kharbanda/)

@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /work/_template
 Disallow: /work/_template.html
 
 Sitemap: https://akshatkharbanda.com/sitemap.xml

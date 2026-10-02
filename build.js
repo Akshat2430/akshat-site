@@ -8,6 +8,8 @@
  *   - work/<slug>.html      generated in full from work/_template.html
  *   - index.html            "Selected work" cards written between BUILD markers
  *   - work.html             the three category buckets written between BUILD markers
+ *   - index.html, about.html Person JSON-LD from data/person.js
+ *   - sitemap.xml           regenerated from the page list below (lastmod from git)
  *
  * Runs on every Vercel deploy (see vercel.json "buildCommand"). Safe to run
  * repeatedly: output is deterministic and idempotent.
@@ -17,7 +19,9 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = __dirname;
+const { execSync } = require('child_process');
 const cases = require('./data/cases.js');
+const { SITE, PERSON_ID, person } = require('./data/person.js');
 
 /* ------------------------------------------------------------------ helpers */
 
@@ -43,6 +47,17 @@ function replaceToken(html, token, value) {
   return html.split(token).join(value);
 }
 
+function jsonLd(obj) {
+  return `\n  <script type="application/ld+json">\n  ${JSON.stringify(obj)}\n  </script>\n  `;
+}
+
+// "2026-09-24" -> "Sep 2026". Must match the fallback in work/_template.html.
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function displayDate(iso) {
+  const [y, m] = iso.split('-');
+  return `${MONTHS[+m - 1]} ${y}`;
+}
+
 /* ------------------------------------------------------- case page rendering */
 
 // Mirrors the fallback template literal in work/_template.html so the JS-off
@@ -50,7 +65,7 @@ function replaceToken(html, token, value) {
 function renderCaseBody(c, prev, next) {
   return `
     <div class="case-hero">
-      <a href="../work.html" class="case-back">← Back to work</a>
+      <a href="../work" class="case-back">← Back to work</a>
       <span class="tag tag-${c.category}">${c.category}</span>
       <h1 class="case-title">${c.question}</h1>
       <p class="case-subtitle">${c.subtitle}</p>
@@ -66,6 +81,10 @@ function renderCaseBody(c, prev, next) {
         <div class="case-meta-item">
           <div class="case-meta-label">Category</div>
           <div class="case-meta-val">${c.category}</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Updated</div>
+          <div class="case-meta-val"><time datetime="${c.updated}">${displayDate(c.updated)}</time></div>
         </div>
       </div>
     </div>
@@ -119,15 +138,15 @@ function renderCaseBody(c, prev, next) {
     <hr class="divider" />
 
     <div class="case-nav">
-      ${prev ? `<a href="${prev.slug}.html" class="case-nav-btn">← ${prev.question.substring(0, 40)}…</a>` : '<span></span>'}
-      ${next ? `<a href="${next.slug}.html" class="case-nav-btn">${next.question.substring(0, 40)}… →</a>` : '<span></span>'}
+      ${prev ? `<a href="${prev.slug}" class="case-nav-btn">← ${prev.question.substring(0, 40)}…</a>` : '<span></span>'}
+      ${next ? `<a href="${next.slug}" class="case-nav-btn">${next.question.substring(0, 40)}… →</a>` : '<span></span>'}
     </div>
   `;
 }
 
-function renderFaqJsonLd(c) {
+function renderCaseJsonLd(c, url, desc) {
   const outcomesSummary = c.outcomes.map(o => `${o.number} ${o.label}`).join(', ');
-  const obj = {
+  const faq = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [{
@@ -139,7 +158,31 @@ function renderFaqJsonLd(c) {
       }
     }]
   };
-  return `\n  <script type="application/ld+json">\n  ${JSON.stringify(obj)}\n  </script>\n  `;
+  const article = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": c.question,
+    "description": desc,
+    "url": url,
+    "mainEntityOfPage": url,
+    "image": `${SITE}/public/images/og-image.jpeg`,
+    "datePublished": c.published,
+    "dateModified": c.updated,
+    "articleSection": "Case study",
+    "about": c.client,
+    "author": { "@type": "Person", "@id": PERSON_ID, "name": person.name, "url": person.url },
+    "publisher": { "@type": "Person", "@id": PERSON_ID, "name": person.name }
+  };
+  const breadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE}/` },
+      { "@type": "ListItem", "position": 2, "name": "Work", "item": `${SITE}/work` },
+      { "@type": "ListItem", "position": 3, "name": c.question, "item": url }
+    ]
+  };
+  return [article, breadcrumbs, faq].map(jsonLd).join('');
 }
 
 function buildCasePages(template) {
@@ -149,14 +192,16 @@ function buildCasePages(template) {
 
     const title = `${c.question} · Akshat Kharbanda`;
     const desc = `${c.subtitle}. Case study by Akshat Kharbanda, 0→1 strategy and operations consultant.`;
-    const url = `https://akshatkharbanda.com/work/${c.slug}.html`;
+    const url = `${SITE}/work/${c.slug}`;
 
     let html = template.replace(/\s*<!--TEMPLATE-NOTE[\s\S]*?TEMPLATE-NOTE-->/, '');
     html = replaceToken(html, '<head>', '<head>\n  <!-- Generated by build.js from work/_template.html + data/cases.js. Do not edit by hand. -->');
     html = replaceToken(html, '{{PAGE_TITLE}}', title);
     html = replaceToken(html, '{{PAGE_DESC}}', desc);
     html = replaceToken(html, '{{CANONICAL_URL}}', url);
-    html = replaceBetween(html, '<!--BUILD:FAQ-->', '<!--/BUILD:FAQ-->', renderFaqJsonLd(c));
+    html = replaceToken(html, '{{PUBLISHED}}', c.published);
+    html = replaceToken(html, '{{UPDATED}}', c.updated);
+    html = replaceBetween(html, '<!--BUILD:JSONLD-->', '<!--/BUILD:JSONLD-->', renderCaseJsonLd(c, url, desc));
     html = replaceBetween(html, '<!--BUILD:START-->', '<!--BUILD:END-->', renderCaseBody(c, prev, next));
 
     write(path.join('work', `${c.slug}.html`), html);
@@ -168,7 +213,7 @@ function buildCasePages(template) {
 
 function renderFeaturedCards() {
   const rows = cases.filter(c => c.featured).map(c => `
-        <a href="work/${c.slug}.html" class="work-row">
+        <a href="work/${c.slug}" class="work-row">
           <span class="tag tag-${c.category}">${c.homeTag || c.category}</span>
           <div class="work-row-body">
             <div class="work-row-q">${c.question}</div>
@@ -202,7 +247,7 @@ const bucketMeta = [
 
 function caseCard(c) {
   return `
-            <a href="work/${c.slug}.html" class="case-card${c.highlight ? ' case-card-highlight' : ''}">
+            <a href="work/${c.slug}" class="case-card${c.highlight ? ' case-card-highlight' : ''}">
               ${c.highlight ? '<span class="case-card-star" aria-label="Highlight" title="Highlight project">★</span>' : ''}
               <span class="case-card-client">${c.client} · ${c.context}</span>
               <div class="case-card-q">${c.question}</div>
@@ -243,11 +288,91 @@ function buildWork() {
   return bucketMeta.length;
 }
 
+/* ----------------------------------------------------- Person JSON-LD */
+
+function buildPerson() {
+  const website = {
+    "@type": "WebSite",
+    "@id": `${SITE}/#website`,
+    "url": `${SITE}/`,
+    "name": "Akshat Kharbanda",
+    "publisher": { "@id": PERSON_ID }
+  };
+  const pages = {
+    'index.html': { "@context": "https://schema.org", "@graph": [website, person] },
+    'about.html': {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "url": `${SITE}/about`,
+      "mainEntity": person
+    }
+  };
+  for (const [file, obj] of Object.entries(pages)) {
+    write(file, replaceBetween(read(file), '<!--BUILD:person-jsonld-->', '<!--/BUILD:person-jsonld-->', jsonLd(obj)));
+  }
+  return Object.keys(pages).length;
+}
+
+/* ------------------------------------------------------------- sitemap */
+
+const sitemapPages = [
+  ['index.html', '1.0'],
+  ['operator.html', '0.95'],
+  ['creator.html', '0.95'],
+  ['about.html', '0.9'],
+  ['work.html', '0.9'],
+  ['resources.html', '0.9'],
+  ['tools/adoption-scorecard.html', '0.8'],
+  ['tools/first-agent-picker.html', '0.8'],
+  ['method.html', '0.8'],
+  ['writing.html', '0.8'],
+  ['speaking.html', '0.8'],
+  ['content.html', '0.7'],
+  ['sidequests.html', '0.6']
+];
+
+function cleanUrl(file) {
+  return file === 'index.html' ? `${SITE}/` : `${SITE}/${file.replace(/\.html$/, '')}`;
+}
+
+// Last-changed date for a hand-authored page. Uncommitted edits count as today.
+// Vercel builds have no git history, so fall back to whatever the committed
+// sitemap already says for that URL.
+function lastmod(file, previous) {
+  try {
+    const dirty = execSync(`git status --porcelain -- "${file}"`, { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+    if (dirty) return new Date().toISOString().slice(0, 10);
+    const d = execSync(`git log -1 --format=%cs -- "${file}"`, { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+    if (d) return d;
+  } catch (e) { /* no git */ }
+  return previous[cleanUrl(file)] || new Date().toISOString().slice(0, 10);
+}
+
+function buildSitemap() {
+  const previous = {};
+  try {
+    const old = read('sitemap.xml');
+    for (const m of old.matchAll(/<loc>([^<]+)<\/loc><lastmod>([^<]+)<\/lastmod>/g)) {
+      previous[m[1].replace(/\.html$/, '').replace(/\/index$/, '/')] = m[2];
+    }
+  } catch (e) { /* first run */ }
+
+  const urls = sitemapPages.map(([file, priority]) =>
+    `  <url><loc>${cleanUrl(file)}</loc><lastmod>${lastmod(file, previous)}</lastmod><priority>${priority}</priority></url>`);
+  cases.forEach(c => {
+    urls.push(`  <url><loc>${SITE}/work/${c.slug}</loc><lastmod>${c.updated}</lastmod><priority>0.7</priority></url>`);
+  });
+  write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`);
+  return urls.length;
+}
+
 /* ------------------------------------------------------------------- run */
 
 const template = read(path.join('work', '_template.html'));
 const nPages = buildCasePages(template);
 const nFeatured = buildIndex();
 const nBuckets = buildWork();
+const nPerson = buildPerson();
+const nUrls = buildSitemap();
 
-console.log(`build.js: ✓ ${nPages} case pages, ${nFeatured} featured cards, ${nBuckets} buckets`);
+console.log(`build.js: ✓ ${nPages} case pages, ${nFeatured} featured cards, ${nBuckets} buckets, ${nPerson} person blocks, ${nUrls} sitemap URLs`);

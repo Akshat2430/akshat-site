@@ -5,7 +5,7 @@
 
 function getCurrentPage() {
   const path = window.location.pathname;
-  if (path === '/' || path.endsWith('/index.html')) return '';
+  if (path === '/' || path.endsWith('/')) return '';
   if (path.includes('/operator')) return 'operator';
   if (path.includes('/creator')) return 'creator';
   if (path.includes('/method')) return 'method';
@@ -29,7 +29,7 @@ function getZone(current) {
   if (current === '') return 'chooser';
   if (['operator', 'work', 'resources', 'method'].includes(current)) return 'operator';
   if (['creator', 'writing', 'speaking', 'content', 'sidequests'].includes(current)) return 'creator';
-  return 'operator'; // about.html and any unmatched page default here
+  return 'operator'; // about and any unmatched page default here
 }
 
 function injectNav() {
@@ -44,7 +44,7 @@ function injectNav() {
     navHTML = `
       <a href="#main-content" class="skip-link">Skip to content</a><nav aria-label="Main navigation" class="nav-chooser">
         <div class="nav-inner">
-          <a href="${root}index.html" class="nav-logo">Akshat Kharbanda<small>The Business Backpacker</small></a>
+          <a href="${root}" class="nav-logo">Akshat Kharbanda<small>The Business Backpacker</small></a>
         </div>
       </nav>
     `;
@@ -65,31 +65,31 @@ function injectNav() {
     const isOperator = zone === 'operator';
     const primaryLinks = isOperator
       ? [
-          { href: `${root}work.html`, label: 'Work', key: 'work' },
-          { href: `${root}resources.html`, label: 'Free Tools', key: 'resources' },
-          { href: `${root}about.html`, label: 'About', key: 'about' },
+          { href: `${root}work`, label: 'Work', key: 'work' },
+          { href: `${root}resources`, label: 'Free Tools', key: 'resources' },
+          { href: `${root}about`, label: 'About', key: 'about' },
         ]
       : [
-          { href: `${root}writing.html`, label: 'Writing', key: 'writing' },
-          { href: `${root}speaking.html`, label: 'Speaking', key: 'speaking' },
-          { href: `${root}content.html`, label: 'Content', key: 'content' },
-          { href: `${root}sidequests.html`, label: 'Side Quests', key: 'sidequests' },
-          { href: `${root}about.html`, label: 'About', key: 'about' },
+          { href: `${root}writing`, label: 'Writing', key: 'writing' },
+          { href: `${root}speaking`, label: 'Speaking', key: 'speaking' },
+          { href: `${root}content`, label: 'Content', key: 'content' },
+          { href: `${root}sidequests`, label: 'Side Quests', key: 'sidequests' },
+          { href: `${root}about`, label: 'About', key: 'about' },
         ];
-    const talkLink = { href: `${root}${zone}.html#contact`, label: "Let's talk" };
+    const talkLink = { href: `${root}${zone}#contact`, label: "Let's talk" };
     const secondaryLinks = isOperator
       ? [
-          { href: `${root}method.html`, label: 'Method', key: 'method' },
-          { href: `${root}creator.html`, label: 'Writing & speaking', key: 'creator' },
+          { href: `${root}method`, label: 'Method', key: 'method' },
+          { href: `${root}creator`, label: 'Writing & speaking', key: 'creator' },
         ]
       : [
-          { href: `${root}operator.html`, label: 'Working with me', key: 'operator' },
+          { href: `${root}operator`, label: 'Working with me', key: 'operator' },
         ];
 
     navHTML = `
       <a href="#main-content" class="skip-link">Skip to content</a><nav aria-label="Main navigation">
         <div class="nav-inner">
-          <a href="${root}index.html" class="nav-logo">Akshat Kharbanda<small>The Business Backpacker</small></a>
+          <a href="${root}" class="nav-logo">Akshat Kharbanda<small>The Business Backpacker</small></a>
           <ul class="nav-links">
             ${primaryLinks.map(l => `<li>${linkHTML(l)}</li>`).join('')}
             <li><a href="${talkLink.href}" class="nav-talk">${talkLink.label}</a></li>
