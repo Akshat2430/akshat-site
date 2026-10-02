@@ -58,16 +58,18 @@ const site = {
 
   // Operator "Bets I got wrong". Real stories only, 2-3 max. An empty array
   // hides the whole section, so empty it if you want to ship before writing.
+  // Both drawn from Akshat's own case-study learnings (Viacom18 dashboard,
+  // Novo Nordisk AI pilot).
   pratfalls: [
     {
-      believed: '[[AKSHAT: what I believed]]',
-      happened: '[[AKSHAT: what actually happened]]',
-      now: '[[AKSHAT: what I do differently now]]'
+      believed: 'A good dashboard shows everything. So my first one was built to be comprehensive.',
+      happened: 'Too many metrics. Adoption only went up once I cut it back to the essentials.',
+      now: 'I start from the decision an executive needs to make, and work backwards to the few numbers that answer it.'
     },
     {
-      believed: '[[AKSHAT: what I believed]]',
-      happened: '[[AKSHAT: what actually happened]]',
-      now: '[[AKSHAT: what I do differently now]]'
+      believed: 'Get the technology right on a “simple” AI tool, and people will use it.',
+      happened: 'The technology was the easy part. I underestimated how much change management it needed.',
+      now: 'I plan adoption from day one: start with 10 power users, appoint champions, scale only once it’s proven.'
     }
   ],
 

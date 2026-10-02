@@ -371,7 +371,7 @@ function renderPratfalls() {
         <ol class="pratfall-list">${items.map(p => `
           <li class="pratfall">
             <dl>
-              <div class="pratfall-believed"><dt>What I believed</dt><dd><span class="stall-strike">${ph(p.believed)}</span></dd></div>
+              <div class="pratfall-believed"><dt>What I believed</dt><dd>${ph(p.believed)}</dd></div>
               <div><dt>What actually happened</dt><dd>${ph(p.happened)}</dd></div>
               <div class="pratfall-now"><dt>What I do differently now</dt><dd>${ph(p.now)}</dd></div>
             </dl>
