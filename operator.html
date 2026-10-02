@@ -75,7 +75,7 @@
             <g class="d-label">
               <text x="220" y="59" text-anchor="middle">CEO</text>
               <text x="70" y="187" text-anchor="middle">Ops</text>
-              <text x="170" y="187" text-anchor="middle">Sales</text>
+              <text x="170" y="187" text-anchor="middle" style="font-size: 14px; letter-spacing: 0">Marketing</text>
               <text x="270" y="187" text-anchor="middle">Tech</text>
             </g>
             <g class="d-gap">
@@ -419,13 +419,13 @@
         });
         ['pointerenter', 'focus'].forEach(ev => btn.addEventListener(ev, stopAutoplay));
 
-        // Each step 1.5s apart, so the whole play is done in under five seconds.
+        // Each step 3s apart (about 7s in all). It runs once, and hover, focus or a click stops it (WCAG 2.2.2).
         const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (!still && 'IntersectionObserver' in window) {
           const io = new IntersectionObserver(entries => {
             if (!entries.some(e => e.isIntersecting)) return;
             io.disconnect();
-            timers = [1, 2, 3].map(i => setTimeout(() => show(i, false), 1200 + (i - 1) * 1500));
+            timers = [1, 2, 3].map(i => setTimeout(() => show(i, false), 1200 + (i - 1) * 3000));
           }, { threshold: 0.6 });
           io.observe(doodle);
         }
