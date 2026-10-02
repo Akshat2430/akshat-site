@@ -10,6 +10,11 @@
  *   - work.html             the three category buckets written between BUILD markers
  *   - index.html, about.html Person JSON-LD from data/person.js
  *   - sitemap.xml           regenerated from the page list below (lastmod from git)
+ *   - operator.html, index.html  the "Alchemy" bits from data/site.js
+ *
+ * Placeholders: any [[AKSHAT: ...]] left in data/site.js or a served page is
+ * highlighted locally and on previews, and fails the build on Vercel
+ * production (or locally with --strict), so one can never ship.
  *
  * Runs on every Vercel deploy (see vercel.json "buildCommand"). Safe to run
  * repeatedly: output is deterministic and idempotent.
@@ -22,6 +27,10 @@ const ROOT = __dirname;
 const { execSync } = require('child_process');
 const cases = require('./data/cases.js');
 const { SITE, PERSON_ID, person } = require('./data/person.js');
+const site = require('./data/site.js');
+
+const STRICT = process.argv.includes('--strict') || process.env.VERCEL_ENV === 'production';
+const TODAY = new Date().toISOString().slice(0, 10);
 
 /* ------------------------------------------------------------------ helpers */
 
@@ -56,6 +65,12 @@ const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 function displayDate(iso) {
   const [y, m] = iso.split('-');
   return `${MONTHS[+m - 1]} ${y}`;
+}
+
+// Wrap any [[AKSHAT: ...]] in a loud highlight so it can't be missed in dev.
+const PLACEHOLDER = /\[\[AKSHAT:[\s\S]*?\]\]/g;
+function ph(text) {
+  return String(text).replace(PLACEHOLDER, m => `<mark class="akshat-ph">${m}</mark>`);
 }
 
 /* ------------------------------------------------------- case page rendering */
@@ -313,6 +328,52 @@ function buildPerson() {
   return Object.keys(pages).length;
 }
 
+/* ---------------------------------------------- operator: capacity line */
+
+// Honest scarcity: renders only when every value is real and still current.
+function renderCapacity() {
+  const c = site.capacity;
+  if (!c || c.perQuarter == null || c.open == null || !c.quarterLabel) return '';
+  if (c.validUntil && TODAY > c.validUntil) {
+    console.warn(`build.js: ⚠ capacity line hidden, validUntil ${c.validUntil} has passed. Update data/site.js.`);
+    return '';
+  }
+  const status = c.open > 0 ? `<strong>${ph(c.open)} open</strong> for ${ph(c.quarterLabel)}.` : `<strong>Fully booked</strong> for ${ph(c.quarterLabel)}.`;
+  return `\n        <p class="capacity-line">I take on ${ph(c.perQuarter)} new bets a quarter. ${status}</p>\n        `;
+}
+
+function buildOperator() {
+  let html = read('operator.html');
+  html = replaceBetween(html, '<!--BUILD:capacity-->', '<!--/BUILD:capacity-->', renderCapacity());
+  write('operator.html', html);
+}
+
+/* ------------------------------------------------------ placeholder guard */
+
+function servedFiles() {
+  const list = dir => fs.readdirSync(path.join(ROOT, dir))
+    .filter(f => f.endsWith('.html') && !f.startsWith('_'))
+    .map(f => path.join(dir, f));
+  return [...list('.'), ...list('work'), ...list('tools'), 'data/site.js'];
+}
+
+function checkPlaceholders() {
+  const found = [];
+  servedFiles().forEach(file => {
+    const text = read(file).replace(/<!--[\s\S]*?-->/g, '').replace(/^\s*\/\/.*$/gm, '');
+    const hits = new Set(text.match(PLACEHOLDER) || []);
+    hits.forEach(h => found.push(`${file}: ${h}`));
+  });
+  if (!found.length) return 0;
+  const msg = `${found.length} open [[AKSHAT]] placeholder(s):\n  ` + found.join('\n  ');
+  if (STRICT) {
+    console.error(`build.js: ✗ ${msg}\nRefusing to build for production. Fill them in data/site.js (or empty pratfalls to hide that section).`);
+    process.exit(1);
+  }
+  console.warn(`build.js: ⚠ ${msg}`);
+  return found.length;
+}
+
 /* ------------------------------------------------------------- sitemap */
 
 const sitemapPages = [
@@ -373,6 +434,8 @@ const nPages = buildCasePages(template);
 const nFeatured = buildIndex();
 const nBuckets = buildWork();
 const nPerson = buildPerson();
+buildOperator();
 const nUrls = buildSitemap();
+const nPlaceholders = checkPlaceholders();
 
-console.log(`build.js: ✓ ${nPages} case pages, ${nFeatured} featured cards, ${nBuckets} buckets, ${nPerson} person blocks, ${nUrls} sitemap URLs`);
+console.log(`build.js: ✓ ${nPages} case pages, ${nFeatured} featured cards, ${nBuckets} buckets, ${nPerson} person blocks, ${nUrls} sitemap URLs, ${nPlaceholders} open placeholders`);
