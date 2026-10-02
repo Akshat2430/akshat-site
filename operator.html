@@ -59,9 +59,10 @@
             </span>
           </div>
         </div>
-        <!-- Doodle: every team has a box except the bet. Restates the subhead, so hidden from screen readers. -->
-        <figure class="hero-doodle" aria-hidden="true">
-          <svg viewBox="0 0 440 340" focusable="false">
+        <!-- Doodle: every team has a box except the bet. Clicking it acts out the method
+             (? → Akshat → Your team → next bet). Script at the bottom of the page. -->
+        <figure class="hero-doodle" data-state="gap">
+          <svg viewBox="0 0 440 340" focusable="false" aria-hidden="true">
             <g class="d-ink">
               <path d="M171 31 L270 30 L271 75 L170 76 Z" />
               <path d="M220 76 L221 118" />
@@ -78,15 +79,19 @@
               <text x="270" y="187" text-anchor="middle">Tech</text>
             </g>
             <g class="d-gap">
-              <path d="M271 118 L370 119 L370 158" />
-              <path d="M328 159 L412 158 L413 204 L329 203 Z" />
+              <path class="d-gap-line" d="M271 118 L370 119 L370 158" />
+              <g class="d-gap-box">
+                <path d="M328 159 L412 158 L413 204 L329 203 Z" />
+                <text class="d-q" x="370" y="194" text-anchor="middle">?</text>
+                <text class="d-who d-me" x="370" y="187" text-anchor="middle">Akshat</text>
+                <text class="d-who d-team" x="370" y="187" text-anchor="middle">Your team</text>
+              </g>
             </g>
-            <text class="d-q" x="370" y="194" text-anchor="middle">?</text>
             <g class="d-spark">
               <path d="M398 144 L410 130 M418 156 L434 150 M386 136 L388 120" />
             </g>
             <path class="d-arrow" d="M298 284 C 340 282, 370 258, 371 216 M361 226 L371 214 L380 227" />
-            <text class="d-note" x="104" y="302" transform="rotate(-4 104 302)">your bet lives here.</text>
+            <text class="d-note" x="290" y="294" text-anchor="end" transform="rotate(-4 290 294)">your bet lives here.</text>
           </svg>
         </figure>
       </section>
@@ -369,6 +374,39 @@
       <div class="work-row-arrow">→</div>
     </a>
   `).join('');
+      }
+
+      // Hero doodle: each click moves the bet one step along the method.
+      const doodle = document.querySelector('.hero-doodle');
+      if (doodle) {
+        const steps = [
+          { state: 'gap', note: 'your bet lives here.', say: 'An empty box: your bet, with no owner.' },
+          { state: 'me', note: 'now it lives with me.', say: 'Akshat takes the box. Now it has an owner.' },
+          { state: 'team', note: 'until it runs without me.', say: 'Your team owns it. It runs without me.' },
+          { state: 'gap', note: 'next bet?', say: 'An empty box again. Next bet?' }
+        ];
+        let step = 0;
+        const svg = doodle.querySelector('svg');
+        const note = doodle.querySelector('.d-note');
+        const box = doodle.querySelector('.d-gap-box');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'doodle-btn';
+        btn.title = 'Click the box';
+        btn.setAttribute('aria-label', 'Fill the empty box in the org chart');
+        const live = document.createElement('span');
+        live.className = 'visually-hidden';
+        live.setAttribute('aria-live', 'polite');
+        svg.replaceWith(btn); btn.append(svg); doodle.append(live);
+        btn.addEventListener('click', () => {
+          step = step === steps.length - 1 ? 1 : step + 1;
+          const s = steps[step];
+          doodle.dataset.state = s.state;
+          note.textContent = s.note;
+          live.textContent = s.say;
+          box.classList.remove('is-popping'); void box.getBoundingClientRect(); box.classList.add('is-popping');
+          if (typeof va === 'function') va('event', { name: 'doodle_click', data: { state: s.state, step } });
+        });
       }
 
     });

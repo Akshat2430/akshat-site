@@ -184,6 +184,21 @@
 .hero-doodle .d-q { font: 700 34px 'Caveat', cursive; fill: var(--accent); }
 .hero-doodle .d-spark path,.hero-doodle .d-arrow { stroke: var(--accent); stroke-width: 1.8; }
 .hero-doodle .d-note { font: 500 27px 'Caveat', cursive; fill: var(--accent); }
+/* Clickable: ? → Akshat → Your team → next bet. */
+.doodle-btn { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
+.doodle-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+.hero-doodle .d-gap-box { transform-box: fill-box; transform-origin: center; animation: obsession-jiggle .7s ease-in-out 1.8s 1; }
+.doodle-btn:hover .d-gap-box { animation: obsession-jiggle .5s ease-in-out; }
+.hero-doodle .d-gap-box.is-popping { animation: doodle-pop .35s ease-out; }
+@keyframes doodle-pop { 0% { transform: scale(.85); } 60% { transform: scale(1.08); } 100% { transform: scale(1); } }
+.hero-doodle .d-who { display: none; font: 600 15px var(--font-sans); }
+.hero-doodle[data-state="me"] .d-gap path { stroke-dasharray: none; }
+.hero-doodle[data-state="me"] .d-gap-box path { fill: var(--accent); fill-opacity: 1; }
+.hero-doodle[data-state="me"] .d-me { display: inline; fill: #fff9f0; }
+.hero-doodle[data-state="team"] .d-gap path { stroke: var(--text-primary); stroke-width: 1.6; stroke-dasharray: none; }
+.hero-doodle[data-state="team"] .d-gap-box path { fill: var(--surface); fill-opacity: 1; }
+.hero-doodle[data-state="team"] .d-team { display: inline; fill: var(--text-primary); font-size: 14px; }
+.hero-doodle:not([data-state="gap"]) .d-q { display: none; }
 .page-operator .diagnostic-feature { margin-bottom: 76px; }
 
 /* How bets stall: failure on the left (struck, quieter), the fix on the right. */
