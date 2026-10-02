@@ -141,6 +141,7 @@
 
 :focus-visible { outline:2px solid var(--clay); outline-offset:4px; }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+::selection { background: var(--clay); color: #fff9f0; }
 </style>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "WebApplication", "name": "AI Adoption Scorecard", "url": "https://akshatkharbanda.com/tools/adoption-scorecard", "description": "Ten questions, two minutes. Get a named pattern for your AI rollout, your two weakest spots, and what unused seats are quietly costing you.", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "creator": {"@type": "Person", "@id": "https://akshatkharbanda.com/#person", "name": "Akshat Kharbanda"}}
@@ -149,6 +150,7 @@
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+<script src="../hello.js" defer></script>
 </head>
 <body>
 <main class="wrap">

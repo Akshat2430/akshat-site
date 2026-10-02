@@ -45,20 +45,8 @@
 .entrance-work:hover .entrance-link,.entrance-stories:hover .entrance-link { text-decoration: underline; text-underline-offset: 5px; }
 .entrance-bottom { display: flex; justify-content: flex-end; gap: 20px; padding: 25px 0; font-size: 13px; color: var(--text-secondary); }
 .entrance-bottom a { text-decoration: underline; text-underline-offset: 5px; }
-/* Operator: a tangible method sheet, without pretending it is a client deliverable. */
-.field-sheet { background: #fffdf7; border: 1px solid #d8caba; padding: 26px 32px; box-shadow: 7px 8px 0 #e8dfcf; position: relative; }
-.field-sheet:before { content: ''; position: absolute; top: -1px; left: 32px; width: 45px; height: 4px; background: var(--accent); }
+/* Operator: shared sheet header (scorecard example result). */
 .sheet-header { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--border); padding-bottom: 17px; font-size: 10px; letter-spacing: .1em; color: var(--text-secondary); }
-.field-sheet h2 { font: 400 36px/1.15 var(--font-serif); margin: 26px 0; }
-.field-sheet h2 em { color: var(--accent); }
-.workflow-steps { list-style: none; margin: 0; padding: 0; }
-.workflow-steps li { display: flex; gap: 17px; padding: 15px 0; border-top: 1px solid #e9e0d4; }
-.step-index { font-size: 11px; color: var(--accent); padding-top: 4px; }
-.workflow-steps strong { font-size: 15px; font-weight: 500; }
-.workflow-steps p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); margin-top: 4px; }
-.sheet-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid var(--border); padding-top: 18px; margin-top: 10px; }
-.sheet-footer .hand-note { font-size: 23px; }
-.sheet-footer a { font-size: 12px; text-decoration: underline; text-underline-offset: 4px; padding: 10px 0; }
 .evidence-strip { display: grid; grid-template-columns: .75fr 1fr 1fr; border-block: 1px solid var(--border-strong); padding: 26px 0; gap: 32px; align-items: center; margin-bottom: 76px; }
 .evidence-strip > p { font: 400 22px/1.4 var(--font-serif); }
 .evidence-strip > p em { color: var(--text-secondary); }
@@ -111,11 +99,6 @@
 .property-advice { padding: 0 22px 24px; }
 .property-advice p { font-size: 14px; line-height: 1.65; border-top: 1px dashed #bca888; padding-top: 18px; }
 .property-advice a { display: inline-block; font-size: 13px; color: var(--accent); padding: 16px 0 0; text-decoration: underline; text-underline-offset: 4px; }
-.page-operator .surfaces { margin-top: 0; padding-block: 45px; }
-.page-operator .services-primary { gap: 50px; }
-.page-operator .service-title { font-size: 29px; }
-.page-operator .service-body { font-size: 16px; }
-.page-operator .service-secondary { border-inline: 0; background: transparent; padding-inline: 0; }
 .page-operator .dispatch-heading { grid-template-columns: 1fr; }
 .page-operator .dispatch-illustration { display: none; }
 /* Creator: photographic cover and asymmetric reading list. */
@@ -131,10 +114,9 @@
 .page-creator .follow-card { background: transparent; border: 0; border-top: 1px solid var(--border-strong); padding-left: 0; }
 @media (max-width: 1000px) {
  :is(.page-operator,.page-creator) .hero { gap: 32px; }
- .field-sheet { padding: 22px; }
  .diagnostic-feature { gap: 32px; padding: 36px; }
  .property-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
- .entrance-work { padding: 30px; }
+ .entrance-work-copy { padding: 30px; }
  .entrance-story-copy { padding: 26px; }
  .evidence-strip { gap: 22px; }
 }
@@ -150,8 +132,6 @@
  :is(.page-operator,.page-creator) .hero .page-title { font-size: clamp(42px,9.5vw,60px); }
  :is(.page-operator,.page-creator) .hero-bridge { font-size: 16px; margin: 22px 0; }
  :is(.page-operator,.page-creator) .hero-actions { gap: 8px 20px; }
- .field-sheet { box-shadow: 5px 5px 0 #e8dfcf; }
- .field-sheet h2 { font-size: 32px; }
  .evidence-strip { grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 40px; }
  .evidence-strip > p { grid-column: 1/-1; font-size: 21px; }
  .evidence-strip > p br { display: none; }
@@ -170,8 +150,6 @@
  .property-name { font-size: 21px; min-height: 50px; }
  .property-seen { min-height: 60px; }
  .property-advice { padding: 0 14px 20px; }
- .page-operator .services-primary { grid-template-columns: 1fr; gap: 15px; }
- .page-operator .service-title { font-size: 27px; }
  .creator-portrait > img { height: 390px; }
  .page-creator .editorial-writing { grid-template-columns: 1fr; }
  .editorial-cover { height: 210px; }
@@ -180,9 +158,189 @@
 @media (max-width: 360px) {
  .property-grid { grid-template-columns: 1fr; }
  .property-name,.property-seen { min-height: 0; }
- .sheet-footer { align-items: flex-start; flex-direction: column; gap: 4px; }
- .entrance-work,.entrance-story-copy { padding: 24px; }
+ .entrance-work-copy,.entrance-story-copy { padding: 24px; }
 }
-.page-creator .speaking-preview-photo { object-position: center 55%; }
+.page-creator .speaking-preview-photo { object-position: center 22%; }
 .property-tag { position: relative; }
 .property-tag:before { content: ''; position: absolute; top: -7px; left: calc(50% - 6px); width: 12px; height: 12px; border: 2px solid #bca888; border-radius: 50%; background: var(--bg); }
+
+/* ---- Alchemy rework: operator ---- */
+/* One primary + one secondary per section. Secondary is quieter on purpose. */
+.btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--text-primary); }
+.btn-secondary:hover { background: var(--surface); }
+.cta-secondary { display: inline-flex; flex-direction: column; gap: 8px; }
+.cta-micro { font-size: 12px; color: var(--text-secondary); }
+.page-operator .hero.hero-doodled { padding-bottom: 48px; }
+.page-operator .hero-doodled .hero-bridge { max-width: 520px; }
+.page-operator .hero-doodled .hero-actions { align-items: flex-start; }
+/* Hero doodle: an org chart with one dashed, ownerless box. */
+.hero-doodle { margin: 0; justify-self: center; width: 100%; max-width: 440px; }
+.hero-doodle svg { display: block; width: 100%; height: auto; overflow: visible; }
+.hero-doodle path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.hero-doodle .d-ink path { stroke: var(--text-primary); stroke-width: 1.6; }
+.hero-doodle .d-label text { font: 500 15px var(--font-sans); fill: var(--text-primary); letter-spacing: .02em; }
+.hero-doodle .d-gap path { stroke: var(--accent); stroke-width: 1.8; stroke-dasharray: 6 6; }
+.hero-doodle .d-gap path:last-child { fill: var(--accent-light); fill-opacity: .55; }
+.hero-doodle .d-q { font: 700 34px 'Caveat', cursive; fill: var(--accent); }
+.hero-doodle .d-spark path,.hero-doodle .d-arrow { stroke: var(--accent); stroke-width: 1.8; }
+.hero-doodle .d-note { font: 500 27px 'Caveat', cursive; fill: var(--accent); }
+/* Clickable: ? → Akshat → Your team → next bet. */
+.doodle-btn { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
+.doodle-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+.hero-doodle .d-gap-box { transform-box: fill-box; transform-origin: center; }
+.doodle-btn:hover .d-gap-box { animation: obsession-jiggle .5s ease-in-out; }
+.hero-doodle .d-gap-box.is-popping { animation: doodle-pop .35s ease-out; }
+@keyframes doodle-pop { 0% { transform: scale(.85); } 60% { transform: scale(1.08); } 100% { transform: scale(1); } }
+.hero-doodle .d-who { display: none; font: 600 15px var(--font-sans); }
+.hero-doodle[data-state="me"] .d-gap path { stroke-dasharray: none; }
+.hero-doodle[data-state="me"] .d-gap-box path { fill: var(--accent); fill-opacity: 1; }
+.hero-doodle[data-state="me"] .d-me { display: inline; fill: #fff9f0; }
+.hero-doodle[data-state="team"] .d-gap path { stroke: var(--text-primary); stroke-width: 1.6; stroke-dasharray: none; }
+.hero-doodle[data-state="team"] .d-gap-box path { fill: var(--surface); fill-opacity: 1; }
+.hero-doodle[data-state="team"] .d-team { display: inline; fill: var(--text-primary); font-size: 14px; }
+.hero-doodle:not([data-state="gap"]) .d-q { display: none; }
+.page-operator .diagnostic-feature { margin-bottom: 76px; }
+
+/* How bets stall: failure on the left (struck, quieter), the fix on the right. */
+.stall-section { padding-top: 8px; }
+/* Echoes the homepage's ~~Artificial~~ Akshat signature. */
+.stall-title s { text-decoration-thickness: 2px; text-decoration-color: var(--text-primary); }
+.stall-head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; padding-bottom: 12px; font-size: 11px; letter-spacing: .13em; text-transform: uppercase; color: var(--text-secondary); }
+.stall-list { list-style: none; margin: 0; padding: 0; }
+.stall-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; padding: 28px 0; border-top: 1px solid var(--border-strong); }
+.stall-fail h3 { font: 400 27px/1.25 var(--font-serif); color: var(--text-secondary); margin-bottom: 10px; }
+.stall-strike { background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 58% / 100% 2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.stall-fail p { font-size: 15px; line-height: 1.65; color: var(--text-secondary); }
+.stall-fix-label { font: 400 27px/1.25 var(--font-serif); color: var(--text-primary); margin-bottom: 10px; }
+.stall-fix-label span { color: var(--accent); }
+.stall-fix p:not(.stall-fix-label) { font-size: 16px; line-height: 1.7; color: var(--text-primary); }
+
+/* Contact: honest scarcity and the end-of-page sign-off. */
+.capacity-line { display: inline-block; font-size: 14px; color: var(--text-primary); border: 1px dashed var(--border-strong); padding: 8px 14px; margin: 4px 0 0; }
+.capacity-line strong { color: var(--accent); font-weight: 600; }
+.signoff { display: flex; align-items: flex-end; gap: 12px 28px; margin: 80px 0 0; }
+.signoff p { font: 22px/1.3 'Caveat', cursive; color: var(--text-secondary); max-width: 460px; transform: rotate(-1.5deg); padding-bottom: 18px; }
+/* Golden retriever doodle. */
+.signoff-dog { flex: 0 0 auto; width: 150px; height: auto; overflow: visible; }
+.signoff-dog path,.signoff-dog ellipse,.signoff-dog circle { stroke: var(--text-primary); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.signoff-dog .dog-fill { fill: #E6B872; }
+.signoff-dog .dog-ear { fill: #C98E45; }
+.signoff-dog .dog-tail { fill: #E6B872; transform-box: view-box; transform-origin: 134px 122px; }
+.signoff-dog .dog-line { fill: none; }
+.signoff-dog .dog-tongue { fill: #E58A80; }
+.signoff-dog .dog-dot { fill: var(--text-primary); stroke: none; }
+.signoff-dog .dog-ground { fill: none; stroke: var(--border-strong); stroke-dasharray: 4 6; }
+.signoff-dog.is-wagging .dog-tail { animation: dog-wag .32s ease-in-out 4; }
+.signoff-dog:hover .dog-tail { animation: dog-wag .32s ease-in-out 3; }
+@keyframes dog-wag { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-16deg); } }
+
+@media (max-width: 700px) {
+ .page-operator .hero.hero-doodled { padding-bottom: 35px; }
+ .hero-doodle { justify-self: start; max-width: 340px; margin-top: -8px; }
+ .page-operator .diagnostic-feature { margin-bottom: 48px; }
+ .stall-head { display: none; }
+ .stall-row { grid-template-columns: 1fr; gap: 14px; padding: 24px 0; }
+ .stall-fail h3,.stall-fix-label { font-size: 24px; }
+ .signoff { margin-top: 56px; gap: 0 12px; }
+ .signoff p { font-size: 21px; }
+ .signoff-dog { width: 110px; }
+}
+
+/* ---- Alchemy rework: homepage ---- */
+/* The second (and last) odd element on the homepage. Calm everywhere else. */
+.obsession { margin-top: 30px; padding-top: 16px; border-top: 1px dashed var(--border-strong); max-width: 560px; }
+.obsession-now { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.obsession-label { font-size: 11px; letter-spacing: .13em; text-transform: uppercase; color: var(--text-secondary); }
+.obsession-item { display: inline-block; padding: 0; border: 0; background: none; color: var(--text-primary); text-align: left; cursor: pointer; font: italic 400 19px/1.4 var(--font-serif); transform-origin: 20% 60%; animation: obsession-jiggle .7s ease-in-out 1.4s 1; }
+.obsession-item:hover { animation: obsession-jiggle .5s ease-in-out; }
+.obsession-item.is-jiggling { animation: obsession-jiggle .5s ease-in-out; }
+.obsession-title { text-decoration: underline dotted var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 5px; }
+.obsession-item:hover .obsession-title { text-decoration-style: solid; }
+.obsession-emoji { font-style: normal; margin-right: 6px; }
+.obsession-by { color: var(--text-secondary); }
+@keyframes obsession-jiggle { 0%,100% { transform: rotate(0); } 20% { transform: rotate(-2.5deg); } 40% { transform: rotate(2deg); } 60% { transform: rotate(-1.2deg); } 80% { transform: rotate(.6deg); } }
+/* The coffee cup: shake for another obsession, with spillage. */
+.cup-refill { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; color: inherit; cursor: pointer; }
+.cup-refill:focus-visible { outline: none; }
+.cup-refill:focus-visible .coffee-art { outline: 2px solid var(--accent); outline-offset: 4px; }
+.cup-refill .coffee-art { transition: transform .25s ease; transform-origin: 55% 75%; }
+.cup-refill:hover .coffee-art { transform: rotate(-3deg); }
+.coffee-art.is-shaking { animation: cup-shake .55s ease-in-out; }
+@keyframes cup-shake { 0%,100% { transform: rotate(0) translateX(0); } 15% { transform: rotate(-9deg) translateX(-6px); } 35% { transform: rotate(7deg) translateX(5px); } 55% { transform: rotate(-5deg) translateX(-3px); } 75% { transform: rotate(3deg) translateX(2px); } }
+.spill-drop { position: absolute; left: var(--x); top: 17%; width: 9px; height: 12px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: #6B4A2B; pointer-events: none; transform: scale(var(--s)); animation: spill-fall .85s ease-in forwards; }
+@keyframes spill-fall { 0% { opacity: 0; transform: translate(0,0) scale(var(--s)); } 12% { opacity: 1; } 35% { transform: translate(calc(var(--dx) * .45), -18px) scale(var(--s)); } 85% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(calc(var(--s) * .8), calc(var(--s) * .35)); } }
+.chooser-wrap .signature { margin-bottom: 0; }
+@media (max-width: 700px) {
+ .obsession { margin-top: 22px; }
+ .obsession-label { flex-basis: 100%; }
+}
+@media (max-width: 560px) {
+ /* styles.css pins the cup absolutely here; pin the button instead so it keeps a real hit area. */
+ .cup-refill { position: absolute; right: -5px; top: -10px; width: 195px; z-index: 1; }
+ .cup-refill .coffee-art { position: static; width: 100%; }
+}
+
+/* ---- Alchemy rework: logo wall (social proof under the numbers) ---- */
+.page-operator .evidence-strip { margin-bottom: 0; }
+.logo-wall { padding: 26px 0 30px; border-bottom: 1px solid var(--border-strong); margin-bottom: 76px; }
+.logo-wall-label { font: 500 11px var(--font-sans); letter-spacing: .13em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 22px; }
+.logo-wall-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 26px 36px; align-items: center; }
+.logo-wall-list li { display: flex; justify-content: center; }
+.logo-wall-list img { display: block; height: 40px; width: 100%; max-width: 116px; object-fit: contain; mix-blend-mode: multiply; filter: grayscale(1) contrast(1.1); opacity: .6; transition: filter .2s, opacity .2s, transform .2s; }
+/* Optical balance: heavy wordmarks a touch smaller, small emblems a touch larger. */
+.logo-wall-list .is-wordmark img { height: 28px; max-width: 104px; }
+.logo-wall-list .is-emblem img { height: 48px; }
+/* Muted at rest everywhere; stamped into colour on hover where hover exists. */
+@media (hover: hover) {
+ .logo-wall-list li:hover img { filter: none; opacity: 1; transform: rotate(-4deg) scale(1.08); }
+}
+
+/* ---- Alchemy rework: bets I got wrong ---- */
+.pratfall-section .section-title { margin-bottom: 8px; }
+.pratfall-sub { font: italic 18px/1.5 var(--font-serif); color: var(--text-secondary); margin-bottom: 28px; }
+.pratfall-list { list-style: none; margin: 0; padding: 0; }
+.pratfall { border-top: 1px solid var(--border-strong); padding: 24px 0; }
+.pratfall:last-child { border-bottom: 1px solid var(--border-strong); }
+.pratfall dl { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 32px; margin: 0; }
+.pratfall dt { font-size: 11px; letter-spacing: .13em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; }
+.pratfall dd { margin: 0; font-size: 15px; line-height: 1.65; color: var(--text-primary); }
+.pratfall-believed dd { color: var(--text-secondary); }
+.pratfall-now dd { font-weight: 500; }
+
+/* ---- Alchemy rework: optional messy artefact on case cards ---- */
+.work-row-artefact { margin: 18px 0 0; display: flex; align-items: center; gap: 16px; }
+.work-row-artefact img { width: 120px; height: 84px; object-fit: cover; border: 6px solid #fffdf7; box-shadow: 3px 3px 0 var(--border); transform: rotate(-2deg); }
+.work-row-artefact figcaption { font-size: 20px; }
+
+@media (max-width: 700px) {
+ .pratfall dl { grid-template-columns: 1fr; gap: 16px; }
+ .logo-wall { margin-bottom: 48px; }
+ .logo-wall-list { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px 24px; }
+ .logo-wall-list img { height: 34px; }
+ .logo-wall-list .is-wordmark img { height: 24px; }
+ .logo-wall-list .is-emblem img { height: 40px; }
+}
+
+
+/* ---- Alchemy rework: creator hero doodle ---- */
+/* Stage doodle: lightbulbs come on one by one. Shares .hero-doodle sizing with the operator org chart. */
+.page-creator .hero { align-items: center; }
+.stage-doodle .s-light { fill: var(--accent-light); opacity: .55; }
+.stage-doodle .s-pool { fill: var(--accent-light); }
+.stage-doodle .s-ink,.stage-doodle .s-crowd path,.stage-doodle .s-crowd circle,.stage-doodle .s-mic { fill: none; stroke: var(--text-primary); stroke-width: 1.6; }
+.stage-doodle .s-crowd circle,.stage-doodle .s-crowd path { fill: var(--surface); }
+.stage-doodle .s-mic { fill: var(--text-primary); }
+.stage-doodle .s-bulb { opacity: 0; transform-box: fill-box; transform-origin: 50% 100%; }
+.stage-doodle .s-bulb circle { fill: #F2C14E; stroke: var(--text-primary); stroke-width: 1.4; }
+.stage-doodle .s-bulb path { stroke: var(--text-primary); stroke-width: 1.4; fill: none; stroke-linecap: round; }
+.stage-doodle .s-bulb .s-ray { stroke: var(--accent); }
+.stage-doodle.is-playing .s-bulb { animation: bulb-on .45s cubic-bezier(.3,1.6,.6,1) forwards; animation-delay: calc(.5s + var(--i) * .6s); }
+@keyframes bulb-on { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: scale(1); } }
+/* The cutout: a cardboard-white ring, and a bobble as the bulbs come on. */
+.stage-doodle .s-cutout { fill: #fffdf7; stroke: var(--text-primary); stroke-width: 1.4; }
+.stage-doodle .s-face-ring { fill: none; stroke: var(--border-strong); stroke-width: 1; }
+.stage-doodle .s-head { transform-box: fill-box; transform-origin: 50% 100%; transform: rotate(-6deg); }
+.stage-doodle.is-playing .s-head { animation: head-bobble 2.6s ease-in-out .4s 1; }
+@keyframes head-bobble { 0%,100% { transform: rotate(-6deg); } 15% { transform: rotate(6deg); } 30% { transform: rotate(-9deg); } 45% { transform: rotate(4deg); } 60% { transform: rotate(-6deg); } }
+@media (prefers-reduced-motion: reduce) { .stage-doodle .s-bulb { opacity: 1; } }
+.stage-doodle .doodle-btn:hover .s-bulb circle { fill: #F7D27A; }

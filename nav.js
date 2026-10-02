@@ -76,7 +76,11 @@ function injectNav() {
           { href: `${root}sidequests`, label: 'Side Quests', key: 'sidequests' },
           { href: `${root}about`, label: 'About', key: 'about' },
         ];
-    const talkLink = { href: `${root}${zone}#contact`, label: "Let's talk" };
+    // Operator zone uses the sitewide primary CTA label; creator keeps its own.
+    const talkLink = isOperator
+      ? { href: `${root}operator#contact`, label: 'Bring me the gap ↗', track: 'nav' }
+      : { href: `${root}creator#contact`, label: "Let's talk" };
+    const talkHTML = `<a href="${talkLink.href}" class="nav-talk"${talkLink.track ? ` onclick="if(typeof va==='function'){va('event',{name:'cta_click',data:{cta:'primary',section:'nav'}})}"` : ''}>${talkLink.label}</a>`;
     const secondaryLinks = isOperator
       ? [
           { href: `${root}method`, label: 'Method', key: 'method' },
@@ -92,7 +96,7 @@ function injectNav() {
           <a href="${root}" class="nav-logo">Akshat Kharbanda<small>The Business Backpacker</small></a>
           <ul class="nav-links">
             ${primaryLinks.map(l => `<li>${linkHTML(l)}</li>`).join('')}
-            <li><a href="${talkLink.href}" class="nav-talk">${talkLink.label}</a></li>
+            <li>${talkHTML}</li>
           </ul>
           <button class="nav-mobile-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMobileMenu()">
             <span></span><span></span><span></span>
@@ -100,7 +104,7 @@ function injectNav() {
         </div>
         <div class="nav-mobile-menu" id="mobileMenu">
           ${primaryLinks.map(linkHTML).join('')}
-          <a href="${talkLink.href}" class="nav-talk">${talkLink.label}</a>
+          ${talkHTML}
           <hr class="nav-mobile-divider" />
           ${secondaryLinks.map(linkHTML).join('')}
         </div>
