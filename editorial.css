@@ -218,8 +218,21 @@
 /* Contact: honest scarcity and the end-of-page sign-off. */
 .capacity-line { display: inline-block; font-size: 14px; color: var(--text-primary); border: 1px dashed var(--border-strong); padding: 8px 14px; margin: 4px 0 0; }
 .capacity-line strong { color: var(--accent); font-weight: 600; }
-.page-operator .cta-block .hand-note { margin: 14px 0 18px; }
-.signoff { font: 22px/1.3 'Caveat', cursive; color: var(--text-secondary); max-width: 520px; margin: 80px 0 0; transform: rotate(-1.5deg); }
+.signoff { display: flex; align-items: flex-end; gap: 12px 28px; margin: 80px 0 0; }
+.signoff p { font: 22px/1.3 'Caveat', cursive; color: var(--text-secondary); max-width: 460px; transform: rotate(-1.5deg); padding-bottom: 18px; }
+/* Golden retriever doodle. */
+.signoff-dog { flex: 0 0 auto; width: 150px; height: auto; overflow: visible; }
+.signoff-dog path,.signoff-dog ellipse,.signoff-dog circle { stroke: var(--text-primary); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.signoff-dog .dog-fill { fill: #E6B872; }
+.signoff-dog .dog-ear { fill: #C98E45; }
+.signoff-dog .dog-tail { fill: #E6B872; transform-box: view-box; transform-origin: 134px 122px; }
+.signoff-dog .dog-line { fill: none; }
+.signoff-dog .dog-tongue { fill: #E58A80; }
+.signoff-dog .dog-dot { fill: var(--text-primary); stroke: none; }
+.signoff-dog .dog-ground { fill: none; stroke: var(--border-strong); stroke-dasharray: 4 6; }
+.signoff-dog.is-wagging .dog-tail { animation: dog-wag .32s ease-in-out 4; }
+.signoff-dog:hover .dog-tail { animation: dog-wag .32s ease-in-out 3; }
+@keyframes dog-wag { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-16deg); } }
 
 @media (max-width: 700px) {
  .page-operator .hero.hero-doodled { padding-bottom: 35px; }
@@ -228,7 +241,9 @@
  .stall-head { display: none; }
  .stall-row { grid-template-columns: 1fr; gap: 14px; padding: 24px 0; }
  .stall-fail h3,.stall-fix-label { font-size: 24px; }
- .signoff { margin-top: 56px; font-size: 21px; }
+ .signoff { margin-top: 56px; gap: 0 12px; }
+ .signoff p { font-size: 21px; }
+ .signoff-dog { width: 110px; }
 }
 
 /* ---- Alchemy rework: homepage ---- */
