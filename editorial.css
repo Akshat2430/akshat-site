@@ -116,7 +116,7 @@
  :is(.page-operator,.page-creator) .hero { gap: 32px; }
  .diagnostic-feature { gap: 32px; padding: 36px; }
  .property-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
- .entrance-work { padding: 30px; }
+ .entrance-work-copy { padding: 30px; }
  .entrance-story-copy { padding: 26px; }
  .evidence-strip { gap: 22px; }
 }
@@ -158,7 +158,7 @@
 @media (max-width: 360px) {
  .property-grid { grid-template-columns: 1fr; }
  .property-name,.property-seen { min-height: 0; }
- .entrance-work,.entrance-story-copy { padding: 24px; }
+ .entrance-work-copy,.entrance-story-copy { padding: 24px; }
 }
 .page-creator .speaking-preview-photo { object-position: center 55%; }
 .property-tag { position: relative; }
