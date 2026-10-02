@@ -355,42 +355,6 @@ function renderCapacity() {
   return `\n        <p class="capacity-line">I take on ${ph(c.perQuarter)} new bets a quarter. ${status}</p>\n        `;
 }
 
-/* ------------------------------------------ operator: the route so far */
-
-// Passport stamps along a dotted route. Underneath it's a plain ordered list.
-function renderRoute() {
-  const stops = site.routeStops || [];
-  if (!stops.length) return '';
-  const pad = n => String(n).padStart(2, '0');
-  const stamp = (s, i) => `
-          <li class="route-stop">
-            <span class="route-pin" aria-hidden="true"></span>
-            <div class="route-stamp">
-              <span class="route-num" aria-hidden="true">${pad(i + 1)}</span>
-              ${s.logo ? `<img class="route-logo" src="public/images/${s.logo}" alt="" loading="lazy" />` : '<span class="route-logo route-logo-empty" aria-hidden="true"></span>'}
-              <h3 class="route-org">${ph(s.org)}</h3>
-              <p class="route-place">${ph(s.place)}</p>
-              <p class="route-line">${ph(s.line)}</p>
-            </div>
-          </li>`;
-  return `
-      <section class="route-section" aria-labelledby="route-title">
-        <p class="section-label">04 / The route so far</p>
-        <h2 id="route-title" class="section-title">A backpacker's <em>CV.</em></h2>
-        <ol class="route-list">${stops.map(stamp).join('')}
-          <li class="route-stop route-next">
-            <span class="route-pin" aria-hidden="true"></span>
-            <a class="route-stamp" href="#contact" onclick="if(typeof va==='function'){va('event',{name:'cta_click',data:{cta:'route_next_stop',section:'operator_route'}})}">
-              <span class="route-num" aria-hidden="true">${pad(stops.length + 1)}</span>
-              <span class="route-org">Next stop: your bet.</span>
-              <span class="route-line">Bring me the gap ↗</span>
-            </a>
-          </li>
-        </ol>
-      </section>
-      `;
-}
-
 /* ------------------------------------------- operator: bets I got wrong */
 
 // Pratfall. Real stories only; an empty list hides the whole section.
@@ -401,7 +365,7 @@ function renderPratfalls() {
       <hr class="divider" />
 
       <section class="pratfall-section" aria-labelledby="pratfall-title">
-        <p class="section-label">05 / Detours</p>
+        <p class="section-label">04 / Detours</p>
         <h2 id="pratfall-title" class="section-title">Bets I got <em>wrong.</em></h2>
         <p class="pratfall-sub">(Kept here on purpose. You learn more from the detours.)</p>
         <ol class="pratfall-list">${items.map(p => `
@@ -420,7 +384,6 @@ function renderPratfalls() {
 function buildOperator() {
   let html = read('operator.html');
   html = replaceBetween(html, '<!--BUILD:capacity-->', '<!--/BUILD:capacity-->', renderCapacity());
-  html = replaceBetween(html, '<!--BUILD:route-->', '<!--/BUILD:route-->', renderRoute());
   html = replaceBetween(html, '<!--BUILD:pratfalls-->', '<!--/BUILD:pratfalls-->', renderPratfalls());
   write('operator.html', html);
 }

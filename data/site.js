@@ -56,30 +56,6 @@ const site = {
     validUntil: '2026-12-31'
   },
 
-  // Operator "The route so far". Oldest stop first. `logo` is optional
-  // (path under public/images/). The final "Next stop: your bet." stop is
-  // added by the build, so don't list it here.
-  routeStops: [
-    { org: 'BITS Pilani', place: 'Goa', logo: 'bits-pilani.png',
-      line: '[[AKSHAT: draft: "Learned to build things. There was a beach 5 minutes away."]]' },
-    { org: 'EY', place: 'Delhi', logo: 'ey.png',
-      line: '[[AKSHAT: draft: "Lots of PowerPoint and Excel."]]' },
-    { org: '[[AKSHAT: which org was Mumbai? Viacom?]]', place: 'Mumbai',
-      line: '[[AKSHAT: draft: "Football streaming rights. Messi lifted the World Cup. You\'re welcome."]]' },
-    { org: 'KPMG', place: 'Gurgaon', logo: 'kpmg.png',
-      line: '[[AKSHAT: draft: "Lots of PowerPoint and Excel, again."]]' },
-    { org: 'INSEAD', place: 'Fontainebleau → Singapore', logo: 'insead.png',
-      line: '[[AKSHAT: draft: "Two campuses, one Dean\'s List."]]' },
-    { org: 'Tata Steel', place: 'Kolkata', logo: 'tata.png',
-      line: '[[AKSHAT: draft: "Internship. Everything was sorted except the work."]]' },
-    { org: 'Novo Nordisk', place: 'India → Denmark → UK', logo: 'novo-nordisk.png',
-      line: '[[AKSHAT: draft: "Global brand strategy for GLP-1s, across 15+ countries."]]' },
-    { org: 'Clinton Health Access Initiative', place: '30+ countries', logo: 'chai.png',
-      line: '[[AKSHAT: draft: "Taking generative AI from pilot to habit."]]' },
-    { org: 'LevelUp Labs', place: 'Gurgaon', logo: 'levelup-labs.png',
-      line: '[[AKSHAT: draft: "Chai & AI, for executives who hate AI hype."]]' }
-  ],
-
   // Operator "Bets I got wrong". Real stories only, 2-3 max. An empty array
   // hides the whole section, so empty it if you want to ship before writing.
   pratfalls: [

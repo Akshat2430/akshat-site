@@ -208,16 +208,12 @@
 .stall-head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; padding-bottom: 12px; font-size: 11px; letter-spacing: .13em; text-transform: uppercase; color: var(--text-secondary); }
 .stall-list { list-style: none; margin: 0; padding: 0; }
 .stall-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; padding: 28px 0; border-top: 1px solid var(--border-strong); }
-.stall-row:last-child { border-bottom: 1px solid var(--border-strong); }
 .stall-fail h3 { font: 400 27px/1.25 var(--font-serif); color: var(--text-secondary); margin-bottom: 10px; }
 .stall-strike { background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 58% / 100% 2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .stall-fail p { font-size: 15px; line-height: 1.65; color: var(--text-secondary); }
 .stall-fix-label { font: 400 27px/1.25 var(--font-serif); color: var(--text-primary); margin-bottom: 10px; }
 .stall-fix-label span { color: var(--accent); }
 .stall-fix p:not(.stall-fix-label) { font-size: 16px; line-height: 1.7; color: var(--text-primary); }
-.stall-close { font: 400 clamp(26px,2.8vw,36px)/1.25 var(--font-serif); letter-spacing: -.02em; max-width: 860px; margin: 48px 0 28px; }
-.stall-close em { color: var(--accent); }
-.stall-method { margin-top: -8px; }
 
 /* Contact: honest scarcity and the end-of-page sign-off. */
 .capacity-line { display: inline-block; font-size: 14px; color: var(--text-primary); border: 1px dashed var(--border-strong); padding: 8px 14px; margin: 4px 0 0; }
@@ -232,7 +228,6 @@
  .stall-head { display: none; }
  .stall-row { grid-template-columns: 1fr; gap: 14px; padding: 24px 0; }
  .stall-fail h3,.stall-fix-label { font-size: 24px; }
- .stall-close { margin-top: 36px; }
  .signoff { margin-top: 56px; font-size: 21px; }
 }
 
@@ -270,28 +265,20 @@
  .cup-refill .coffee-art { position: static; width: 100%; }
 }
 
-/* ---- Alchemy rework: the route so far (passport stamps on a dotted route) ---- */
-.route-section { margin-bottom: 8px; }
-.route-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 40px 0; }
-.route-stop { position: relative; padding: 26px 14px 0 0; }
-.route-stop:before { content: ''; position: absolute; top: 5px; left: 6px; right: 0; border-top: 2px dashed var(--border-strong); }
-.route-stop:nth-child(5n):before,.route-stop:last-child:before { right: auto; width: 40%; }
-.route-pin { position: absolute; top: 0; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
-.route-stamp { display: flex; flex-direction: column; height: 100%; padding: 16px 16px 18px; border: 1.5px dashed var(--border-strong); background: var(--surface); transform: rotate(-1.2deg); }
-.route-stop:nth-child(even) .route-stamp { transform: rotate(1deg); }
-.route-stop:nth-child(3n) .route-stamp { transform: rotate(-.4deg); }
-.route-num { font-size: 10px; letter-spacing: .14em; color: var(--text-secondary); margin-bottom: 10px; }
-.route-logo { display: block; height: 28px; width: auto; max-width: 96px; object-fit: contain; object-position: left center; margin-bottom: 12px; }
-.route-logo-empty { width: 28px; border: 1.5px dashed var(--border-strong); border-radius: 50%; }
-.route-org { font: 400 19px/1.2 var(--font-serif); color: var(--text-primary); }
-.route-place { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #843419; margin: 6px 0 10px; }
-.route-line { font-size: 13px; line-height: 1.55; color: var(--text-secondary); margin-top: auto; }
-.route-next .route-pin { background: var(--accent); }
-.route-next .route-stamp { background: var(--accent); border: 1.5px solid var(--accent); color: #fff9f0; transform: rotate(1.5deg); }
-.route-next .route-num,.route-next .route-org,.route-next .route-line { color: #fff9f0; }
-.route-next .route-org { font-size: 22px; margin-top: 4px; }
-.route-next .route-line { text-decoration: underline; text-underline-offset: 4px; padding-top: 14px; }
-.route-next .route-stamp:hover { background: #843419; border-color: #843419; }
+/* ---- Alchemy rework: logo wall (social proof under the numbers) ---- */
+.page-operator .evidence-strip { margin-bottom: 0; }
+.logo-wall { padding: 26px 0 30px; border-bottom: 1px solid var(--border-strong); margin-bottom: 76px; }
+.logo-wall-label { font: 500 11px var(--font-sans); letter-spacing: .13em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 22px; }
+.logo-wall-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 26px 36px; align-items: center; }
+.logo-wall-list li { display: flex; justify-content: center; }
+.logo-wall-list img { display: block; height: 40px; width: 100%; max-width: 116px; object-fit: contain; mix-blend-mode: multiply; filter: grayscale(1) contrast(1.1); opacity: .6; transition: filter .2s, opacity .2s, transform .2s; }
+/* Optical balance: heavy wordmarks a touch smaller, small emblems a touch larger. */
+.logo-wall-list .is-wordmark img { height: 28px; max-width: 104px; }
+.logo-wall-list .is-emblem img { height: 48px; }
+/* Muted at rest everywhere; stamped into colour on hover where hover exists. */
+@media (hover: hover) {
+ .logo-wall-list li:hover img { filter: none; opacity: 1; transform: rotate(-4deg) scale(1.08); }
+}
 
 /* ---- Alchemy rework: bets I got wrong ---- */
 .pratfall-section .section-title { margin-bottom: 8px; }
@@ -310,18 +297,11 @@
 .work-row-artefact img { width: 120px; height: 84px; object-fit: cover; border: 6px solid #fffdf7; box-shadow: 3px 3px 0 var(--border); transform: rotate(-2deg); }
 .work-row-artefact figcaption { font-size: 20px; }
 
-@media (max-width: 1000px) {
- .route-list { grid-template-columns: repeat(3, minmax(0,1fr)); }
- .route-stop:nth-child(5n):before { right: 0; width: auto; }
- .route-stop:nth-child(3n):before,.route-stop:last-child:before { right: auto; width: 40%; }
-}
 @media (max-width: 700px) {
- /* Narrow screens: a vertical route, stamps stacked along a dotted line. */
- .route-list { grid-template-columns: 1fr; gap: 0; }
- .route-stop { padding: 0 0 18px 30px; }
- .route-stop:before,.route-stop:nth-child(3n):before,.route-stop:nth-child(5n):before { top: 6px; bottom: 0; left: 5px; right: auto; width: 0; border-top: 0; border-left: 2px dashed var(--border-strong); }
- .route-stop:last-child:before { display: none; }
- .route-stamp,.route-stop:nth-child(even) .route-stamp,.route-stop:nth-child(3n) .route-stamp,.route-next .route-stamp { transform: none; }
- .route-logo { height: 24px; }
  .pratfall dl { grid-template-columns: 1fr; gap: 16px; }
+ .logo-wall { margin-bottom: 48px; }
+ .logo-wall-list { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px 24px; }
+ .logo-wall-list img { height: 34px; }
+ .logo-wall-list .is-wordmark img { height: 24px; }
+ .logo-wall-list .is-emblem img { height: 40px; }
 }
