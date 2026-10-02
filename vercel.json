@@ -10,6 +10,11 @@
       "permanent": true
     },
     {
+      "source": "/work.html",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
       "source": "/index.html",
       "destination": "/",
       "permanent": true
