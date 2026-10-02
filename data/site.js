@@ -10,16 +10,40 @@
 
 const site = {
 
-  // Homepage "Currently obsessed with:" line. One is picked at random on each
-  // page load (never auto-rotates). Keep each under ~45 characters.
+  // Homepage "Currently obsessed with:" line. A random pick on each page load
+  // (never auto-rotates). Visitors cycle with the emoji buttons, or by
+  // clicking the coffee cup. Add or remove categories freely; each needs an
+  // emoji, a `noun` for screen readers, and items of { title, by? }.
   obsessions: [
-    '[[AKSHAT: draft: "why AI pilots die in month 3"]]',
-    '[[AKSHAT: draft: "the gap between AI usage and AI adoption"]]',
-    '[[AKSHAT: draft: "agents a CEO actually opens every morning"]]',
-    '[[AKSHAT: draft: "why every country treats obesity differently"]]',
-    '[[AKSHAT: draft: "picking country no. 41"]]',
-    '[[AKSHAT: draft: "fiction that has nothing to do with AI"]]',
-    '[[AKSHAT: draft: "the perfect cafe to work from in Gurgaon"]]'
+    { key: 'show', emoji: '📺', noun: 'Show', items: [
+      { title: 'The Mentalist' },
+      { title: 'Dexter' },
+      { title: 'The Sopranos' },
+      { title: 'Modern Family' },
+      { title: 'Better Call Saul' },
+      { title: 'Suits' },
+      { title: 'The Haunting of Hill House' }
+    ] },
+    { key: 'book', emoji: '📚', noun: 'Book', items: [
+      { title: 'Alchemy', by: 'Rory Sutherland' },
+      { title: 'Before the Coffee Gets Cold', by: 'Toshikazu Kawaguchi' },
+      { title: 'A Man Called Ove', by: 'Fredrik Backman' },
+      { title: 'Contagious', by: 'Jonah Berger' },
+      { title: 'The Midnight Library', by: 'Matt Haig' },
+      { title: 'Beyond Belief', by: 'Nir Eyal' },
+      { title: 'The Vegetarian', by: 'Han Kang' },
+      { title: 'Zero to Scale', by: 'Arindam Paul' }
+    ] },
+    { key: 'song', emoji: '🎧', noun: 'Song', items: [
+      { title: '505', by: 'Arctic Monkeys' },
+      { title: 'Meet Me Halfway', by: 'Black Eyed Peas' },
+      { title: 'Instant Crush', by: 'Daft Punk' },
+      { title: 'Let It Happen', by: 'Tame Impala' },
+      { title: 'Mayonaka no Door (Stay With Me)', by: 'Miki Matsubara' },
+      { title: 'All the Stars', by: 'Kendrick Lamar & SZA' },
+      { title: 'Pompeii', by: 'Bastille' },
+      { title: 'Riptide', by: 'Vance Joy' }
+    ] }
   ],
 
   // Operator contact: honest scarcity line. Set any value to null to hide

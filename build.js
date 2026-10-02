@@ -427,18 +427,30 @@ function buildOperator() {
 
 /* ------------------------------------------- homepage: obsession line */
 
-// Server-renders the first item (so it's crawlable and works without JS);
-// the inline script on index.html swaps in a random one per visit.
+const esc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// One obsession as HTML. Mirrors render() in index.html's inline script.
+function obsessionItemHTML(cat, item) {
+  return `<span class="obsession-emoji" aria-hidden="true">${cat.emoji}</span><span class="visually-hidden">${esc(cat.noun)}: </span>` +
+    `<span class="obsession-title">${ph(esc(item.title))}</span>${item.by ? ` <span class="obsession-by">by ${ph(esc(item.by))}</span>` : ''}`;
+}
+
+// Server-renders one item (crawlable, works without JS) plus the full list as
+// JSON; the inline script on index.html picks a random one per visit and wires
+// the emoji buttons and the coffee cup.
 function renderObsessions() {
-  const items = (site.obsessions || []).filter(Boolean);
-  if (!items.length) return '';
+  const cats = (site.obsessions || []).filter(c => c && c.items && c.items.length);
+  if (!cats.length) return '';
+  const data = cats.map(c => ({ key: c.key, emoji: c.emoji, noun: c.noun, items: c.items }));
   return `
-            <p class="obsession" data-obsession>
-              <span class="obsession-label">Currently obsessed with:</span>
-              <span class="obsession-item">${ph(items[0])}</span>
-              <button type="button" class="obsession-next" aria-label="Show another obsession" title="Show another" hidden>↻</button>
-            </p>
-            <template id="obsession-list">${items.map(i => `<li>${ph(i)}</li>`).join('')}</template>
+            <div class="obsession" data-obsession>
+              <p class="obsession-now"><span class="obsession-label">Currently obsessed with:</span>
+                <span class="obsession-item" data-obsession-item>${obsessionItemHTML(cats[0], cats[0].items[0])}</span></p>
+              <div class="obsession-picks" role="group" aria-label="Show me another" hidden>${cats.map(c => `
+                <button type="button" data-cat="${c.key}" aria-pressed="false" aria-label="Another ${esc(c.noun.toLowerCase())}" title="Another ${esc(c.noun.toLowerCase())}">${c.emoji}</button>`).join('')}
+              </div>
+            </div>
+            <script type="application/json" id="obsession-data">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>
             `;
 }
 

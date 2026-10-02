@@ -214,27 +214,34 @@
 
 /* ---- Alchemy rework: homepage ---- */
 /* The second (and last) odd element on the homepage. Calm everywhere else. */
-.obsession { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-top: 30px; padding-top: 16px; border-top: 1px dashed var(--border-strong); max-width: 560px; }
+.obsession { margin-top: 30px; padding-top: 16px; border-top: 1px dashed var(--border-strong); max-width: 560px; }
+.obsession-now { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
 .obsession-label { font-size: 11px; letter-spacing: .13em; text-transform: uppercase; color: var(--text-secondary); }
 .obsession-item { font: italic 400 19px/1.4 var(--font-serif); color: var(--text-primary); }
-.obsession-next { min-width: 44px; min-height: 44px; margin: -12px 0 -12px -6px; border: 0; background: none; color: var(--accent); font-size: 20px; line-height: 1; cursor: pointer; align-self: center; }
-.obsession-next:hover { color: #843419; }
-.obsession-next.is-spinning { animation: obsession-spin .45s ease-out; }
-@keyframes obsession-spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+.obsession-emoji { font-style: normal; margin-right: 6px; }
+.obsession-by { color: var(--text-secondary); }
+.obsession-picks { display: flex; gap: 8px; margin-top: 12px; }
+.obsession-picks button { width: 44px; height: 44px; border-radius: 50%; border: 1px dashed var(--border-strong); background: transparent; font-size: 18px; line-height: 1; cursor: pointer; transition: transform .15s, background .15s; }
+.obsession-picks button:hover { transform: rotate(-8deg) scale(1.06); background: var(--surface); }
+.obsession-picks button[aria-pressed="true"] { border: 1px solid var(--accent); background: var(--surface); }
+/* The coffee cup refills the obsession line. */
+.cup-refill { display: block; width: 100%; padding: 0; border: 0; background: none; color: inherit; cursor: pointer; }
+.cup-refill:focus-visible { outline: none; }
+.cup-refill:focus-visible .coffee-art { outline: 2px solid var(--accent); outline-offset: 4px; }
+.cup-refill .coffee-art { transition: transform .25s ease; transform-origin: 55% 75%; }
+.cup-refill:hover .coffee-art { transform: rotate(-3deg); }
+.coffee-art.is-sipping { animation: cup-sip .6s ease-in-out; }
+@keyframes cup-sip { 0% { transform: rotate(0); } 35% { transform: rotate(-8deg); } 70% { transform: rotate(3deg); } 100% { transform: rotate(0); } }
 .chooser-wrap .signature { margin-bottom: 0; }
 @media (max-width: 700px) {
  .obsession { margin-top: 22px; }
  .obsession-label { flex-basis: 100%; }
 }
-
-/* ---- Alchemy rework: 404 ---- */
-.page-notfound .page { min-height: calc(100vh - var(--nav-h) - 40px); display: flex; align-items: center; }
-.notfound { max-width: 900px; }
-.notfound .section-label { margin-bottom: 22px; }
-.notfound .page-title { font-size: clamp(40px,6vw,76px); line-height: 1.04; letter-spacing: -.045em; }
-.notfound .page-title em { color: var(--accent); }
-.notfound-route { display: block; width: 180px; height: 56px; color: var(--accent); margin: 26px 0 8px; }
-.notfound .hero-actions { align-items: flex-start; flex-wrap: wrap; gap: 14px 20px; }
+@media (max-width: 560px) {
+ /* styles.css pins the cup absolutely here; pin the button instead so it keeps a real hit area. */
+ .cup-refill { position: absolute; right: -5px; top: -10px; width: 195px; }
+ .cup-refill .coffee-art { position: static; width: 100%; }
+}
 
 /* ---- Alchemy rework: the route so far (passport stamps on a dotted route) ---- */
 .route-section { margin-bottom: 8px; }
