@@ -203,6 +203,8 @@
 
 /* How bets stall: failure on the left (struck, quieter), the fix on the right. */
 .stall-section { padding-top: 8px; }
+/* Echoes the homepage's ~~Artificial~~ Akshat signature. */
+.stall-title s { text-decoration-thickness: 2px; text-decoration-color: var(--text-primary); }
 .stall-head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; padding-bottom: 12px; font-size: 11px; letter-spacing: .13em; text-transform: uppercase; color: var(--text-secondary); }
 .stall-list { list-style: none; margin: 0; padding: 0; }
 .stall-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; padding: 28px 0; border-top: 1px solid var(--border-strong); }
