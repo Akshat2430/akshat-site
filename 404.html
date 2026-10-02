@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Off the map · Akshat Kharbanda</title>
+  <meta name="description" content="This page doesn't exist. The rest of the site does." />
+  <meta name="robots" content="noindex" />
+
+  <link rel="icon" type="image/jpeg" href="/public/images/akshat-avatar.jpg" />
+  <!-- Absolute paths: this page is served for any missing URL, at any depth. -->
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/editorial.css" />
+  <script src="/hello.js" defer></script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    va('event', { name: 'not_found', data: { path: location.pathname } });
+  </script>
+  <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+</head>
+
+<body class="page-notfound">
+
+  <nav aria-label="Main navigation" class="nav-chooser">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Akshat Kharbanda<small>The Business Backpacker</small></a>
+    </div>
+  </nav>
+
+  <main class="page" id="main-content" aria-label="Page not found">
+    <div class="container notfound">
+      <p class="section-label">404 / Off the map</p>
+      <h1 class="page-title">You've wandered off the map. <em>Very on‑brand.</em></h1>
+      <svg class="notfound-route" viewBox="0 0 160 50" aria-hidden="true" focusable="false"><use href="/public/images/field-marks.svg#route" /></svg>
+      <div class="hero-actions">
+        <a href="/" class="btn btn-primary">Back to the start →</a>
+        <span class="cta-secondary">
+          <a href="/tools/adoption-scorecard" class="btn btn-secondary" onclick="if(typeof va==='function'){va('event',{name:'tool_entry_click',data:{source:'not_found',tool:'adoption_scorecard'}})}">Take the AI scorecard →</a>
+          <span class="cta-micro">10 questions · free · no email</span>
+        </span>
+      </div>
+    </div>
+  </main>
+
+</body>
+
+</html>

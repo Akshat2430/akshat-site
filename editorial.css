@@ -226,3 +226,12 @@
  .obsession { margin-top: 22px; }
  .obsession-label { flex-basis: 100%; }
 }
+
+/* ---- Alchemy rework: 404 ---- */
+.page-notfound .page { min-height: calc(100vh - var(--nav-h) - 40px); display: flex; align-items: center; }
+.notfound { max-width: 900px; }
+.notfound .section-label { margin-bottom: 22px; }
+.notfound .page-title { font-size: clamp(40px,6vw,76px); line-height: 1.04; letter-spacing: -.045em; }
+.notfound .page-title em { color: var(--accent); }
+.notfound-route { display: block; width: 180px; height: 56px; color: var(--accent); margin: 26px 0 8px; }
+.notfound .hero-actions { align-items: flex-start; flex-wrap: wrap; gap: 14px 20px; }

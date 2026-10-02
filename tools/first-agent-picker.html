@@ -143,6 +143,7 @@ body{
 
 :focus-visible { outline:2px solid var(--clay); outline-offset:4px; }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+::selection { background: var(--clay); color: #fff9f0; }
 </style>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "WebApplication", "name": "Which Agent Should You Build First?", "url": "https://akshatkharbanda.com/tools/first-agent-picker", "description": "Six questions about what's actually piling up in your week. Get one agent to build first, not five, and an honest answer if the real fix isn't an agent yet.", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "creator": {"@type": "Person", "@id": "https://akshatkharbanda.com/#person", "name": "Akshat Kharbanda"}}
@@ -151,6 +152,7 @@ body{
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+<script src="../hello.js" defer></script>
 </head>
 <body>
 <main class="wrap" id="app">
