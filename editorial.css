@@ -211,3 +211,18 @@
  .stall-foot { flex-direction: column; align-items: flex-start; }
  .signoff { margin-top: 56px; font-size: 21px; }
 }
+
+/* ---- Alchemy rework: homepage ---- */
+/* The second (and last) odd element on the homepage. Calm everywhere else. */
+.obsession { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-top: 30px; padding-top: 16px; border-top: 1px dashed var(--border-strong); max-width: 560px; }
+.obsession-label { font-size: 11px; letter-spacing: .13em; text-transform: uppercase; color: var(--text-secondary); }
+.obsession-item { font: italic 400 19px/1.4 var(--font-serif); color: var(--text-primary); }
+.obsession-next { min-width: 44px; min-height: 44px; margin: -12px 0 -12px -6px; border: 0; background: none; color: var(--accent); font-size: 20px; line-height: 1; cursor: pointer; align-self: center; }
+.obsession-next:hover { color: #843419; }
+.obsession-next.is-spinning { animation: obsession-spin .45s ease-out; }
+@keyframes obsession-spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+.chooser-wrap .signature { margin-bottom: 0; }
+@media (max-width: 700px) {
+ .obsession { margin-top: 22px; }
+ .obsession-label { flex-basis: 100%; }
+}

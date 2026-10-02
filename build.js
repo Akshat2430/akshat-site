@@ -348,6 +348,27 @@ function buildOperator() {
   write('operator.html', html);
 }
 
+/* ------------------------------------------- homepage: obsession line */
+
+// Server-renders the first item (so it's crawlable and works without JS);
+// the inline script on index.html swaps in a random one per visit.
+function renderObsessions() {
+  const items = (site.obsessions || []).filter(Boolean);
+  if (!items.length) return '';
+  return `
+            <p class="obsession" data-obsession>
+              <span class="obsession-label">Currently obsessed with:</span>
+              <span class="obsession-item">${ph(items[0])}</span>
+              <button type="button" class="obsession-next" aria-label="Show another obsession" title="Show another" hidden>↻</button>
+            </p>
+            <template id="obsession-list">${items.map(i => `<li>${ph(i)}</li>`).join('')}</template>
+            `;
+}
+
+function buildHome() {
+  write('index.html', replaceBetween(read('index.html'), '<!--BUILD:obsessions-->', '<!--/BUILD:obsessions-->', renderObsessions()));
+}
+
 /* ------------------------------------------------------ placeholder guard */
 
 function servedFiles() {
@@ -435,6 +456,7 @@ const nFeatured = buildIndex();
 const nBuckets = buildWork();
 const nPerson = buildPerson();
 buildOperator();
+buildHome();
 const nUrls = buildSitemap();
 const nPlaceholders = checkPlaceholders();
 

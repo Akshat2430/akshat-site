@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="editorial.css" />
   <script src="nav.js" defer></script>
+  <script src="hello.js" defer></script>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
@@ -56,9 +57,17 @@
           <div>
             <h1 class="chooser-headline page-title">I build the system behind your biggest <em>global bet.</em></h1>
             <p class="chooser-headline-note">(and share what I learn along the way.)</p>
+            <!--BUILD:obsessions-->
+            <p class="obsession" data-obsession>
+              <span class="obsession-label">Currently obsessed with:</span>
+              <span class="obsession-item"><mark class="akshat-ph">[[AKSHAT: draft: "why AI pilots die in month 3"]]</mark></span>
+              <button type="button" class="obsession-next" aria-label="Show another obsession" title="Show another" hidden>↻</button>
+            </p>
+            <template id="obsession-list"><li><mark class="akshat-ph">[[AKSHAT: draft: "why AI pilots die in month 3"]]</mark></li><li><mark class="akshat-ph">[[AKSHAT: draft: "the gap between AI usage and AI adoption"]]</mark></li><li><mark class="akshat-ph">[[AKSHAT: draft: "agents a CEO actually opens every morning"]]</mark></li><li><mark class="akshat-ph">[[AKSHAT: draft: "why every country treats obesity differently"]]</mark></li><li><mark class="akshat-ph">[[AKSHAT: draft: "picking country no. 41"]]</mark></li><li><mark class="akshat-ph">[[AKSHAT: draft: "fiction that has nothing to do with AI"]]</mark></li><li><mark class="akshat-ph">[[AKSHAT: draft: "the perfect cafe to work from in Gurgaon"]]</mark></li></template>
+            <!--/BUILD:obsessions-->
           </div>
-          <aside class="hero-art" aria-label="Artificial Akshat Intelligence. Ideas fuelled by coffee and curiosity.">
-            <div class="signature"><span><s>Artificial</s> <em>Akshat</em></span><span>Intelligence.</span></div>
+          <aside class="hero-art" aria-label="Akshat Intelligence. Ideas fuelled by coffee and curiosity.">
+            <p class="signature"><span class="visually-hidden">Akshat Intelligence, not artificial intelligence.</span><span aria-hidden="true"><s>Artificial</s> <em>Akshat</em></span><span aria-hidden="true">Intelligence.</span></p>
             <svg class="coffee-art" viewBox="0 0 400 360" aria-hidden="true"><use href="public/images/field-marks.svg#coffee" /></svg>
             <p class="hand-note">Serious about the work.<br>A little less about myself.</p>
           </aside>
@@ -69,7 +78,7 @@
           <img src="public/images/spkimg2.jpeg" alt="Akshat presenting to a room" width="1280" height="960" />
           <div class="entrance-work-copy">
             <div class="entrance-top"><span>01 / Work with me</span><span aria-hidden="true">↗</span></div>
-            <h2>0→1 strategy &amp; ops,<br>without the BS.</h2>
+            <h2>You have a bet that needs building.</h2>
             <span class="entrance-link">Explore the work <span aria-hidden="true">→</span></span>
           </div>
         </a>
@@ -82,6 +91,35 @@
 
     </div>
   </main>
+
+  <script>
+    // "Currently obsessed with": one random pick per visit, plus ↻ for another. Never auto-rotates.
+    (function () {
+      var line = document.querySelector('[data-obsession]');
+      var list = document.getElementById('obsession-list');
+      if (!line || !list) return;
+      var items = Array.prototype.map.call(list.content.querySelectorAll('li'), function (li) { return li.innerHTML; });
+      var slot = line.querySelector('.obsession-item');
+      var btn = line.querySelector('.obsession-next');
+      var current = 0;
+      function show(i) { current = i; slot.innerHTML = items[i]; }
+      function pickOther() {
+        if (items.length < 2) return current;
+        var i; do { i = Math.floor(Math.random() * items.length); } while (i === current);
+        return i;
+      }
+      show(Math.floor(Math.random() * items.length));
+      slot.setAttribute('aria-live', 'polite'); // announce re-rolls, not the first pick
+      if (items.length > 1) {
+        btn.hidden = false;
+        btn.addEventListener('click', function () {
+          show(pickOther());
+          btn.classList.remove('is-spinning'); void btn.offsetWidth; btn.classList.add('is-spinning');
+          if (typeof va === 'function') va('event', { name: 'obsession_reroll' });
+        });
+      }
+    })();
+  </script>
 
 </body>
 
